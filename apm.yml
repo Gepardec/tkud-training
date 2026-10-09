@@ -1,0 +1,16 @@
+name: tkud-training
+version: 1.0.0
+description: APM project for the TKuD training (Technische Dokumentation und Kommunikation)
+author: Mattias Fankhauser
+# Which agent platforms to deploy to.
+# Resolution order: --target flag > this field > auto-detect from filesystem.
+# Accepted values: agent-skills, antigravity, claude, codex, copilot, cursor, gemini, grok-build, kiro, opencode, vscode, windsurf
+targets:
+  - claude
+dependencies:
+  apm:
+    - slidevjs/slidev/skills/slidev
+    - anthropics/skills/skills/skill-creator
+  mcp: []
+includes: auto
+scripts: {}
