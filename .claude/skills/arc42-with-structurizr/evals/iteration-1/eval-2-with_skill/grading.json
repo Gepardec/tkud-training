@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "text": "structurizr-dsl-exists",
+      "passed": true,
+      "evidence": "container-as-is.dsl exists in outputs/ (82 lines) with a full Structurizr workspace modeling the legacy Tomcat and its containers."
+    },
+    {
+      "text": "structurizr-dsl-valid",
+      "passed": true,
+      "evidence": "Summary states: 'Existing DSL validated (structurizr_validate → OK)'."
+    },
+    {
+      "text": "all-5-war-types-present",
+      "passed": true,
+      "evidence": "DSL contains all 5 WAR types as containers: 'Mandanten-WARs' (line 14), 'Service-WARs' (line 17), 'Broker-WARs' (line 20), 'Phone-Campaign-WARs' (line 26), 'Visitor-/WbInfo-WARs' (line 29). Also includes 'Gemeinsame Bibliotheken' as an additional container."
+    },
+    {
+      "text": "plantuml-exported",
+      "passed": true,
+      "evidence": "05-container-as-is.puml exists (4763 bytes). Summary states 'PlantUML exported (structurizr_export-plantuml)'."
+    },
+    {
+      "text": "svg-rendered",
+      "passed": true,
+      "evidence": "05-container-as-is.svg exists (25358 bytes). Summary states 'SVG rendered (plantuml -tsvg)'."
+    },
+    {
+      "text": "adoc-updated",
+      "passed": true,
+      "evidence": "05-building-block-view.adoc in outputs/ contains 'image::../diagrams/05-container-as-is.svg[Container-Diagramm Ist, pdfwidth=80%, align=center]' at line 12."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+@startuml
+title <size:24>System Context View: ATU / PDV (Target)</size>\n<size:24>System Context Diagramm — ATU/PDV Ziel-Zustand</size>
+
+set separator none
+left to right direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+Person(EndanwenderMitglied, "Endanwender (Mitglied)", $descr="Mitglied einer politischen Organisation. Greift über die Angular-SPA auf das System zu (HTTPS, REST/JSON, Bearer JWT).", $tags="", $link="")
+Person(Administrator, "Administrator", $descr="Mandanten-Administrator. Verwaltet Mitglieder, Kampagnen, Zahlungen und Konfiguration über die Angular-SPA.", $tags="", $link="")
+System(Keycloak, "Keycloak", $descr="OIDC/OAuth2 Identity Provider. Ein Realm je Mandant. Stellt JWT mit tenant-id-Claim aus.", $tags="", $link="")
+System(Mailprovider, "Mailprovider", $descr="Externer E-Mail-Dienst. Empfängt Callbacks über den Message Broker.", $tags="", $link="")
+System(SMSGateway, "SMS-Gateway", $descr="Externer SMS-Dienst. Empfängt Callbacks über den Message Broker.", $tags="", $link="")
+System(Portalsysteme, "Portalsysteme", $descr="Externe Portale. Kommunizieren über den Message Broker (asynchron).", $tags="", $link="")
+System(BankdateiImport, "Bankdatei-Import", $descr="Externe Bank-Schnittstelle. REST/JSON-API über den Encashment-Service.", $tags="", $link="")
+System(MobileDrittekünftig, "Mobile / Dritte (künftig)", $descr="Zukünftige mobile Apps oder Drittsysteme. Integration via REST/JSON (Bearer JWT).", $tags="", $link="")
+System(ATUPDVTarget, "ATU / PDV (Target)", $descr="Multi-Tenant-fähige Quarkus-Domänenservices (Member, Campaign, Event, Encashment, Reporting, Document) hinter einem API-Gateway (Nginx). Angular-SPA als Frontend. Strangler-Fig-Migration: Legacy-Tomcat schrumpft Domäne für Domäne. Asynchroner Message Broker für Event-Kommunikation.", $tags="", $link="")
+
+Rel(EndanwenderMitglied, ATUPDVTarget, "Nutzt SPA", $techn="HTTPS, REST/JSON, Bearer JWT", $tags="", $link="")
+Rel(Administrator, ATUPDVTarget, "Verwaltet via SPA", $techn="HTTPS, REST/JSON, Bearer JWT", $tags="", $link="")
+Rel(ATUPDVTarget, Keycloak, "Authentifiziert via", $techn="OIDC / OAuth2, JWT-Introspection", $tags="", $link="")
+Rel(ATUPDVTarget, Mailprovider, "Sendet Mails, empfängt Callbacks", $techn="HTTP, über Message Broker", $tags="", $link="")
+Rel(ATUPDVTarget, SMSGateway, "Sendet SMS, empfängt Callbacks", $techn="HTTP, über Message Broker", $tags="", $link="")
+Rel(ATUPDVTarget, Portalsysteme, "Austausch von Portaldaten", $techn="HTTP, asynchron über Message Broker", $tags="", $link="")
+Rel(ATUPDVTarget, BankdateiImport, "Importiert Zahlungsdateien", $techn="HTTPS, REST/JSON — Encashment-Service", $tags="", $link="")
+Rel(MobileDrittekünftig, ATUPDVTarget, "Zukünftige Integration", $techn="HTTPS, REST/JSON, Bearer JWT", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml

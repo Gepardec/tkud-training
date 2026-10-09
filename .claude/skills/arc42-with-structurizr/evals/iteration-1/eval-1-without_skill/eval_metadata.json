@@ -1,0 +1,35 @@
+{
+  "eval_id": 1,
+  "eval_name": "section3-c1-system-context",
+  "prompt": "Ich möchte arc42 Section 3 (Kontextabgrenzung) für das ATU/PDV-System dokumentieren. Das System interagiert mit Keycloak (OIDC), Mailprovidern, SMS-Gateways und Bankdatei-Importen. Bitte erstelle die Doku und ein C1 System Context Diagramm als Structurizr DSL im docs/architecture/diagrams/structurizr/ Verzeichnis. Es soll nur der Ziel-Zustand dokumentiert werden.",
+  "assertions": [
+    {
+      "name": "structurizr-dsl-exists",
+      "description": "Eine Structurizr DSL-Datei für den Ziel-Zustand wurde erstellt"
+    },
+    {
+      "name": "structurizr-dsl-valid",
+      "description": "Die Structurizr DSL wurde validiert und ist fehlerfrei"
+    },
+    {
+      "name": "plantuml-exported",
+      "description": "Ein PlantUML-Export wurde aus der DSL erzeugt"
+    },
+    {
+      "name": "svg-rendered",
+      "description": "Ein SVG wurde aus dem PlantUML gerendert"
+    },
+    {
+      "name": "adoc-updated",
+      "description": "03-context-and-scope.adoc wurde aktualisiert mit Referenz auf das neue SVG"
+    },
+    {
+      "name": "target-state-only",
+      "description": "Das Diagramm zeigt NUR den Ziel-Zustand"
+    },
+    {
+      "name": "skill-workflow-followed",
+      "description": "Der arc42 section-03 Skill wurde geladen und der Workflow eingehalten"
+    }
+  ]
+}

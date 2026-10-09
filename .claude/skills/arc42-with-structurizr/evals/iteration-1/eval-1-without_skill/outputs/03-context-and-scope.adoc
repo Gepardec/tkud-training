@@ -1,0 +1,136 @@
+[[context-and-scope]]
+== Kontextabgrenzung
+
+[[business-context-2]]
+=== Fachlicher Kontext
+
+Das System ATU / PDV verwaltet Mitgliederdaten, Veranstaltungen, Kampagnen, Zahlungen und Auswertungen für 17 österreichische politische Organisationen bzw. Mitgliederorganisationen. Es interagiert mit Endanwendern (Mitglieder und Administratoren der Mandanten), externen Systemen (Mailprovider, SMS-Gateways, Portale, Bankdatei-Importe) und Identity-Providern (Keycloak). Die Migration ersetzt das monolithische Tomcat-Deployment durch multi-tenant-fähige Quarkus-Services je Domäne und ein modernes SPA-Frontend.
+
+[[context-diagram-to-be]]
+==== Kontextdiagramm — Ziel-Zustand
+
+image::../diagrams/03-context-to-be.svg[Kontextdiagramm Ziel-Zustand, pdfwidth=80%, align=center]
+
+_Das C4-System-Context-Diagramm wird aus Structurizr generiert: `docs/architecture/diagrams/structurizr/system-context-to-be.dsl`_
+
+[[external-interfaces]]
+==== Externe Schnittstellen
+
+[cols="4*", options="header"]
+|===
+| Schnittstellen-ID | Partner | Eingang (in das System) | Ausgang (aus dem System)
+
+| IF-01 | Endanwender (SPA) | HTTPS-REST-Aufrufe (Bearer JWT) | JSON-Antworten
+| IF-02 | Administrator (SPA) | HTTPS-REST-Aufrufe (Bearer JWT) | JSON-Antworten
+| IF-03 | Keycloak | OIDC-Anmeldeabläufe, Token-Introspection | JWT mit `tenant-id`-Claim
+| IF-04 | Mailprovider | HTTP-Callbacks (über Message Broker) | E-Mail-Versand (HTTP, über Message Broker)
+| IF-05 | SMS-Gateway | HTTP-Callbacks (über Message Broker) | SMS-Versand (HTTP, über Message Broker)
+| IF-06 | Portalsysteme | HTTP-Callbacks (asynchron, über Message Broker) | Portaldaten (HTTP, asynchron)
+| IF-07 | Bankdatei-Import | Importergebnisse (ack/nack) | REST/JSON-Anfragen (Encashment-Service)
+| IF-08 | Mobile / Dritte (künftig) | REST/JSON (Bearer JWT) | JSON-Antworten
+|===
+
+[[interface-details]]
+==== Details der Schnittstellen
+
+[[if-01-if-02-browser-to-system]]
+===== IF-01 / IF-02: Browser zum System (Ziel-Zustand)
+
+*Partner:* Endanwender (Mitglieder und Administratoren der Mandanten)
+
+*Zweck:* Zugriff auf die Anwendung — Mitgliederdaten, Veranstaltungen, Kampagnen, Zahlungen, Auswertungen
+
+*Eingang:* HTTPS REST/JSON an das API-Gateway → Quarkus-Domänenservices
+
+*Ausgang:* JSON → SPA-Rendering
+
+*Authentifizierung:* Bearer JWT (OIDC über Keycloak)
+
+[[if-03-keycloak-integration]]
+===== IF-03: Keycloak-Integration
+
+*Partner:* Keycloak (Identity Provider)
+
+*Zweck:* Authentifizierung und Autorisierung
+
+*Eingang:* OIDC-Anmeldeablauf, JWT-Token-Introspection
+
+*Ausgang:* JWT mit `tenant-id`-Claim, rollenbasierte Autorisierung
+
+*Technologie:* OIDC / OAuth2, Authorization Code + PKCE
+
+[[if-04-mailprovider]]
+===== IF-04: Mailprovider-Integration
+
+*Partner:* Externer Mailprovider (SMTP/API-basiert)
+
+*Zweck:* Versand von Kampagnen-Mails, Empfang von Mail-Callbacks
+
+*Eingang:* HTTP-Callbacks über den Message Broker
+
+*Ausgang:* E-Mail-Requests über den Message Broker
+
+[[if-05-sms-gateway]]
+===== IF-05: SMS-Gateway-Integration
+
+*Partner:* Externes SMS-Gateway (API-basiert)
+
+*Zweck:* Versand von SMS-Kampagnen, Empfang von SMS-Callbacks
+
+*Eingang:* HTTP-Callbacks über den Message Broker
+
+*Ausgang:* SMS-Requests über den Message Broker
+
+[[if-06-portalsysteme]]
+===== IF-06: Portalsysteme-Integration
+
+*Partner:* Externe Portalsysteme (z.B. Besucherportale)
+
+*Zweck:* Austausch von Portal- und Besucherdaten
+
+*Eingang:* HTTP-Callbacks (asynchron, über Message Broker)
+
+*Ausgang:* Portaldaten (asynchron, über Message Broker)
+
+[[if-07-bankimport]]
+===== IF-07: Bankdatei-Import
+
+*Partner:* Externe Bank-Schnittstelle
+
+*Zweck:* Import von Zahlungsdateien (Encashment)
+
+*Eingang:* Importergebnisse (ack/nack)
+
+*Ausgang:* REST/JSON-Anfragen über den Encashment-Service
+
+*Technologie:* HTTPS, REST/JSON
+
+[[if-08-mobile-future]]
+===== IF-08: Mobile / Dritte (künftig)
+
+*Partner:* Zukünftige mobile Apps oder Drittsysteme
+
+*Zweck:* Integration von Drittanwendungen
+
+*Eingang:* REST/JSON (Bearer JWT)
+
+*Ausgang:* JSON-Antworten
+
+'''
+
+[[technical-context]]
+=== Technischer Kontext (Ziel-Zustand)
+
+[cols="6*", options="header"]
+|===
+| Schnittstellen-ID | Technologie | Protokoll | Format | Endpunkt | Authentifizierung
+
+| IF-01 | Browser + API-Gateway | HTTPS | REST/JSON | `https://gateway/api/...` — mandantenunabhängig; der Mandant kommt aus dem JWT, nie aus dem Pfad | Bearer JWT (OIDC)
+| IF-02 | Browser + API-Gateway | HTTPS | REST/JSON | `https://gateway/api/...` — mandantenunabhängig | Bearer JWT (OIDC)
+| IF-03 | Keycloak | OIDC / OAuth2 | JWT | Keycloak-Realm-URLs | Client Secret / PKCE
+| IF-04 | Message Broker | HTTP | — | Broker-URLs | — (Broker-intern)
+| IF-05 | Message Broker | HTTP | — | Broker-URLs | — (Broker-intern)
+| IF-06 | Message Broker | HTTP | — | Broker-URLs | — (Broker-intern)
+| IF-07 | Quarkus-Service | HTTPS | REST/JSON | `/api/payments/imports` | Bearer JWT
+| IF-08 | API-Gateway | HTTPS | REST/JSON | `https://gateway/api/...` — mandantenunabhängig | Bearer JWT
+|===

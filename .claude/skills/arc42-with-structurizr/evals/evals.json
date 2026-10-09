@@ -1,0 +1,49 @@
+{
+  "skill_name": "arc42-with-structurizr",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Ich möchte arc42 Section 3 (Kontextabgrenzung) für das ATU/PDV-System dokumentieren. Das System interagiert mit Keycloak (OIDC), Mailprovidern, SMS-Gateways und Bankdatei-Importen. Bitte erstelle die Doku und ein C1 System Context Diagramm als Structurizr DSL im docs/architecture/diagrams/structurizr/ Verzeichnis. Es soll nur der Ziel-Zustand dokumentiert werden.",
+      "expected_output": "Sektion 3 wurde befüllt, eine Structurizr DSL für C1 (system-context-to-be.dsl) erstellt, validiert, nach PlantUML exportiert, als SVG gerendert und in 03-context-and-scope.adoc eingebunden.",
+      "assertions": [
+        {"name": "structurizr-dsl-exists", "description": "Eine Structurizr DSL-Datei für den Ziel-Zustand wurde erstellt"},
+        {"name": "structurizr-dsl-valid", "description": "Die Structurizr DSL wurde validiert und ist fehlerfrei"},
+        {"name": "plantuml-exported", "description": "Ein PlantUML-Export wurde aus der DSL erzeugt"},
+        {"name": "svg-rendered", "description": "Ein SVG wurde aus dem PlantUML gerendert"},
+        {"name": "adoc-updated", "description": "03-context-and-scope.adoc wurde aktualisiert mit Referenz auf das neue SVG"},
+        {"name": "target-state-only", "description": "Das Diagramm zeigt NUR den Ziel-Zustand (kein Legacy-Tomcat als Hauptsystem)"},
+        {"name": "ist-hinweis-aus-adoc", "description": "Der Ist-Zustand wurde aus 03-context-and-scope.adoc entfernt (da nur Ziel gewünscht)"}
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Erstelle ein C2 Container-Diagramm für Section 5 (Bausteinsicht) des ATU/PDV-Systems. Zeige den Ist-Zustand mit den Legacy-Tomcat-WARs (Mandanten-WARs, Service-WARs, Broker-WARs, Phone-Campaign-WARs, Visitor-WARs) als Container. Die DSL soll nach docs/architecture/diagrams/structurizr/container-as-is.dsl. Exportiere und rendere das SVG. Binde es in 05-building-block-view.adoc ein.",
+      "expected_output": "Structurizr DSL container-as-is.dsl erstellt, validiert, PlantUML exportiert, SVG gerendert, in building-block-view.adoc eingebunden.",
+      "assertions": [
+        {"name": "structurizr-dsl-exists", "description": "container-as-is.dsl wurde erstellt"},
+        {"name": "structurizr-dsl-valid", "description": "Die DSL wurde validiert"},
+        {"name": "all-5-war-types-present", "description": "Alle 5 WAR-Typen sind als Container enthalten: Mandanten, Service, Broker, PhoneCampaign, Visitor"},
+        {"name": "plantuml-exported", "description": "PlantUML wurde exportiert"},
+        {"name": "svg-rendered", "description": "SVG wurde gerendert"},
+        {"name": "adoc-updated", "description": "05-building-block-view.adoc enthält Referenz auf das SVG"}
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Ich habe gerade arc42 Section 5 und Section 7 erstellt. Bitte führe arc42-lint aus, um die Cross-Referenz-Konsistenz zu prüfen (IF-xx zwischen Section 3 und 5, Building-Block-Namen zwischen Section 5 und 7). Prüfe dann mit arc42-review, ob die Sektionen vollständig sind.",
+      "expected_output": "arc42-lint wurde ausgeführt, arc42-review wurde ausgeführt. Ergebnisse wurden präsentiert mit Angebot, Issues zu fixen.",
+      "assertions": [
+        {"name": "lint-loaded", "description": "Der arc42-lint Skill wurde geladen und ausgeführt"},
+        {"name": "review-loaded", "description": "Der arc42-review Skill wurde geladen und ausgeführt"},
+        {"name": "if-xx-checked", "description": "IF-xx-IDs wurden zwischen Section 3 und Section 5 verglichen"},
+        {"name": "building-block-checked", "description": "Building-Block-Namen wurden zwischen Section 5 und Section 7 verglichen"},
+        {"name": "lint-report-generated", "description": "Ein detaillierter Lint-Report wurde erstellt (PASS/FAIL pro Regel)"},
+        {"name": "review-report-generated", "description": "Ein Review-Report mit Findings wurde erstellt"},
+        {"name": "fix-offered", "description": "Es wurde angeboten, die gefundenen Issues zu fixen"}
+      ],
+      "files": []
+    }
+  ]
+}

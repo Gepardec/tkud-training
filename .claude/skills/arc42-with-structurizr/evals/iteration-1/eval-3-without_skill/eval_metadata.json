@@ -1,0 +1,27 @@
+{
+  "eval_id": 3,
+  "eval_name": "lint-review-cross-reference",
+  "prompt": "Ich habe gerade arc42 Section 5 und Section 7 erstellt. Bitte führe arc42-lint aus, um die Cross-Referenz-Konsistenz zu prüfen (IF-xx zwischen Section 3 und 5, Building-Block-Namen zwischen Section 5 und 7). Prüfe dann mit arc42-review, ob die Sektionen vollständig sind.",
+  "assertions": [
+    {
+      "name": "if-xx-checked",
+      "description": "IF-xx-IDs wurden zwischen Section 3 und Section 5 verglichen"
+    },
+    {
+      "name": "building-block-checked",
+      "description": "Building-Block-Namen wurden zwischen Section 5 und Section 7 verglichen"
+    },
+    {
+      "name": "lint-report-generated",
+      "description": "Ein detaillierter Lint-Report wurde erstellt"
+    },
+    {
+      "name": "review-report-generated",
+      "description": "Ein Review-Report mit Findings wurde erstellt"
+    },
+    {
+      "name": "fix-offered",
+      "description": "Es wurde angeboten, die gefundenen Issues zu fixen"
+    }
+  ]
+}

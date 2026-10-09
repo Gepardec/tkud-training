@@ -1,0 +1,134 @@
+= arc42-lint Report
+:doctype: article
+:lang: de
+:toc: left
+
+== Prüfungsgegenstand
+
+Dokumente geprüft:
+- docs/architecture/sections/03-context-and-scope.adoc
+- docs/architecture/sections/05-building-block-view.adoc
+- docs/architecture/sections/07-deployment-view.adoc
+- docs/architecture/sections/01-introduction-and-goals.adoc
+- docs/architecture/sections/10-quality-requirements.adoc
+- docs/architecture/sections/11-risks-and-technical-debts.adoc
+
+== IF-xx Interface IDs: Section 3 ↔ Section 5
+
+=== Section 3 — Definierte externe Schnittstellen (IF-xx)
+
+|===
+| ID | Partner | Beschreibung
+| IF-01 | Endanwender (Browser) | HTTP-HTML (Alt)
+| IF-02 | Endanwender (SPA) | HTTPS-REST/JSON (Ziel)
+| IF-03 | Mailprovider | HTTP-Callbacks
+| IF-04 | SMS-Gateways | HTTP-Callbacks
+| IF-05 | Portalsysteme | HTTP-Callbacks
+| IF-06 | Bankdatei-Importe | Dateiformate
+| IF-07 | Keycloak | OIDC
+| IF-08 | Mobile / Dritte (künftig) | REST/JSON
+|===
+
+=== Section 5 — Wichtige Schnittstellen (Building Blocks)
+
+|===
+| Schnittstelle | Zwischen | Vertrag
+| REST/JSON über HTTPS | Angular-SPA → API-Gateway → Domänenservices | OpenAPI, Bearer JWT
+| OIDC / OAuth2 | SPA und Domänenservices ↔ Keycloak | Authorization Code + PKCE
+| JDBC | Domänenservices → SQL Server | Hibernate-Multi-Tenancy
+| CDI-Erweiterungspunkte | atu-domain-* ↔ atu-cust-* | @Identifier-Beans
+| SOAP (Bestand) | Broker-WARs → Service-WARs | JAX-WS
+|===
+
+=== Ergebnis: NICHT KONSISTENT
+
+[WARNING]
+====
+*Die Section 5 referenziert KEINE der IF-xx IDs aus Section 3.*
+
+Die externe Schnittstellentabelle (IF-01 bis IF-08) in Section 3 und die "Wichtige Schnittstellen"-Tabelle in Section 5 existieren nebeneinander, ohne dass eine Zuordnung hergestellt wird. Es ist nicht erkennbar, welche Building Blocks welche externen Schnittstellen bedienen.
+====
+
+Empfehlung: Die "Wichtige Schnittstellen"-Tabelle in Section 5 sollte jede IF-xx-ID referenzieren und dem bedienenden Baustein zuordnen, z.B.:
+* IF-01 → Mandanten-WARs (Bestand)
+* IF-02 → API-Gateway + Angular-SPA
+* IF-07 → Keycloak
+* usw.
+
+== Building Block Names: Section 5 ↔ Section 7
+
+=== Section 5 — Enthaltene Bausteine (Ziel)
+
+|===
+| Baustein | Verantwortlichkeit
+| API-Gateway | SSL-Terminierung, Request-Routing, JWT-Validierung
+| Member-Service | Personen-/Mitgliederdaten
+| Campaign-Service | Kampagnen, Zielgruppen
+| Event-Service | Veranstaltungen, Teilnahmen
+| Encashment-Service | Zahlungen, Importe
+| Reporting-Service | Auswertungen, Statistiken
+| Document-Service | Dateien, Publikationen
+| Angular-SPA | Single-Page-Application
+| Keycloak | OIDC-/OAuth2-Identity-Provider
+| Message Broker (künftig) | Asynchroner Event-Bus
+|===
+
+=== Section 7 — Zuordnung der Bausteine zur Infrastruktur
+
+|===
+| Baustein | Infrastrukturelement
+| Member-/Campaign-/Event-/Encashment-/Reporting-/Document-Service | Ubuntu-VM
+| API-Gateway | Nginx
+| Angular-SPA | Statische Dateien auf Nginx/CDN
+| Keycloak | Bestehendes Keycloak-Deployment
+| 17 Mandantendatenbanken | Bestehender SQL Server
+| Broker-WARs (weiterhin genutzt) | Bestehender Tomcat
+|===
+
+=== Ergebnis: KONSISTENT (mit Einschränkungen)
+
+[PASS]
+====
+Alle sechs Ziel-Bausteine (Member, Campaign, Event, Encashment, Reporting, Document) und deren Infrastrukturzuordnung (API-Gateway → Nginx, Angular-SPA → Nginx/CDN, Keycloak → bestehendes Keycloak) sind konsistent zwischen Section 5 und Section 7. Die Section 7 referenziert <<building-block-view>> als Quelle, was die Traceability herstellt.
+====
+
+Einschränkungen:
+* Der `Message Broker (künftig)` aus Section 5 wird in Section 7 nicht erwähnt — ist aber als künftiger Baustein markiert, daher akzeptabel.
+* Die Alt-Bausteine (Mandanten-WARs, Service-WARs, Gemeinsame Bibliotheken, Phone-Campaign-/Visitor-WARs) werden in Section 7 nicht abgebildet — die Section 7 erwähnt nur die Broker-WARs als weiterhin genutzt.
+
+== Zusätzliche Cross-Reference-Checks
+
+=== Q42 Quality Tags: Section 1 ↔ Section 10
+
+|===
+| Section 1 Qualitätsziel | Section 10 Qualitätsszenario | Status
+| #operable — Begrenzter Blast Radius | QS-1 | ✓ Konsistent
+| #flexible — Neuer Mandant als Konfiguration | QS-2 | ✓ Konsistent
+| #flexible — Domänenunabhängiges Deployment | QS-3 | ✓ Konsistent
+| #reliable — Strangler-Fig-Sicherheit | QS-4 | ✓ Konsistent
+| #efficient — API-Antwortzeit | QS-5 | ✓ Konsistent
+|===
+
+Ergebnis: KONSISTENT. Alle fünf Qualitätsziele aus Section 1 werden in Section 10 durch konkrete Szenarien (QS-1 bis QS-5) abgedeckt.
+
+=== ADR Risk References: Section 9 ↔ Section 11
+
+|===
+| Risk-ID | Referenzierte ADR | Vorhanden in Section 9? | Status
+| R9 | <<adr-006a,ADR-006a>>, <<adr-005,ADR-005>> | Ja (beide) | ✓
+| R10 | <<adr-006a,ADR-006a>> | Ja | ✓
+| R11 | <<adr-006a,ADR-006a>> | Ja | ✓
+| R12 | <<adr-006a,ADR-006a>> | Ja | ✓
+|===
+
+Ergebnis: KONSISTENT. Alle in Section 11 referenzierten ADRs sind in Section 9 dokumentiert.
+
+== Gesamtergebnis
+
+|===
+| Prüfung | Ergebnis
+| IF-xx zwischen Section 3 und Section 5 | ❌ NICHT KONSISTENT
+| Building Blocks zwischen Section 5 und Section 7 | ✓ KONSISTENT
+| Q42 Quality Tags zwischen Section 1 und Section 10 | ✓ KONSISTENT
+| ADR Risk References zwischen Section 9 und Section 11 | ✓ KONSISTENT
+|===

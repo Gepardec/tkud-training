@@ -1,0 +1,79 @@
+[[context-and-scope]]
+== Kontextabgrenzung
+
+[[business-context-2]]
+=== Fachlicher Kontext
+
+Das System ATU / PDV verwaltet Mitgliederdaten, Veranstaltungen, Kampagnen, Zahlungen und Auswertungen (und noch mehr) für 17 österreichische politische Organisationen bzw. Mitgliederorganisationen. Es interagiert mit Endanwendern (Mitglieder und Administratoren der Mandanten), externen Systemen (Mailprovider, SMS-Gateways, Portale) und Identity-Providern (Keycloak). Die Migration ersetzt das monolithische Tomcat-Deployment durch multi-tenant-fähige Quarkus-Services je Domäne und ein modernes SPA-Frontend.
+
+[[context-diagram-as-is]]
+==== Kontextdiagramm — Ist-Zustand
+
+image::../diagrams/03-context-as-is.svg[Kontextdiagramm Ist-Zustand, pdfwidth=80%, align=center]
+
+[[context-diagram-to-be]]
+==== Kontextdiagramm — Ziel-Zustand
+
+image::../diagrams/03-context-to-be.svg[Kontextdiagramm Ziel-Zustand, pdfwidth=80%, align=center]
+[[external-interfaces]]
+==== Externe Schnittstellen
+
+[cols="4*", options="header"]
+|===
+| Schnittstellen-ID | Partner | Eingang (in das System) | Ausgang (aus dem System)
+
+| IF-01 | Endanwender (Browser) | HTTP-Anfragen (Alt-Servlet-URLs) | Serverseitig gerendertes HTML
+| IF-02 | Endanwender (SPA) | HTTPS-REST-Aufrufe (Bearer JWT) | JSON-Antworten
+| IF-03 | Mailprovider | <TBD> Nutzdaten der Mail-Callbacks <TBD> | HTTP-Callbacks an den Mail-Broker
+| IF-04 | SMS-Gateways | <TBD> Nutzdaten der SMS-Callbacks <TBD> | HTTP-Callbacks an den SMS-Broker
+| IF-05 | Portalsysteme | <TBD> Nutzdaten der Portalintegration <TBD> | HTTP-Callbacks an den Intern-Portal-Broker
+| IF-06 | Bankdatei-Importe | <TBD> Dateiformate für Zahlung/Encashment <TBD> | Importergebnisse (ack/nack)
+| IF-07 | Keycloak | OIDC-Anmeldeabläufe, Token-Introspection | Anfragen zur Token-Validierung
+| IF-08 | Mobile / Dritte (künftig) | REST/JSON (Bearer JWT) | JSON-Antworten
+|===
+
+[[interface-details]]
+==== Details der Schnittstellen
+
+[[if-01-if-02-browser-to-system]]
+===== IF-01 / IF-02: Browser zum System
+
+*Partner:* Endanwender (Mitglieder und Administratoren der Mandanten)
+
+*Zweck:* Zugriff auf die Anwendung — Mitgliederdaten, Veranstaltungen, Kampagnen, Zahlungen, Auswertungen
+
+*Eingang (Alt):* HTTP GET/POST an Servlet-URLs
+
+*Eingang (Ziel):* HTTPS REST/JSON an das API-Gateway → Quarkus-Domänenservices
+
+*Ausgang:* HTML (Alt) bzw. JSON → SPA-Rendering (Ziel)
+
+[[if-07-keycloak-integration]]
+===== IF-07: Keycloak-Integration
+
+*Partner:* Keycloak (Identity Provider)
+
+*Zweck:* Authentifizierung und Autorisierung
+
+*Eingang:* OIDC-Anmeldeablauf, JWT-Token-Introspection
+
+*Ausgang:* JWT mit `tenant-id`-Claim, rollenbasierte Autorisierung
+
+'''
+
+[[technical-context]]
+=== Technischer Kontext
+
+[cols="6*", options="header"]
+|===
+| Schnittstellen-ID | Technologie | Protokoll | Format | Endpunkt | Authentifizierung
+
+| IF-01 | Tomcat-WAR | HTTP | HTML | Alt-Mandanten-URLs | Session-basiert (Alt) / Keycloak
+| IF-02 | Browser + API-Gateway | HTTPS | REST/JSON | `https://gateway/api/...` — mandantenunabhängig; der Mandant kommt aus dem JWT, nie aus dem Pfad (<<decomposition-strategy-per-domain-horizontal>>, <<adr-006a,ADR-006a>>) | Bearer JWT (OIDC)
+| IF-03 | Mail-Broker-WAR | HTTP | XML/SOAP | Broker-URLs | <TBD> <TBD>
+| IF-04 | SMS-Broker-WAR | HTTP | XML/SOAP | Broker-URLs | <TBD> <TBD>
+| IF-05 | Portal-Broker-WAR | HTTP | XML/SOAP | Broker-URLs | <TBD> <TBD>
+| IF-06 | Quarkus-Service | HTTPS | REST/JSON | `/api/payments/imports` | Bearer JWT
+| IF-07 | Keycloak | OIDC / OAuth2 | JWT | Keycloak-Realm-URLs | Client Secret / PKCE
+| IF-08 | API-Gateway | HTTPS | REST/JSON | `https://gateway/api/...` — mandantenunabhängig (<<decomposition-strategy-per-domain-horizontal>>, <<adr-006a,ADR-006a>>) | Bearer JWT
+|===

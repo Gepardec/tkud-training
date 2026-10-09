@@ -1,0 +1,35 @@
+graph LR
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["System Context View: ATU / PDV (Target)"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1["<div style='font-weight: bold'>Endanwender (Mitglied)</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Mitglied einer politischen<br />Organisation. Greift über die<br />Angular-SPA auf das System zu<br />(HTTPS, REST/JSON, Bearer<br />JWT).</div>"]
+    style 1 fill:#08427b,stroke:#052e56,color:#ffffff
+    2["<div style='font-weight: bold'>Administrator</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Mandanten-Administrator.<br />Verwaltet Mitglieder,<br />Kampagnen, Zahlungen und<br />Konfiguration über die<br />Angular-SPA.</div>"]
+    style 2 fill:#08427b,stroke:#052e56,color:#ffffff
+    3["<div style='font-weight: bold'>Keycloak</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>OIDC/OAuth2 Identity<br />Provider. Ein Realm je<br />Mandant. Stellt JWT mit<br />tenant-id-Claim aus.</div>"]
+    style 3 fill:#b3d9ff,stroke:#7d97b2,color:#000000
+    4["<div style='font-weight: bold'>Mailprovider</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Externer E-Mail-Dienst.<br />Empfängt Callbacks über den<br />Message Broker.</div>"]
+    style 4 fill:#b3d9ff,stroke:#7d97b2,color:#000000
+    5["<div style='font-weight: bold'>SMS-Gateway</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Externer SMS-Dienst. Empfängt<br />Callbacks über den Message<br />Broker.</div>"]
+    style 5 fill:#b3d9ff,stroke:#7d97b2,color:#000000
+    6["<div style='font-weight: bold'>Portalsysteme</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Externe Portale.<br />Kommunizieren über den<br />Message Broker (asynchron).</div>"]
+    style 6 fill:#b3d9ff,stroke:#7d97b2,color:#000000
+    7["<div style='font-weight: bold'>Bankdatei-Import</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Externe Bank-Schnittstelle.<br />REST/JSON-API über den<br />Encashment-Service.</div>"]
+    style 7 fill:#b3d9ff,stroke:#7d97b2,color:#000000
+    8["<div style='font-weight: bold'>Mobile / Dritte (künftig)</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Zukünftige mobile Apps oder<br />Drittsysteme. Integration via<br />REST/JSON (Bearer JWT).</div>"]
+    style 8 fill:#b3d9ff,stroke:#7d97b2,color:#000000
+    9["<div style='font-weight: bold'>ATU / PDV (Target)</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Multi-Tenant-fähige<br />Quarkus-Domänenservices<br />(Member, Campaign, Event,<br />Encashment, Reporting,<br />Document) hinter einem<br />API-Gateway (Nginx).<br />Angular-SPA als Frontend.<br />Strangler-Fig-Migration:<br />Legacy-Tomcat schrumpft<br />Domäne für Domäne.<br />Asynchroner Message Broker<br />für Event-Kommunikation.</div>"]
+    style 9 fill:#1168bd,stroke:#0b4884,color:#ffffff
+
+    1-. "<div>Nutzt SPA</div><div style='font-size: 70%'>[HTTPS, REST/JSON, Bearer JWT]</div>" .->9
+    2-. "<div>Verwaltet via SPA</div><div style='font-size: 70%'>[HTTPS, REST/JSON, Bearer JWT]</div>" .->9
+    9-. "<div>Authentifiziert via</div><div style='font-size: 70%'>[OIDC / OAuth2, JWT-Introspection]</div>" .->3
+    9-. "<div>Sendet Mails, empfängt<br />Callbacks</div><div style='font-size: 70%'>[HTTP, über Message Broker]</div>" .->4
+    9-. "<div>Sendet SMS, empfängt<br />Callbacks</div><div style='font-size: 70%'>[HTTP, über Message Broker]</div>" .->5
+    9-. "<div>Austausch von Portaldaten</div><div style='font-size: 70%'>[HTTP, asynchron über Message Broker]</div>" .->6
+    9-. "<div>Importiert Zahlungsdateien</div><div style='font-size: 70%'>[HTTPS, REST/JSON — Encashment-Service]</div>" .->7
+    8-. "<div>Zukünftige Integration</div><div style='font-size: 70%'>[HTTPS, REST/JSON, Bearer JWT]</div>" .->9
+
+  end

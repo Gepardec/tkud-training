@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "text": "lint-loaded",
+      "passed": true,
+      "evidence": "Summary states: 'Skills loaded: arc42-lint, arc42-review'. Lint-report.md was generated with detailed rule-by-rule analysis."
+    },
+    {
+      "text": "review-loaded",
+      "passed": true,
+      "evidence": "Summary states: 'Skills loaded: arc42-lint, arc42-review'. Review-report.md was generated with Critical/Minor/Suggestion findings."
+    },
+    {
+      "text": "if-xx-checked",
+      "passed": true,
+      "evidence": "Lint-report.md Rule 1 explicitly checks 'Section 3 ↔ Section 5 IF-xx' and finds 'FAIL — IF-01 to IF-08 not referenced in Section 5'."
+    },
+    {
+      "text": "building-block-checked",
+      "passed": true,
+      "evidence": "Lint-report.md Rule 2 explicitly checks 'Section 5 ↔ Section 7 Building blocks' and finds 'FAIL — Message Broker missing from Section 7'."
+    },
+    {
+      "text": "lint-report-generated",
+      "passed": true,
+      "evidence": "lint-report.md exists with PASS/FAIL per rule, detailed issue descriptions, and a verdict of 'ISSUES FOUND — 2 error(s), 0 warning(s)'."
+    },
+    {
+      "text": "review-report-generated",
+      "passed": true,
+      "evidence": "review-report.md exists with Critical (2), Minor (3), and Suggestion (2) items, cross-section consistency check table, and verdict 'NEEDS REVISION'."
+    },
+    {
+      "text": "fix-offered",
+      "passed": true,
+      "evidence": "Review-report.md offers fixes: '→ Run /arc42-section-05 to address this' and '→ Run /arc42-section-07 to address this' for both Critical issues."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "text": "structurizr-dsl-exists",
+      "passed": true,
+      "evidence": "system-context-to-be.dsl exists in outputs/ and contains a full Structurizr workspace with model, views, and styles for the target state (lines 1-68)."
+    },
+    {
+      "text": "structurizr-dsl-valid",
+      "passed": true,
+      "evidence": "Summary explicitly states: 'DSL mit structurizr_validate validiert → OK (keine Fehler)' and 'structurizr_parse' succeeded."
+    },
+    {
+      "text": "plantuml-exported",
+      "passed": true,
+      "evidence": "03-context-to-be.puml exists (4298 bytes), confirmed in summary: 'PUML erfolgreich exportiert' with title syntax fix applied."
+    },
+    {
+      "text": "svg-rendered",
+      "passed": true,
+      "evidence": "03-context-to-be.svg exists (29709 bytes), confirmed in summary: 'plantuml -tsvg → SVG erfolgreich gerendert'."
+    },
+    {
+      "text": "adoc-updated",
+      "passed": true,
+      "evidence": "03-context-and-scope.adoc in outputs/ contains image reference 'image::../diagrams/03-context-to-be.svg[Kontextdiagramm Ziel-Zustand, pdfwidth=80%, align=center]' at line 17."
+    },
+    {
+      "text": "target-state-only",
+      "passed": false,
+      "evidence": "The DSL shows only target-state systems (ATU / PDV (Target), no legacy Tomcat as main system). But the adoc still contains an 'Ist-Zustand' section (lines 9-13) with '03-context-as-is.svg', and the IF-xx table at lines 25-26 contains Alt entries (IF-01: 'HTTP-Anfragen (Alt-Servlet-URLs)', 'Serverseitig gerendertes HTML')."
+    },
+    {
+      "text": "ist-hinweis-aus-adoc",
+      "passed": false,
+      "evidence": "03-context-and-scope.adoc still contains the Ist-Zustand section at lines 9-13: 'Kontextdiagramm — Ist-Zustand' with 'image::../diagrams/03-context-as-is.svg'. Also IF-01 still mentions 'Alt-Servlet-URLs'. The Ist-Zustand was not removed."
+    }
+  ]
+}

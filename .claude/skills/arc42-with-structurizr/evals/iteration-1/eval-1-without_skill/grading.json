@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "text": "structurizr-dsl-exists",
+      "passed": true,
+      "evidence": "system-context-to-be.dsl exists in outputs/ and contains a full Structurizr workspace with model, views, and styles."
+    },
+    {
+      "text": "structurizr-dsl-valid",
+      "passed": true,
+      "evidence": "Summary explicitly states: 'Validated the existing system-context-to-be.dsl using the structurizr_validate tool — it passed'."
+    },
+    {
+      "text": "plantuml-exported",
+      "passed": true,
+      "evidence": "SystemContext-ToBe.puml exists (2946 bytes). Summary states 'Generated C4-PlantUML from the DSL using structurizr_export-c4plantuml tool'."
+    },
+    {
+      "text": "svg-rendered",
+      "passed": false,
+      "evidence": "No SVG file exists in the outputs/ directory. Only .puml and .mmd files were generated. The summary does not mention any SVG rendering step."
+    },
+    {
+      "text": "adoc-updated",
+      "passed": true,
+      "evidence": "03-context-and-scope.adoc in outputs/ references 'image::../diagrams/03-context-to-be.svg[Kontextdiagramm Ziel-Zustand, pdfwidth=80%, align=center]' at line 12 and is a target-state-only version."
+    },
+    {
+      "text": "target-state-only",
+      "passed": true,
+      "evidence": "03-context-and-scope.adoc has no Ist-Zustand section, no legacy diagram references. Summary explicitly states 'Focuses entirely on the to-be/target state (removed as-is references)'. DSL also shows only target-state systems."
+    },
+    {
+      "text": "skill-workflow-followed",
+      "passed": false,
+      "evidence": "Summary explicitly states: 'No arc42 or Structurizr skills were loaded.' The arc42 section-03 skill was neither loaded nor followed."
+    }
+  ]
+}

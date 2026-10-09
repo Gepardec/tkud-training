@@ -1,0 +1,100 @@
+= arc42-review Report — Sections 5 and 7
+:doctype: article
+:lang: de
+:toc: left
+
+== Section 5: Building Block View (Bausteinsicht)
+
+=== Vorhandene Inhalte
+
+|===
+| arc42-Erwartung | Vorhanden? | Anmerkung
+| Whitebox Gesamtsystem (Level 1) | ✓ Ja | Drei Makro-Bausteine: Monolith, Domänenservices, SPA
+| Container-Diagramm Ist (C2) | ✓ Ja | `05-container-as-is.svg`
+| Container-Diagramm Ziel (C2) | ✓ Ja | `05-container-to-be.svg`
+| Enthaltene Bausteine — Bestand | ✓ Ja | Tabelle mit 6 Legacy-Bausteinen
+| Enthaltene Bausteine — Ziel | ✓ Ja | Tabelle mit 10 Ziel-Bausteinen
+| Wichtige Schnittstellen | ✓ Ja | 5 interne Schnittstellen beschrieben
+| Ebene 2 (Level 2) | ✓ Ja | Whitebox Monolith + Whitebox Neue Domänenservices
+| Ebene 3 (Level 3) | ✓ Ja | Einzelner Domänenservice mit Schichten (API → Domäne → Modell → Infrastruktur)
+|===
+
+
+=== Befunde
+
+[CRITICAL]
+====
+*IF-xx Traceability fehlt*: Die "Wichtige Schnittstellen"-Tabelle beschreibt interne Protokolle (REST/JSON, OIDC, JDBC, CDI, SOAP), stellt aber keine Verbindung zu den IF-xx-IDs aus Section 3 her. Ein Leser kann nicht nachvollziehen, welcher Baustein welche externe Schnittstelle bedient.
+====
+
+[MINOR]
+====
+*`Message Broker (künftig)`* ist als Baustein gelistet, aber als `<TBD>` markiert — konsistent mit dem Planungsstand.
+====
+
+[MINOR]
+====
+*Keine C4-PlantUML-Quellen*: Die Diagramme sind als SVG referenziert, aber die Structurizr-DSL-Quellen liegen separat (`docs/architecture/diagrams/structurizr/container-as-is.dsl`, `container-to-be.dsl`). Kein Fehler, aber für Wartbarkeit wäre ein Hinweis auf die DSL-Quellen hilfreich.
+====
+
+[INFO]
+====
+*Ebene 3 ist detailliert*: Die Schichtenarchitektur (API → Domäne → Modell → Infrastruktur) ist am Beispiel Encashment vollständig beschrieben inklusive des CDI-Plugin-Mechanismus für Mandantenvariation.
+====
+
+=== Vollständigkeitsbewertung
+
+**Gesamt: 90%** — Section 5 ist weitgehend vollständig. Die einzige Lücke ist die fehlende Traceability zwischen den IF-xx-Schnittstellen in Section 3 und den Bausteinen in Section 5.
+
+---
+
+== Section 7: Deployment View (Verteilungssicht)
+
+=== Vorhandene Inhalte
+
+|===
+| arc42-Erwartung | Vorhanden? | Anmerkung
+| Infrastruktur Ebene 1 | ✓ Ja | Ist- und Ziel-Deployment beschrieben
+| Ausgangslage — heutiges Deployment | ✓ Ja | Tomcat mit >50 WARs
+| Ist-Zustand (C2/C3 Deployment) | ✓ Ja | `07-deployment-as-is.svg`
+| Ziel-Deployment — Überblick | ✓ Ja | Motivation, Qualitätsziele, Performance-Eigenschaften
+| Ziel-Zustand (C2/C3 Deployment) | ✓ Ja | `07-deployment-to-be.svg`
+| Zuordnung Bausteine → Infrastruktur | ✓ Ja | Tabelle mit 6 Zuordnungen
+| Umgebungsvergleich | ✓ Ja | 11 Aspekte (Heute vs. Ziel)
+| Infrastruktur Ebene 2 | ✓ Ja | 4 Detail-Abschnitte: Ubuntu-VM, Nginx, SQL Server, Keycloak
+|===
+
+
+=== Befunde
+
+[MINOR]
+====
+*Legacy-Bausteine nicht vollständig zugeordnet*: Von den 6 Legacy-Bausteinen aus Section 5 werden nur die Broker-WARs in Section 7 erwähnt. Mandanten-WARs, Service-WARs, Gemeinsame Bibliotheken, Phone-Campaign-WARs und Visitor-/WbInfo-WARs fehlen in der Zuordnungstabelle. Da der Fokus auf dem Ziel-Deployment liegt, ist dies vertretbar, aber ein ergänzender Hinweis wäre hilfreich.
+====
+
+[MINOR]
+====
+*TBDs in Infrastruktur-Ebene-2*:
+- Ubuntu-VM: VM-Dimensionierung `<TBD>`
+- SQL Server: Verbindungsobergrenze `<TBD>`
+- Keycloak: Multi-Realm-Verhalten von `quarkus-oidc` `<TBD>`
+====
+
+[INFO]
+====
+*Rolling-Deployment-Strategie detailliert*: Nginx-Rolling-Deployment ist in Section 7.2 (Nginx) präzise beschrieben.
+====
+
+=== Vollständigkeitsbewertung
+
+**Gesamt: 85%** — Section 7 ist gut strukturiert mit Ist- und Ziel-Deployment, Umgebungsvergleich und Ebene-2-Details. Die TBDs sind als noch ausstehende Abstimmungen mit dem Betrieb gekennzeichnet. Die fehlende Legacy-Zuordnung ist die größte Lücke.
+
+---
+
+== Zusammenfassung
+
+|===
+| Sektion | Vollständigkeit | Schwerwiegendste Lücke
+| Section 5 (Building Block View) | 90% | IF-xx Traceability zu Section 3 fehlt
+| Section 7 (Deployment View) | 85% | Legacy-Bausteine nicht vollständig zugeordnet; mehrere TBDs
+|===

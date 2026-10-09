@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "text": "if-xx-checked",
+      "passed": true,
+      "evidence": "arc42-lint-report.adoc explicitly checks IF-xx between Section 3 and Section 5, finding 'NICHT KONSISTENT — Section 5 does not reference any IF-xx IDs'."
+    },
+    {
+      "text": "building-block-checked",
+      "passed": true,
+      "evidence": "arc42-lint-report.adoc explicitly compares building blocks between Section 5 and Section 7, finding 'KONSISTENT (mit Einschränkungen)' — all target blocks mapped."
+    },
+    {
+      "text": "lint-report-generated",
+      "passed": true,
+      "evidence": "arc42-lint-report.adoc exists with detailed per-rule analysis (IF-xx, Building Blocks, Q42 tags, ADR refs) and a final result table."
+    },
+    {
+      "text": "review-report-generated",
+      "passed": true,
+      "evidence": "arc42-review-report.adoc exists with findings for Sections 5 and 7, completeness percentages (90% / 85%), and Critical/Minor/INFO items."
+    },
+    {
+      "text": "fix-offered",
+      "passed": false,
+      "evidence": "arc42-lint-report.adoc makes recommendations ('Empfehlung: ... sollte jede IF-xx-ID referenzieren') but does not offer to run specific section skills to fix issues. arc42-review-report.adoc lists issues but does not offer to fix them."
+    }
+  ]
+}

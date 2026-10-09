@@ -1,0 +1,126 @@
+[[building-block-view]]
+== Bausteinsicht
+
+[[whitebox-overall-system]]
+=== Whitebox Gesamtsystem
+
+Das System zerfällt in drei Makro-Bausteine: den *Monolithen* (noch in Betrieb), die *neuen Domänenservices* (im Aufbau) und das *SPA-Frontend*. Die folgenden Bausteine zeigen die Zielarchitektur; Altbausteine sind gekennzeichnet und werden Domäne für Domäne abgeschaltet.
+
+[[container-as-is]]
+==== Container-Diagramm — Ist-Zustand (C2)
+
+image::../diagrams/05-container-as-is.svg[Container-Diagramm Ist, pdfwidth=80%, align=center]
+
+[[container-to-be]]
+==== Container-Diagramm — Ziel-Zustand (C2)
+
+image::../diagrams/05-container-to-be.svg[Container-Diagramm Ziel, pdfwidth=80%, align=center]
+
+[[contained-building-blocks-legacy-being-replaced]]
+==== Enthaltene Bausteine — Bestand (wird abgelöst)
+
+[cols="3*", options="header"]
+|===
+| Baustein | Verantwortlichkeiten | Schnittstellen
+
+| Mandanten-WARs (`atu-cust-*.war`) | Deployment je Mandant: Servlets, ObjRel-Domäne, Konfiguration, mandantenspezifisches Verhalten und Custom Code | HTTP (Browser), direktes SQL (ObjRel), SOAP (Service-WARs)
+| Service-WARs (`atu-service-*.war`) | SOAP-/XML-Service-Endpunkte je Mandant | JAX-WS, Aufrufe in `atu-service-baseservices`
+| Broker-WARs | HTTP-Callback-Handler: Mail, SMS, Formular, Umfrage, Datei, Veranstaltung, Intern-Portal, SEA, Printshop-Login | HTTP-Callbacks externer Systeme, SOAP zu den Service-WARs
+| Gemeinsame Bibliotheken (`atu-objrel`, `atu-app`, `atu-gui`, `atu-html`) | Eigenes ORM, 964 Domänenobjekte, 1.193 Servlet-Klassen, serverseitiges HTML-Rendering | Abhängigkeitsgraph zur Compilezeit
+| Phone-Campaign-WARs | Telefonkampagnen-Oberflächen je Mandant | HTTP + SOAP
+| Visitor-/WbInfo-WARs | Nach außen gerichtete Besucherportale | HTTP
+|===
+
+[[contained-building-blocks-target]]
+==== Enthaltene Bausteine — Ziel
+
+[cols="3*", options="header"]
+|===
+| Baustein | Verantwortlichkeiten | Schnittstellen
+
+| API-Gateway | SSL-Terminierung, Request-Routing, JWT-Validierung | REST/JSON → Domänenservices
+| Member-Service | Personen-/Mitgliederdaten, Adressen, Zugehörigkeiten — Quarkus-Service | REST-API, JPA/Hibernate → SQL Server
+| Campaign-Service | Kampagnen, Zielgruppen, Mail-/Telefon-/SMS-Kampagnen — Quarkus-Service | REST-API, JPA/Hibernate → SQL Server
+| Event-Service | Veranstaltungen, Teilnahmen — Quarkus-Service | REST-API, JPA/Hibernate → SQL Server
+| Encashment-Service | Zahlungen, Importe, Encashment-Treiber — Quarkus-Service | REST-API, JPA/Hibernate → SQL Server
+| Reporting-Service | Auswertungen, Statistiken, OLAP — Quarkus-Service | REST-API, JPA/Hibernate → SQL Server
+| Document-Service | Dateien, Publikationen — Quarkus-Service | REST-API, JPA/Hibernate → SQL Server
+| Angular-SPA | Single-Page-Application, mandantenabhängiges Theming, per Lazy Loading geladene Feature-Module | REST/JSON über das API-Gateway, OIDC über Keycloak
+| Keycloak | OIDC-/OAuth2-Identity-Provider, ein Realm je Mandant | OIDC-Abläufe, JWT-Token-Introspection
+| Message Broker (künftig) | Asynchroner Event-Bus — Kafka / AMQP <TBD> | Domänenereignisse der Quarkus-Services
+|===
+
+[[important-interfaces]]
+==== Wichtige Schnittstellen
+
+[cols="3*", options="header"]
+|===
+| Schnittstelle | Zwischen | Vertrag
+
+| REST/JSON über HTTPS | Angular-SPA → API-Gateway → Domänenservices | OpenAPI, automatisch über `quarkus-smallrye-openapi` erzeugt; Bearer JWT
+| OIDC / OAuth2 | SPA und Domänenservices ↔ Keycloak | Authorization Code + PKCE; das JWT trägt den `tenant-id`-Claim
+| JDBC | Domänenservices → SQL Server | Hibernate-Multi-Tenancy; die Datasource wird je Anfrage anhand der `tenant-id` gewählt
+| CDI-Erweiterungspunkte | `atu-domain-*` ↔ `atu-cust-*`-Plugin-JARs | `@Identifier("<tenant>")`-qualifizierte Beans, die gemeinsame Schnittstellen implementieren
+| SOAP (Bestand, schrumpfend) | Broker-WARs → Service-WARs | JAX-WS; Domäne für Domäne abgebaut
+|===
+
+'''
+
+[[level-2]]
+=== Ebene 2
+
+Ebene 2 öffnet die beiden Bausteine der Ebene 1, die die Migration tragen: den *Monolithen* (was abgebaut wird) und die *neuen Domänenservices* (wohin abgebaut wird).
+
+[[white-box-legacy-monolith]]
+==== Whitebox — Monolith
+
+Der Monolith ist ein Abhängigkeitsgraph zur Compilezeit, keine Menge von Laufzeitservices. `atu-gui` hängt von `atu-app` ab, dieses von `atu-objrel`; 1.007 GUI-Dateien umgehen die Serviceschicht und greifen direkt auf `atu-objrel` zu — genau das macht die Extraktion teuer.
+
+image::../diagrams/05-whitebox-monolith.svg[Whitebox Monolith, pdfwidth=80%, align=center]
+[cols="3*", options="header"]
+|===
+| Baustein | Verantwortlichkeit | Zukunft
+
+| `atu-objrel` | Eigenes ORM (`com.topf.objrel`) — Sessions, Abfragen, Persistenz | Domäne für Domäne durch JPA/Hibernate ersetzt
+| `atu-app` | 964 Domänenobjekte auf ObjRel | Ersetzt durch JPA-Entities in `atu-domain-*`
+| `atu-gui` | 1.193 Servlet-Klassen, die HTTP, Datenbankzugriff und HTML vermischen | Ersetzt durch REST-Ressourcen in `atu-api-*` + Angular-SPA
+| `atu-html` / `atu-objrelhtml` | Serverseitiges Rendering von HTML-Komponenten | Entfällt, sobald die letzte Servlet-Oberfläche abgelöst ist
+| `atu-encashment`, `atu-stat` | Zahlungsverarbeitung, OLAP-Statistiken | Werden zu `atu-domain-encashment` / `atu-domain-reporting`
+| `atu-cust-*` | Konfiguration, Verhaltensüberschreibungen und Custom Code je Mandant — einkompiliert | Aufgeteilt in Typ-1/2-Konfiguration und Typ-3-Plugin-JARs (<<tenant-variation-model-three-types>>)
+|===
+
+[[white-box-new-domain-services]]
+==== Whitebox — Neue Domänenservices
+
+image::../diagrams/05-whitebox-new-domain-services.svg[Whitebox neue Domänenservices, pdfwidth=90%, align=center]
+*Die Deployment-Einheiten sind die `atu-api-*`-Runner* — einer je Domäne, jeder bedient alle 17 Mandanten. `atu-domain-*` und `atu-cust-*` sind Bibliotheken, die *in* diese Runner paketiert werden; keine von beiden wird eigenständig deployt.
+
+Die vollständigen Detaildiagramme finden sich in `architecture-concept.adoc`, Abschnitte „Current State Architecture" und „Target Gradle Modules".
+
+'''
+
+[[level-3]]
+=== Ebene 3
+
+[[white-box-a-single-domain-service]]
+==== Whitebox — Ein einzelner Domänenservice
+
+Jeder `atu-api-*`-Runner besitzt dieselbe innere Schichtung (<<adr-009,ADR-009>>). Encashment dient als repräsentatives Beispiel; die anderen fünf sind strukturell identisch.
+
+[[component-encashment]]
+===== Component-Diagramm — Encashment-Service (C3)
+
+image::../diagrams/05-component-encashment.svg[Component-Diagramm Encashment, pdfwidth=80%, align=center]
+
+image::../diagrams/05-whitebox-single-domain-service.svg[Einzelner Domänenservice, pdfwidth=80%, align=center]
+[cols="3*", options="header"]
+|===
+| Schicht | Verantwortlichkeit | Darf nicht
+
+| API | JAX-RS-Ressourcen, DTO-Mapping, Übersetzung von HTTP-Status und Fehlern, `@RolesAllowed` | Geschäftsregeln enthalten oder den `EntityManager` berühren
+| Domäne | Geschäftsregeln, Transaktionsgrenzen, Auswahl der Erweiterungspunkte | HTTP- oder JAX-RS-Typen kennen
+| Modell | JPA-Entities, Repositories, Abfragen | Logik zum Mandanten-Routing enthalten
+| Infrastruktur | `TenantResolver`, `MultiTenantConnectionProvider`, Auswahl der Datasource | Von API oder Domäne anders als über das Framework erreichbar sein
+|===
+
+*Nahtstelle für die Mandantenvariation:* Die Domänenschicht hängt von einer *Schnittstelle* mit einer in `atu-domain-*` mitgelieferten Default-Implementierung ab. Ein Mandanten-Plugin-JAR steuert eine `@Identifier`-qualifizierte Alternative bei. Beim Deployment je Domäne (<<adr-006a,ADR-006a>>) liegen alle 17 Plugin-Sätze im Classpath jedes Runners, weshalb die `@Identifier`-Auswahl tragend ist — sie bestimmt je Anfrage das richtige Bean. Das ist der eine Mechanismus, der sich mit <<adr-006a,ADR-006a>> geändert hat; im abgelösten Modell je Mandant *war* der Runner der Mandant, und es war keine Auswahl nötig.

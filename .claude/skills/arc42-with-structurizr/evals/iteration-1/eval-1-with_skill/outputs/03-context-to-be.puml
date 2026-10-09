@@ -1,0 +1,79 @@
+@startuml
+title
+<size:24>System Context View: ATU / PDV (Target)</size>
+<size:24>System Context Diagramm — ATU/PDV Ziel-Zustand</size>
+endtitle
+
+set separator none
+left to right direction
+skinparam ranksep 20
+skinparam nodesep 5
+hide stereotype
+
+<style>
+  root {
+    BackgroundColor: #ffffff;
+    FontColor: #444444;
+  }
+  .Element-RWxlbWVudCxFeHRlcm5hbA== {
+    BackgroundColor: #b3d9ff;
+    LineColor: #7d97b2;
+    LineStyle: 0;
+    LineThickness: 2;
+    FontColor: #000000;
+    FontSize: 14;
+    HorizontalAlignment: center;
+    Shadowing: 0;
+    MaximumWidth: 450;
+  }
+  .Element-RWxlbWVudCxQZXJzb24= {
+    BackgroundColor: #08427b;
+    LineColor: #052e56;
+    LineStyle: 0;
+    LineThickness: 2;
+    FontColor: #ffffff;
+    FontSize: 14;
+    HorizontalAlignment: center;
+    Shadowing: 0;
+    MaximumWidth: 450;
+  }
+  .Element-RWxlbWVudCxTeXN0ZW0= {
+    BackgroundColor: #1168bd;
+    LineColor: #0b4884;
+    LineStyle: 0;
+    LineThickness: 2;
+    FontColor: #ffffff;
+    FontSize: 14;
+    HorizontalAlignment: center;
+    Shadowing: 0;
+    MaximumWidth: 450;
+  }
+  .Relationship-UmVsYXRpb25zaGlw {
+    LineThickness: 2;
+    LineStyle: 10-10;
+    LineColor: #444444;
+    FontColor: #444444;
+    FontSize: 24;
+  }
+</style>
+
+person "==Endanwender (Mitglied)\n<size:9>[Person]</size>\n\nMitglied einer politischen Organisation. Greift über die Angular-SPA auf das System zu (HTTPS, REST/JSON, Bearer JWT)." <<Element-RWxlbWVudCxQZXJzb24=>> as EndanwenderMitglied
+person "==Administrator\n<size:9>[Person]</size>\n\nMandanten-Administrator. Verwaltet Mitglieder, Kampagnen, Zahlungen und Konfiguration über die Angular-SPA." <<Element-RWxlbWVudCxQZXJzb24=>> as Administrator
+rectangle "==Keycloak\n<size:9>[Software System]</size>\n\nOIDC/OAuth2 Identity Provider. Ein Realm je Mandant. Stellt JWT mit tenant-id-Claim aus." <<Element-RWxlbWVudCxFeHRlcm5hbA==>> as Keycloak
+rectangle "==Mailprovider\n<size:9>[Software System]</size>\n\nExterner E-Mail-Dienst. Empfängt Callbacks über den Message Broker." <<Element-RWxlbWVudCxFeHRlcm5hbA==>> as Mailprovider
+rectangle "==SMS-Gateway\n<size:9>[Software System]</size>\n\nExterner SMS-Dienst. Empfängt Callbacks über den Message Broker." <<Element-RWxlbWVudCxFeHRlcm5hbA==>> as SMSGateway
+rectangle "==Portalsysteme\n<size:9>[Software System]</size>\n\nExterne Portale. Kommunizieren über den Message Broker (asynchron)." <<Element-RWxlbWVudCxFeHRlcm5hbA==>> as Portalsysteme
+rectangle "==Bankdatei-Import\n<size:9>[Software System]</size>\n\nExterne Bank-Schnittstelle. REST/JSON-API über den Encashment-Service." <<Element-RWxlbWVudCxFeHRlcm5hbA==>> as BankdateiImport
+rectangle "==Mobile / Dritte (künftig)\n<size:9>[Software System]</size>\n\nZukünftige mobile Apps oder Drittsysteme. Integration via REST/JSON (Bearer JWT)." <<Element-RWxlbWVudCxFeHRlcm5hbA==>> as MobileDrittekünftig
+rectangle "==ATU / PDV (Target)\n<size:9>[Software System]</size>\n\nMulti-Tenant-fähige Quarkus-Domänenservices (Member, Campaign, Event, Encashment, Reporting, Document) hinter einem API-Gateway (Nginx). Angular-SPA als Frontend." <<Element-RWxlbWVudCxTeXN0ZW0=>> as ATUPDVTarget
+
+EndanwenderMitglied --> ATUPDVTarget <<Relationship-UmVsYXRpb25zaGlw>> : "Nutzt SPA\n<size:16>[HTTPS, REST/JSON, Bearer JWT]</size>"
+Administrator --> ATUPDVTarget <<Relationship-UmVsYXRpb25zaGlw>> : "Verwaltet via SPA\n<size:16>[HTTPS, REST/JSON, Bearer JWT]</size>"
+ATUPDVTarget --> Keycloak <<Relationship-UmVsYXRpb25zaGlw>> : "Authentifiziert via\n<size:16>[OIDC / OAuth2, JWT-Introspection]</size>"
+ATUPDVTarget --> Mailprovider <<Relationship-UmVsYXRpb25zaGlw>> : "Sendet Mails, empfängt Callbacks\n<size:16>[HTTP, über Message Broker]</size>"
+ATUPDVTarget --> SMSGateway <<Relationship-UmVsYXRpb25zaGlw>> : "Sendet SMS, empfängt Callbacks\n<size:16>[HTTP, über Message Broker]</size>"
+ATUPDVTarget --> Portalsysteme <<Relationship-UmVsYXRpb25zaGlw>> : "Austausch von Portaldaten\n<size:16>[HTTP, asynchron über Message Broker]</size>"
+ATUPDVTarget --> BankdateiImport <<Relationship-UmVsYXRpb25zaGlw>> : "Importiert Zahlungsdateien\n<size:16>[HTTPS, REST/JSON — Encashment-Service]</size>"
+MobileDrittekünftig --> ATUPDVTarget <<Relationship-UmVsYXRpb25zaGlw>> : "Zukünftige Integration\n<size:16>[HTTPS, REST/JSON, Bearer JWT]</size>"
+
+@enduml

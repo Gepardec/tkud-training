@@ -1,0 +1,31 @@
+{
+  "eval_id": 2,
+  "eval_name": "container-c2-section5",
+  "prompt": "Erstelle ein C2 Container-Diagramm für Section 5 (Bausteinsicht) des ATU/PDV-Systems. Zeige den Ist-Zustand mit den Legacy-Tomcat-WARs (Mandanten-WARs, Service-WARs, Broker-WARs, Phone-Campaign-WARs, Visitor-WARs) als Container. Die DSL soll nach docs/architecture/diagrams/structurizr/container-as-is.dsl. Exportiere und rendere das SVG. Binde es in 05-building-block-view.adoc ein.",
+  "assertions": [
+    {
+      "name": "structurizr-dsl-exists",
+      "description": "container-as-is.dsl wurde erstellt"
+    },
+    {
+      "name": "structurizr-dsl-valid",
+      "description": "Die DSL wurde validiert"
+    },
+    {
+      "name": "all-5-war-types-present",
+      "description": "Alle 5 WAR-Typen sind als Container enthalten: Mandanten, Service, Broker, PhoneCampaign, Visitor"
+    },
+    {
+      "name": "plantuml-exported",
+      "description": "PlantUML wurde exportiert"
+    },
+    {
+      "name": "svg-rendered",
+      "description": "SVG wurde gerendert"
+    },
+    {
+      "name": "adoc-updated",
+      "description": "05-building-block-view.adoc enthält Referenz auf das SVG"
+    }
+  ]
+}

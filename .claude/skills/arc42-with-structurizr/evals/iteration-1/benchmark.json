@@ -1,0 +1,38 @@
+{
+  "benchmark": {
+    "skill_name": "arc42-with-structurizr",
+    "iteration": 1,
+    "configurations": [
+      {
+        "name": "with_skill",
+        "pass_rate": 0.85,
+        "total_assertions": 20,
+        "passed": 17,
+        "failed": 3,
+        "eval_results": [
+          {"eval_id": 1, "passed": 5, "total": 7, "failures": ["target-state-only: DSL war ziel, aber Adoc enthielt noch Ist-Referenzen", "ist-hinweis-aus-adoc: Adoc nicht vollständig auf Ziel bereinigt"]},
+          {"eval_id": 2, "passed": 6, "total": 6, "failures": []},
+          {"eval_id": 3, "passed": 7, "total": 7, "failures": []}
+        ]
+      },
+      {
+        "name": "without_skill",
+        "pass_rate": 0.75,
+        "total_assertions": 20,
+        "passed": 15,
+        "failed": 5,
+        "eval_results": [
+          {"eval_id": 1, "passed": 5, "total": 7, "failures": ["svg-rendered: Kein SVG erzeugt, nur Mermaid", "skill-workflow-followed: Kein Skill geladen (erwartet)"]},
+          {"eval_id": 2, "passed": 6, "total": 6, "failures": []},
+          {"eval_id": 3, "passed": 4, "total": 5, "failures": ["fix-offered: Kein konkretes Fix-Angebot"]}
+        ]
+      }
+    ],
+    "observations": [
+      "with_skill (85%) besser als baseline (75%) – besonders bei Lint/Review (volle 7/7) und bei SVG-Export",
+      "eval-2 (Container-Diagramm) war in beiden Fällen gleich gut – einfache Aufgabe, kein Skill-Vorteil",
+      "Hauptschwäche bei with_skill: Adoc nicht vollständig auf Ziel-Zustand bereinigt (eval-1)",
+      "Beide Runs haben Structurizr MCP korrekt genutzt – das ist die wichtigste Prerequisite"
+    ]
+  }
+}
