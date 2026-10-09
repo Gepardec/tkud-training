@@ -24,7 +24,7 @@ Bevor der Skill startet, MÜSSEN diese Prerequisites geprüft werden:
 Prüfe ob der `structurizr` MCP-Server verbunden ist. Der Skill arbeitet NUR mit dem Structurizr MCP (Tools: `structurizr_validate`, `structurizr_parse`, `structurizr_export-plantuml`, `structurizr_export-mermaid`).
 
 - **MCP verfügbar →** fortfahren
-- **MCP nicht verfügbar →** den Benutzer informieren: "Der Structurizr MCP-Server ist nicht verbunden. Bitte stelle sicher, dass der structurizr MCP in deiner opencode.json Konfiguration eingetragen ist." Ohne Structurizr MCP kann der Skill keine Diagramme erzeugen.
+- **MCP nicht verfügbar →** den Benutzer informieren: "Der Structurizr MCP-Server ist nicht verbunden. Bitte trage den structurizr MCP in die MCP-Konfiguration deines Agenten ein (Anleitungen: `documents/how-tos/structurizr-setup.md`, für Junie `documents/how-tos/junie-setup.md`)." Ohne Structurizr MCP kann der Skill keine Diagramme erzeugen.
 
 ### 2. PlantUML (optional, für SVG-Export)
 
@@ -40,7 +40,7 @@ which plantuml
 
 ### 3. arc42-Section-Skills
 
-Die arc42-section-N Skills müssen im Projekt verfügbar sein (unter `.opencode/skills/` oder global). Fehlende Skills werden übersprungen – die Doku wird dann direkt erstellt ohne den Section-Skill.
+Die arc42-section-N Skills müssen im Projekt verfügbar sein (im Skill-Ordner deines Agenten, projektweit oder global – siehe `documents/how-tos/arc42-toolkit-setup.md`). Fehlende Skills werden übersprungen – die Doku wird dann direkt erstellt ohne den Section-Skill.
 
 ### 4. arc42-lint / arc42-review
 

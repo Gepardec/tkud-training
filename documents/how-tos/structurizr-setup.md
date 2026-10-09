@@ -281,12 +281,13 @@ workspace {
                 shape cylinder
             }
         }
-        theme default
     }
 }
 ```
 
-`validate` returns `OK` for this example. `inspect` lists findings such as a missing workspace scope, missing descriptions, and relationships without a technology. That makes it a good first exercise for improving a model.
+`validate` returns `OK` for this example.
+
+> **No `theme default`:** the Structurizr cloud service reached its end of life on 30 September 2026. `theme default` loads `https://static.structurizr.com/themes/default/theme.json`, which is no longer available, so the CLI's `validate` fails with `could not be loaded` (the hosted MCP may still report `OK`). Leave the line out, or use a theme file stored locally. `inspect` lists findings such as a missing workspace scope, missing descriptions, and relationships without a technology. That makes it a good first exercise for improving a model.
 
 ## Links
 
