@@ -33,7 +33,7 @@ Die Spec beschreibt das fertige Kapitel. Dieser Change erfüllt vollständig: Ü
 *Alternative:* Spec auf reine Rahmen-Anforderungen beschränken – verworfen, weil die Capability das Kapitel als Ganzes beschreiben soll und sonst jeder Folge-Change die Spec ändern müsste.
 
 ### D2: Kapitel als `## Dokumentation mit KI` mit Markdown-Überblick-Tabelle
-Überschrift auf `##`-Ebene wie „Sichtenmodell“ und „ADR“; Überblick als Markdown-Tabelle wie bei „Begrüßung & Einführung“ (Zeilen Inhalt, Lernziele, Übung). Die Tabelle ist besser lesbar als die `Inhalt: •`-Zeile und erfüllt die Spec wörtlich.
+Überschrift auf `##`-Ebene wie „Sichtenmodell“ und „ADR“; Überblick als Markdown-Tabelle wie bei „Begrüßung & Einführung“ (Zeilen Inhalt, Lernziele, Übung, ergänzt um Dauer für die Trainingsplanung). Die Tabelle ist besser lesbar als die `Inhalt: •`-Zeile und erfüllt die Spec wörtlich.
 *Alternative:* `Inhalt: •`-Zeile wie die direkten Nachbarkapitel – verworfen, weil Lernziele dort fehlen.
 
 ### D3: Lernziele
@@ -73,7 +73,6 @@ Die bisherigen Notizen des `# KI`-Abschnitts sind vollständig in `proposal.md` 
 
 ## Risks / Trade-offs
 
-- [Dokument nicht versioniert – Überschreiben ohne Rückweg] → Dokument vor der ersten Änderung im aktuellen Stand committen.
 - [Google-Docs-Export: Rückimport oder parallele Bearbeitung in Google Docs überschreibt Markdown-Änderungen] → klären, welche Quelle führend ist; bis dahin Markdown als führend behandeln. **Geklärt 2026-10-09: Markdown im Repo ist führend.** Google Docs ist nur noch historische Quelle.
 - [Dokument wurde nicht vor der Änderung committet – Ausgangsstand fehlt in der Git-Historie] → Der erste Commit enthält bereits den neuen KI-Abschnitt; der alte Abschnitt (nur Stichpunkte) ist vollständig in `proposal.md` erfasst. Akzeptiert am 2026-10-09.
 - [Zeitplan zu dicht: 90 min Hands-on mit Tool-Setup] → Junie-Spike vor dem Training, vorbereitetes Demo-Repo, 15 min Puffer.
