@@ -1,5 +1,38 @@
 # Technische Dokumentation und Kommunikation: Reboot
 
+## Inhaltsverzeichnis
+
+* [Begrüßung & Einführung](#begrüßung--einführung)
+  * [Sichtenmodell und Notation](#sichtenmodell-und-notation)
+    * [Sichten](#sichten)
+    * [ISO/IEC 42010](#isoiec-42010)
+    * [arc42-Sichtenmodell](#arc42-sichtenmodell)
+    * [Diagrammtypen und Notationen](#diagrammtypen-und-notationen)
+    * [Konsistenz zwischen Sichten](#konsistenz-zwischen-sichten)
+    * [Level of Detail (Detaillierungsgrad)](#level-of-detail-detaillierungsgrad)
+  * [Architekturentscheidungen dokumentieren (ADR)](#architekturentscheidungen-dokumentieren-adr)
+    * [Einleitung: Warum Dokumentieren?](#einleitung-warum-dokumentieren)
+    * [Die Schmerzpunkte ohne Dokumentation:](#die-schmerzpunkte-ohne-dokumentation)
+    * [Architekturentscheidungen: Erarbeitung & Methodik](#architekturentscheidungen-erarbeitung--methodik)
+    * [Dokumentations-Standards](#dokumentations-standards)
+    * [Vernetzung: Einflussfaktoren, Qualität & Risiko](#vernetzung-einflussfaktoren-qualität--risiko)
+    * [Die Architektur-Vision: Kompakte Lösungsstrategie](#die-architektur-vision-kompakte-lösungsstrategie)
+    * [Best Practices & Technischer Workflow](#best-practices--technischer-workflow)
+    * [Die "Zörner-Filter" für Relevanz:](#die-zörner-filter-für-relevanz)
+  * [Dokumentation mit KI](#dokumentation-mit-ki)
+    * [Phasenmodell](#phasenmodell)
+    * [Zwei Einstiege: Brownfield und Greenfield](#zwei-einstiege-brownfield-und-greenfield)
+    * [Werkzeuge und Vertraulichkeit](#werkzeuge-und-vertraulichkeit)
+    * [Ablauf](#ablauf)
+    * [Praxis-Einstieg: Brownfield](#praxis-einstieg-brownfield)
+    * [Phase 1: Vorprojekt](#phase-1-vorprojekt)
+    * [Phase 2: Architektur](#phase-2-architektur)
+    * [Phase 3: Entscheiden](#phase-3-entscheiden)
+    * [Phase 4: Umsetzung](#phase-4-umsetzung)
+    * [Übung: Greenfield-Durchstich](#übung-greenfield-durchstich)
+    * [Transfer aufs eigene Projekt](#transfer-aufs-eigene-projekt)
+* [Referenzen](#referenzen)
+
 # Begrüßung & Einführung
 
 | Überblick |  |
