@@ -1,3 +1,4 @@
+  
 # arc42-toolkit in eigenen Projekten nutzen
 
 Persönliche Notizen: wie man das Toolkit einbindet, **ohne die Skills in jedes Projekt zu kopieren**.
@@ -65,7 +66,7 @@ OpenCode hat **kein Plugin- oder Marketplace-System** für Skills. Es liest `SKI
 ```bash
 mkdir -p ~/.config/opencode/skills
 for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do
-  ln -s "${s%/}" ~/.config/opencode/skills/
+  ln -sfn "${s%/}" ~/.config/opencode/skills/
 done
 ```
 
@@ -75,7 +76,7 @@ Tipp: Mit `~/.agents/skills` statt `~/.config/opencode/skills` finden auch Codex
 
 ```bash
 mkdir -p .agents/skills
-for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -s "${s%/}" .agents/skills/; done
+for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -sfn "${s%/}" .agents/skills/; done
 ```
 
 Diese Symlinks zeigen auf einen absoluten lokalen Pfad und gehören **nicht** ins Git. Fürs Team besser ein `git submodule` mit relativen Symlinks verwenden.
@@ -111,7 +112,7 @@ Das gilt laut Doku für Copilot in VS Code, die Copilot CLI, die Copilot-App und
 
 ```bash
 mkdir -p ~/.agents/skills
-for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -s "${s%/}" ~/.agents/skills/; done
+for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -sfn "${s%/}" ~/.agents/skills/; done
 ```
 
 `~/.agents/skills/` lesen **Copilot, OpenCode und Codex**. In den Code-Repos muss man dann nichts anlegen. Claude Code liest diesen Ordner **nicht**: dort das Plugin nehmen oder zusätzlich nach `~/.claude/skills/` verlinken.
@@ -148,7 +149,7 @@ Für JetBrains habe ich nirgends dokumentiert gefunden, ob **globale Ordner** (`
 
 ```bash
 mkdir -p .agents/skills
-for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -s "${s%/}" .agents/skills/; done
+for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -sfn "${s%/}" .agents/skills/; done
 echo ".agents/skills/" >> .git/info/exclude
 ```
 
@@ -175,7 +176,7 @@ Junie (im IDE und als CLI) liest Skills aus diesen Ordnern ([Doku](https://junie
 
 ```bash
 mkdir -p ~/.junie/skills
-for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -s "${s%/}" ~/.junie/skills/; done
+for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -sfn "${s%/}" ~/.junie/skills/; done
 ```
 
 Gilt dann für Junie im IDE und in der CLI, in allen Projekten.
@@ -184,9 +185,13 @@ Gilt dann für Junie im IDE und in der CLI, in allen Projekten.
 
 ```bash
 mkdir -p .junie/skills
-for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -s "${s%/}" .junie/skills/; done
+for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -sfn "${s%/}" .junie/skills/; done
 echo ".junie/skills/" >> .git/info/exclude
 ```
+
+Die Befehle im **Repo-Root** ausführen, nicht in `.junie/skills/`, denn der Zielpfad `.junie/skills/` ist relativ. Getestet in `tkud-training`: Die Links werden angelegt.
+
+Kürzer geht es mit der Funktion `arc42-link` (siehe [Hilfsfunktion](#hilfsfunktion-pro-repo-verlinken)).
 
 ### Aufruf
 
@@ -213,7 +218,7 @@ Der IDE-weite Ordner liegt im Cache und ist pro IDE-Version verschieden. Dort vo
 
 ```bash
 mkdir -p .agents/skills
-for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -s "${s%/}" .agents/skills/; done
+for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do ln -sfn "${s%/}" .agents/skills/; done
 echo ".agents/skills/" >> .git/info/exclude
 ```
 
@@ -283,6 +288,39 @@ Gleiches Prinzip wie bei OpenCode, Copilot und Junie: die Skills aus dem Klon na
 | Tool | Installation laut README |
 |------|--------------------------|
 | OpenAI Codex | `codex plugin marketplace add MSiccDev/arc42-toolkit --ref main` → in der App unter **Plugins** installieren |
+
+---
+
+## Hilfsfunktion: pro Repo verlinken
+
+Wer die Skills in jedes ausgecheckte Repo verlinkt, legt sich dafür am besten eine Funktion in `~/.zshrc` an:
+
+```bash
+arc42-link() {
+  local dir="${1:-.junie/skills}"
+  local root
+  root=$(git rev-parse --show-toplevel) || return 1
+  mkdir -p "$root/$dir"
+  for s in ~/IdeaProjects/arc42-toolkit/skills/*/; do
+    ln -sfn "${s%/}" "$root/$dir/"
+  done
+  grep -qxF "$dir/arc42-*" "$root/.git/info/exclude" 2>/dev/null \
+    || echo "$dir/arc42-*" >> "$root/.git/info/exclude"
+  ls -l "$root/$dir"
+}
+```
+
+Danach einmal `source ~/.zshrc` ausführen. Aufruf irgendwo im Repo:
+
+```bash
+arc42-link                   # Junie: .junie/skills/
+arc42-link .agents/skills    # Copilot, OpenCode, JetBrains AI Assistant
+arc42-link .claude/skills    # Claude Code (ohne Plugin)
+```
+
+- Den Repo-Root findet die Funktion selbst, egal in welchem Unterordner man steht.
+- `ln -sfn` macht einen erneuten Aufruf gefahrlos: Vorhandene Links werden ersetzt, es gibt keine Fehler.
+- In `.git/info/exclude` wird nur das Muster `<ordner>/arc42-*` eingetragen, und zwar nur einmal. Die Symlinks landen also nicht im Git, eigene Skills im selben Ordner (z. B. versionierte Projekt-Skills in `.claude/skills/`) tauchen aber weiter in `git status` auf.
 
 ---
 
