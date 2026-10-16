@@ -90,9 +90,11 @@ Der Agent lädt Skills selbst über sein `skill`-Tool. Einfach schreiben:
 
 - **Symlinks:** Die Doku sagt nicht, ob verlinkte Ordner erkannt werden. Zum Prüfen OpenCode starten und fragen: *„Welche Skills hast du?"*. Fehlen die arc42-Skills, stattdessen kopieren und nach jedem Update synchronisieren:
   ```bash
-  rsync -a --delete ~/IdeaProjects/arc42-toolkit/skills/ ~/.config/opencode/skills/
+  for s in ~/IdeaProjects/arc42-toolkit/skills/arc42-*/; do
+    rsync -a --delete "$s" ~/.config/opencode/skills/"$(basename "$s")"/
+  done
   ```
-  Achtung: `--delete` entfernt dort auch alle anderen Skills. Bei anderen Skills im Ordner jeden `arc42-*`-Ordner einzeln synchronisieren.
+  Die Schleife synchronisiert jeden `arc42-*`-Ordner einzeln. `--delete` wirkt so nur innerhalb dieser Ordner, andere Skills im Zielordner bleiben unangetastet. Für andere Tools nur den Zielordner tauschen (z. B. `~/.junie/skills/`).
 - **Claude-Code-Plugin:** Ein über das Plugin installiertes Toolkit liegt im Plugin-Cache von Claude Code. Nach der Doku liest OpenCode nur Skills-Ordner wie `~/.claude/skills`, den Plugin-Cache wohl nicht. Für OpenCode deshalb die Symlinks oben verwenden.
 
 ---
