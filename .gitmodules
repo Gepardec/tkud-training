@@ -1,0 +1,3 @@
+[submodule "vendor/arc42-toolkit"]
+	path = vendor/arc42-toolkit
+	url = https://github.com/MSiccDev/arc42-toolkit.git

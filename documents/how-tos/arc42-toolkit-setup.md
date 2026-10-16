@@ -165,6 +165,8 @@ Bekannte Probleme mit dem Plugin:
 
 ## Junie
 
+Im Trainings-Repo ist Junie schon eingerichtet (Toolkit als Submodule, Links und MCP-Konfiguration committet). Einrichtung, Structurizr-MCP und Prüf-Checkliste: [`junie-setup.md`](junie-setup.md) im Trainings-Repo `tkud-training`.
+
 Junie (im IDE und als CLI) liest Skills aus diesen Ordnern ([Doku](https://junie.jetbrains.com/docs/agent-skills.html)):
 
 | Ebene   | Ordner |
@@ -201,7 +203,7 @@ Junie lädt zuerst nur Name und Beschreibung jedes Skills und liest den vollen I
 
 ### Offene Punkte
 
-- **Symlinks:** Die Doku sagt nicht, ob verlinkte Ordner erkannt werden. Zum Prüfen Junie fragen: *„Welche Skills kennst du?"*. Fehlen die arc42-Skills, stattdessen kopieren (siehe `rsync`-Hinweis bei OpenCode, Zielordner `~/.junie/skills/`).
+- **Symlinks:** Im Junie-Spike (2026-10-16, IntelliJ 2026.2) getestet: Verlinkte Ordner in `.junie/skills/` werden erkannt, eine Änderung im Klon ist ohne Sync sichtbar. Fehlen die arc42-Skills trotzdem, stattdessen kopieren (siehe `rsync`-Hinweis bei OpenCode, Zielordner `~/.junie/skills/`).
 
 ---
 

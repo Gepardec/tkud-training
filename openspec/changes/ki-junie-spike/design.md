@@ -18,7 +18,8 @@ Junie läuft in der IDE. Die eigentlichen Tests führt deshalb der Mensch in Int
 
 **Goals:**
 - Für jeden Baustein (Skill-Verteilung, Skill-Ausführung, Structurizr-MCP, Orchestrierungs-Skill) einen getesteten Weg in Junie oder einen getesteten Fallback.
-- Ein reproduzierbares Testprojekt, das `ki-demo-repo` später als Ausgangspunkt übernehmen kann.
+- Ein Setup, das Teilnehmende nach `git clone --recurse-submodules` ohne weitere Handgriffe nutzen können.
+- Eine Prüf-Checkliste in der Anleitung, mit der jede:r vor dem Training selbst prüft, ob alles läuft.
 - Eine Go/No-Go-Entscheidung nach festen Kriterien.
 
 **Non-Goals:**
@@ -29,9 +30,9 @@ Junie läuft in der IDE. Die eigentlichen Tests führt deshalb der Mensch in Int
 
 ## Decisions
 
-### D1: Testprojekt im Repo unter `spikes/junie/`
-Ein eigener Ordner im Repo, der in IntelliJ als eigenes Projekt geöffnet wird. Er enthält eine fiktive `workspace.dsl` (System-Context-View), eine absichtlich fehlerhafte `broken.dsl`, eine `.junie/`-Konfiguration und ein Prüfprotokoll `PRUEFSCHRITTE.md` mit Prompts und erwarteten Ergebnissen. Alles ist fiktiv und darf committet werden.
-*Alternative:* separates Projekt außerhalb des Repos – verworfen, weil es nicht versioniert wäre und `ki-demo-repo` nicht darauf aufbauen könnte.
+### D1: Testfälle als Snippets in der Anleitung statt eigenem Testprojekt
+*Revidiert am 2026-10-16.* Ursprünglich lag ein Testprojekt unter `spikes/junie/` (fiktive `workspace.dsl`, fehlerhafte `broken.dsl`, Prüfprotokoll, Notizen). Nach dem Spike wurde es aufgelöst: Die DSL-Beispiele stehen als Snippets in `documents/how-tos/junie-setup.md`, das Prüfprotokoll wird zur Checkliste dort, die Notizen gehen in die Abschnitte Fallbacks und Hintergrund ein. Für die MCP-Prüfschritte wird die DSL direkt in den Prompt kopiert (der MCP nimmt DSL als Text); nur der CLI-Fallback legt eine Datei in einem Wegwerf-Ordner (`/tmp/junie-check/`) an – so läuft die Prüfung nie in einem Kundenprojekt.
+*Alternative:* Testprojekt im Repo behalten – verworfen, weil es eine zweite Quelle neben der Anleitung wäre und Teilnehmende es nicht brauchen.
 
 ### D2: Skill-Verteilung – Wege in fester Reihenfolge testen, erster funktionierender gewinnt
 
@@ -40,7 +41,7 @@ Ein eigener Ordner im Repo, der in IntelliJ als eigenes Projekt geöffnet wird. 
        (keine Kopien, Update ueber den Marketplace)
          | scheitert
          v
-  2. Projekt-Symlinks in spikes/junie/.junie/skills/
+  2. Projekt-Symlinks in .junie/skills/
        -> Toolkit-Klon (absolut, nicht committet)
        -> arc42-with-structurizr (relativ, committbar)
          | Symlinks werden nicht erkannt
@@ -55,7 +56,7 @@ Für das Training zählt, was Teilnehmende auf einem frischen Rechner am einfach
 
 ### D3: Structurizr-MCP – direkt, dann Brücke, dann ohne MCP
 
-1. Gehosteter Server direkt als HTTP-MCP in Junie (Projekt-Konfiguration in `spikes/junie/.junie/`, falls Junie das unterstützt, sonst global).
+1. Gehosteter Server direkt als HTTP-MCP in Junie (Projekt-Konfiguration `.junie/mcp/mcp.json`, sonst global).
 2. Falls Junie kein HTTP-MCP kann: stdio-Brücke `npx mcp-remote https://mcp.structurizr.com/mcp` (wie `structurizr-setup.md`, 1d).
 3. Fallback ohne MCP: lokale Structurizr-CLI (Homebrew, `structurizr-setup.md`, Abschnitt 5) zum Validieren und Exportieren; Junie ruft sie über das Terminal auf.
 
@@ -76,6 +77,19 @@ Nur die Textstellen ändern, die einen bestimmten Agenten voraussetzen (`opencod
 ### D6: Ergebnisse landen in der Anleitung, nicht in einem separaten Bericht
 `documents/how-tos/junie-setup.md` beschreibt den funktionierenden Weg und enthält einen Abschnitt „Getestet“ mit Datum, Junie-Version, IntelliJ-Version, Ergebnis je Prüfschritt und Go/No-Go. So bleibt eine Quelle, die bei neuen Junie-Versionen aktualisiert wird. Der Junie-Abschnitt in `arc42-toolkit-setup.md` verweist dann auf die neue Anleitung, statt die Inhalte zu doppeln.
 
+### D7: Verteilung an Teilnehmende – Toolkit als Submodule, Links und MCP-Konfiguration committet
+*Ergänzt am 2026-10-16.* Das Repository dient als Trainingsrepo. Damit Teilnehmende nichts von Hand verlinken müssen:
+
+```
+  vendor/arc42-toolkit/                  git submodule, auf einen Commit gepinnt
+  .junie/skills/arc42-*                  -> ../../vendor/arc42-toolkit/skills/arc42-*   (relativ, committet)
+  .junie/skills/arc42-with-structurizr   -> ../../.claude/skills/arc42-with-structurizr (relativ, committet)
+  .junie/mcp/mcp.json                    gehosteter Structurizr-MCP (committet)
+```
+
+Teilnehmende: `git clone --recurse-submodules`, Projekt in IntelliJ öffnen, Checkliste aus `junie-setup.md` durchgehen. Das Toolkit wird mit `git submodule update --remote vendor/arc42-toolkit` plus Commit aktualisiert; alle arbeiten mit demselben Stand. Die globale bzw. projektweise Verlinkung aus einem eigenen Klon bleibt in der Anleitung als Weg für eigene Projekte.
+*Alternativen:* Setup-Skript, das das Toolkit klont und lokal verlinkt – verworfen, weil der Stand nicht gepinnt ist und jede:r ein Skript ausführen muss. Manuelle Einrichtung nach Anleitung – verworfen, zu viele Fehlerquellen pro Person. APM – kennt kein Junie-Ziel (siehe Hintergrund in der Anleitung).
+
 ## Risks / Trade-offs
 
 - [Junie ändert sich schnell; ein heute funktionierender Weg bricht mit dem nächsten Update] → Versionen im Abschnitt „Getestet“ festhalten; vor jedem Training die Prüfschritte erneut durchlaufen (Hinweis für `ki-uebung-durchstich`).
@@ -84,3 +98,6 @@ Nur die Textstellen ändern, die einen bestimmten Agenten voraussetzen (`opencod
 - [Symlink mit absolutem Pfad auf den Toolkit-Klon ist nicht portabel] → nicht committen (`.git/info/exclude`); nur relative Links auf Skills im Repo committen.
 - [Junie-Kontingente bzw. Modellkosten begrenzen viele Testläufe] → Prüfprotokoll mit kurzen, gezielten Prompts; Testläufe dokumentieren statt wiederholen.
 - [Testergebnisse hängen vom Menschen ab, der testet; Agent kann nicht selbst prüfen] → Prüfprotokoll mit exakten Prompts und erwarteten Ergebnissen, Ergebnisse als Bildschirmtext oder Screenshot zurückmelden.
+- [Symlinks unter Windows: Git legt sie nur mit `core.symlinks=true` und aktiviertem Entwicklermodus an, sonst entstehen Textdateien mit dem Linkziel] → in der Anleitung als bekannte Grenze mit Fallback (Kopie per Skript) beschreiben.
+- [Submodule wird beim Klonen vergessen (`git clone` ohne `--recurse-submodules`) → Links zeigen ins Leere] → Checkliste prüft das als ersten Schritt; Abhilfe `git submodule update --init`.
+- [Die committete Variante (relative Links ins Submodule) ist nicht dieselbe wie die im Spike getestete (absolute Links auf einen lokalen Klon)] → Prüfschritt „Einrichtung nach Anleitung“ (P8) auf einem frischen Klon ausführen, bevor das Training stattfindet.
