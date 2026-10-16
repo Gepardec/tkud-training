@@ -477,7 +477,7 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 | 0:35 | Vorprojekt: Konzept und Live-Demo Brainstorming-Skill | 20 min |
 | 0:55 | Architektur: arc42-Toolkit und Structurizr | 20 min |
 | 1:15 | Entscheiden: ADRs mit KI, Kreuztabelle | 15 min |
-| 1:30 | Umsetzung: Dokumentation aktuell halten (Ausblick OpenSpec) | 10 min |
+| 1:30 | Umsetzung: Dokumentation aktuell halten, Spec-driven mit OpenSpec als Beispiel | 10 min |
 | 1:40 | Pause | 15 min |
 | 1:55 | Übung: Greenfield-Durchstich | 90 min |
 | 3:25 | Transfer aufs eigene Projekt und Abschluss | 20 min |
@@ -528,8 +528,8 @@ Rückbezug: Kapitel „Architekturentscheidungen dokumentieren (ADR)“ (MADR, K
 
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
-Ziel: Dokumentation bei jeder Änderung mitziehen, statt sie nachträglich zu reparieren. Ausblick auf Spec-driven Development mit OpenSpec, bei dem Spezifikation, Umsetzung und Dokumentation in einem Zyklus entstehen.
-Rückbezug: „Best Practices & Technischer Workflow“ (Docs-as-Code, ADR-Workflow, Review-Prozess).
+Ziel: Dokumentation bei jeder Änderung mitziehen, statt sie nachträglich zu reparieren. Konzept Spec-driven Development: Spezifikation, Umsetzung und Dokumentation entstehen in einem Zyklus. OpenSpec dient als Werkzeug-Beispiel, keine eigene Phase (10 min): kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv.
+Rückbezug: „Best Practices & Technischer Workflow“ (Docs-as-Code, ADR-Workflow, Review-Prozess) und „Architekturentscheidungen dokumentieren (ADR)“ – Proposal, Design und Archiv wirken wie ein ADR-Log.
 
 ### Übung: Greenfield-Durchstich
 
