@@ -1,0 +1,23 @@
+{
+  "skill_name": "arc42-adr",
+  "evals": [
+    {
+      "id": 0,
+      "name": "neues-adr-aus-user-kontext",
+      "prompt": "Ich habe eine Architekturentscheidung getroffen: Für die neue Reporting-Domäne verwenden wir PostgreSQL statt SQL Server. Grund ist, dass wir für OLAP-Abfragen eine bessere Performance brauchen und PostgreSQL mit TimescaleDB das besser unterstützt. Die Alternative wäre gewesen, den bestehenden SQL Server zu belassen und Columnstore-Indizes zu nutzen, aber das hätte uns in der Multi-Tenancy-Isolation eingeschränkt. Erstelle bitte ein ADR dafür.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "adr-aus-openspec-change",
+      "prompt": "Nach dem letzten OpenSpec-Change 'keycloak-user-fk-anchor' müssen wir die Architekturentscheidungen als ADRs festhalten. Ich habe den Change unter openspec/changes/keycloak-user-fk-anchor/. Schau dir das Design an und erstelle die passenden ADRs.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "bestehendes-adr-soll-nicht-neu-erstellt-werden",
+      "prompt": "Dokumentiere bitte die Entscheidung, dass wir Quarkus statt Spring Boot als Laufzeitumgebung verwenden.",
+      "files": []
+    }
+  ]
+}
