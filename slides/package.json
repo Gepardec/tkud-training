@@ -1,0 +1,13 @@
+{
+  "name": "technische-kommunikation-architekturdokumentation",
+  "private": true,
+  "scripts": {
+    "dev": "slidev slides.md",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md"
+  },
+  "devDependencies": {
+    "@gepardec/slidev-theme-gepardec": "latest",
+    "@slidev/cli": "^53.0.0"
+  }
+}
