@@ -21,6 +21,7 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | [`../../slides-ai/slides.md`](../../slides-ai/slides.md) | das Slidev-Deck |
 | [`../../slides-ai/README.md`](../../slides-ai/README.md) | Befehle (dev, build, export) und Konventionen fürs Deck |
 | [`../../demo/structurizr/workspace.dsl`](../../demo/structurizr/workspace.dsl) | Structurizr-Demo: Pflanzenbewässerung (fiktiv) |
+| [`../../demo/uebung-kritisch-pruefen/`](../../demo/uebung-kritisch-pruefen/arc42-auszug.md) | Übung „Finde die Fehler“: `arc42-auszug.md` für Teilnehmende, `LOESUNG.md` nur für die Moderation |
 | Hauptdokument `../Technische Dokumentation und Kommunikation_ Reboot - Ausarbeitung.md` | Kapitel „Dokumentation mit KI“ (Langtext, Stand vor diesen Entscheidungen) |
 | `../../openspec/specs/training/ki-kapitel/spec.md` | Anforderungen ans KI-Kapitel |
 | `../how-tos/` | Setup Junie, arc42-Toolkit, Structurizr |
@@ -37,10 +38,15 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | Skill-Beispiele | grilling / grill-me, grill-with-docs, domain-modeling, arc42-adr / arc42-change-sync |
 | Projekt A | Agentischer Workflow aus dem Projekt als Praxisbeispiel (OpenSpec → arc42-Sync bei Relevanz → QS → Commit) |
 | Projekt B | Route-Doku-Workflow als Praxisbeispiel (Guideline → Skill pro Route → Compliance-Check → Skript-Gate; Orchestrator mit Sub-Agents fürs ganze Repo) |
+| Kritisch prüfen | Übung „Finde die Fehler“ (10 min, Ende Phase 2): KI-generierter arc42-Auszug mit sechs eingebauten Fehlern, erst ohne, dann mit Agent prüfen. Deckt Lernziel 5 der Spec ab |
+| Gemeinsames Muster | Nach den Praxisbeispielen: Mensch setzt Standard → Agent arbeitet ab → Gate entscheidet |
+| Zwei Leser | Doku für Menschen und für Agenten (`AGENTS.md`, Guidelines, Skills) – Rückbezug auf Zielgruppen von Tag 1 |
+| Diagramm-Werkzeug | Structurizr vs. Draw.io vs. Mermaid als Entscheidung, Diskussionsfrage |
+| Vertraulichkeit | Vertieft: Tabelle „Was geht wohin“ (Modell-Anbieter, gehosteter MCP, Repo, Beispieldaten) |
 | Workflow-Folien | Einheitliche Farblogik: gelb = Vorgabe bzw. OpenSpec, weiß umrandet = Agent/Skill, gestrichelt = automatisch ohne KI, graue Raute = Entscheidung Mensch; jeweils mit Legende |
 | Deck | Eigenes Slidev-Deck in `slides-ai/`, Gepardec-Theme, erste Folie `cover`, letzte `contact` |
 
-## Folienliste (36)
+## Folienliste (41)
 
 | # | Folie | Layout | Status |
 |---|---|---|---|
@@ -52,34 +58,39 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | 6 | Projekt A: Der Workflow | default (Mermaid, farbig + Legende) | fertig |
 | 7 | Projekt B: Camel-Route-Guideline | default | anonymisierter Ausschnitt fehlt |
 | 8 | Projekt B: Der Workflow | default (Mermaid, farbig + Legende) | fertig |
-| 9 | Einordnung | section | fertig |
-| 10 | KI bringt keine neuen Konzepte | statement | fertig |
-| 11 | Vier Phasen | default (Mermaid) | fertig |
-| 12 | Zwei Einstiege | default (Tabelle) | fertig |
-| 13 | Die Bausteine | quadrants | fertig |
-| 14 | Nützliche Skills | quadrants | fertig |
-| 15 | Vertraulichkeit | default | Demo-Repo-URL fehlt |
-| 16 | Phase 1 | section | fertig |
-| 17 | Die KI stellt die unbequemen Fragen | default | fertig |
-| 18 | Phase 2 | section | fertig |
-| 19 | arc42-Toolkit ins Repo holen | default | fertig |
-| 20 | Structurizr: Architektur als Code | two-cols-header | fertig |
-| 21 | Structurizr-MCP | default | fertig |
-| 22 | Demo: Pflanzenbewässerung | default (DSL) | fertig |
-| 23 | Ergebnis: Kontextsicht | default (Mermaid) | fertig |
-| 24 | Live-Demo: Structurizr mit dem Agenten | default | fertig |
-| 25 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
-| 26 | Phase 3 | section | fertig |
-| 27 | ADRs mit KI | two-cols-header | fertig |
-| 28 | Phase 4 | section | fertig |
-| 29 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
-| 30 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
-| 31 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
-| 32 | Übung | section | fertig |
-| 33 | Greenfield-Durchstich | default (Tabelle) | Domäne offen |
-| 34 | Qualitätsziele sind Entscheidungen | statement | fertig |
-| 35 | Transfer aufs eigene Projekt | default | fertig |
-| 36 | Danke! | contact | fertig |
+| 9 | Das gemeinsame Muster | default (Tabelle) | fertig |
+| 10 | Einordnung | section | fertig |
+| 11 | KI bringt keine neuen Konzepte | statement | fertig |
+| 12 | Vier Phasen | default (Mermaid) | fertig |
+| 13 | Zwei Einstiege | default (Tabelle) | fertig |
+| 14 | Doku hat jetzt zwei Leser | two-cols-header | fertig |
+| 15 | Die Bausteine | quadrants | fertig |
+| 16 | Nützliche Skills | quadrants | fertig |
+| 17 | Vertraulichkeit: Was geht wohin? | default (Tabelle) | Verweis auf interne KI-Richtlinie fehlt |
+| 18 | Phase 1 | section | fertig |
+| 19 | Die KI stellt die unbequemen Fragen | default | fertig |
+| 20 | Phase 2 | section | fertig |
+| 21 | arc42-Toolkit ins Repo holen | default | fertig |
+| 22 | Structurizr: Architektur als Code | two-cols-header | fertig |
+| 23 | Structurizr-MCP | default | fertig |
+| 24 | Demo: Pflanzenbewässerung | default (DSL) | fertig |
+| 25 | Ergebnis: Kontextsicht | default (Mermaid) | fertig |
+| 26 | Live-Demo: Structurizr mit dem Agenten | default | fertig |
+| 27 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
+| 28 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
+| 29 | Übung: Finde die Fehler | default | fertig |
+| 30 | Auflösung | default (Tabelle) | fertig |
+| 31 | Phase 3 | section | fertig |
+| 32 | ADRs mit KI | two-cols-header | fertig |
+| 33 | Phase 4 | section | fertig |
+| 34 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
+| 35 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
+| 36 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
+| 37 | Übung | section | fertig |
+| 38 | Greenfield-Durchstich | default (Tabelle) | Domäne offen |
+| 39 | Qualitätsziele sind Entscheidungen | statement | fertig |
+| 40 | Transfer aufs eigene Projekt | default | fertig |
+| 41 | Danke! | contact | fertig |
 
 ## Offene Punkte
 
@@ -89,10 +100,11 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 - [ ] **Demo-Repo:** URL auf GitHub (Folie Vertraulichkeit)
 - [ ] **Domäne** des fiktiven Kunden-Briefs für die Übung
 - [ ] **IST-/Wunschstand:** Format (Karten, Board, Datei im Demo-Repo?) und genauer Zeitpunkt der Auswertung
-- [ ] **Zeitplan:** Phase 4 auf ca. 15 min anheben, Gesamtablauf neu rechnen
+- [ ] **Zeitplan neu rechnen:** Phase 4 ca. 15 statt 10 min, Übung „Finde die Fehler“ 10 min + Auflösung, Diskussion Diagramm-Werkzeug 3–5 min
 - [ ] **Junie-Spike** (`openspec/changes/ki-junie-spike`): laufen Skills und Structurizr-MCP in Junie? Davon hängt die Live-Demo mit Junie ab
 - [ ] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen oben anpassen (nennt noch AI Assistant, nur OpenSpec, Klarnamen)
 - [ ] **Brainstorming-Skill** (Phase 1, obra/superpowers) liegt nicht im Repo: einbinden oder auf der Folie als Plugin nennen
+- [ ] **Vertraulichkeit:** Verweis auf interne KI-Richtlinie bzw. freigegebene Werkzeuge ergänzen
 - [ ] Freigabe, ob Kundennamen (ITSV/SAK) im Transfer genannt werden dürfen – bis dahin generisch
 
 ## Konventionen fürs Deck
@@ -115,3 +127,4 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | 2026-11-20 | Skills der Folie „Nützliche Skills“ für Claude und Junie verlinkt (`.claude/skills/` ↔ `.junie/skills/`), kaputten Symlink `grill-with-docs` ersetzt |
 | 2026-11-20 | Folie 6 „Projekt A: Der Workflow“: OpenSpec-Schritte gelb, weitere Skills weiß umrandet, Entscheidung Mensch grau, Git-Hooks gestrichelt; Legende ergänzt |
 | 2026-11-20 | Projekt-B-Handoff übernommen (`projekt-b-workflow.md`), Folie 7 befüllt, Folie 8 „Projekt B: Der Workflow“ neu (farbig + Legende); Folien ab 8 um eins verschoben (jetzt 36) |
+| 2026-11-20 | Neu: „Das gemeinsame Muster“, „Doku hat jetzt zwei Leser“, „Vertraulichkeit: Was geht wohin?“ (ersetzt alte Folie), „Welches Diagramm-Werkzeug?“, Übung „Finde die Fehler“ + Auflösung (`demo/uebung-kritisch-pruefen/`); jetzt 41 Folien |

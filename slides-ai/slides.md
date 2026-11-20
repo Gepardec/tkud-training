@@ -188,6 +188,25 @@ Vergleich zu Projekt A: dort OpenSpec pro Change, hier Guideline pro Route. Beid
 -->
 
 ---
+class: gepardec-text-sm
+---
+
+# Das gemeinsame Muster
+
+**Mensch** setzt den Standard → **Agent** arbeitet ihn ab → **Gate** entscheidet: fertig?
+
+| | Standard | Agent | Gate |
+|---|---|---|---|
+| Projekt A | OpenSpec-Change, Entscheidungsmatrix | Skills pro Schritt | Verify, Review, Git-Hooks |
+| Projekt B | Guideline, Template, Checkliste | Skill pro Route | Checkliste + Skript |
+
+<!--
+Moderation: Brücke von der Praxis zur Theorie. Diese drei Rollen tragen durch den ganzen Block:
+Ohne Standard schreibt der Agent generisch. Ohne Gate weiß niemand, ob es stimmt. Die Entscheidungen bleiben beim Menschen.
+Später in der Übung „Finde die Fehler“ wieder aufgreifen: Prüfen geht nur gegen eine Referenz.
+-->
+
+---
 layout: section
 ---
 
@@ -238,6 +257,37 @@ Moderation: Rückbezüge – Vorprojekt → Kreuztabelle (ADR-Kapitel), Architek
 
 <!--
 Moderation: Greenfield läuft Vorprojekt → Umsetzung, Brownfield startet bei der Umsetzung (Code als Quelle) und arbeitet sich zurück. Beide münden in denselben Zyklus: Doku aktuell halten.
+-->
+
+---
+layout: two-cols-header
+---
+
+# Doku hat jetzt zwei Leser
+
+::left::
+
+### Menschen
+- arc42, ADRs, Diagramme
+- Wollen verstehen und entscheiden
+- Lesen selten, dann gezielt
+
+::right::
+
+### Agenten
+- `AGENTS.md` / `CLAUDE.md`, Guidelines, Skills
+- Wollen wissen: Regeln, Ablauf, wo liegt was
+- Lesen bei **jeder** Aufgabe, wörtlich
+
+::bottom::
+
+Die Frage von gestern bleibt: **Wer liest das, und was braucht er:sie?**
+
+<!--
+Moderation: Rückbezug Tag 1 (Zielgruppen, Informationsbedürfnisse). Agenten sind eine neue Zielgruppe mit eigenen Bedürfnissen:
+eindeutig, vollständig, ohne implizites Wissen. Was für Agenten klar geschrieben ist, hilft oft auch neuen Teammitgliedern.
+Beispiele: Projekt A hat eine AGENTS.md mit Build-, Test-, Logging- und Commit-Regeln. Projekt B macht die Guideline verbindlich – bei Widerspruch gewinnt sie.
+Frage an die Runde: Was steht bei euch nur in Köpfen, das ein Agent wissen müsste?
 -->
 
 ---
@@ -315,15 +365,25 @@ arc42-change-sync hängt zwischen openspec-verify und openspec-archive.
 -->
 
 ---
+class: gepardec-text-sm
+---
 
-# Vertraulichkeit
+# Vertraulichkeit: Was geht wohin?
 
-- Hands-on nur im vorbereiteten Demo-Repository
-- Kein Kundencode, keine Kundendokumente in KI-Tools
-- Transfer aufs eigene Projekt: als Diskussion
+| Was | Wohin | Regel |
+|---|---|---|
+| Prompt, Code, Dateien im Kontext | Modell-Anbieter | Nur, wenn Werkzeug und Vertrag für das Projekt freigegeben sind |
+| Structurizr-DSL | gehosteter MCP-Server | Nur fiktive oder öffentliche Modelle, sonst lokal per Docker |
+| Skills, Guidelines, `AGENTS.md` | Repo | Wie Code behandeln: versioniert, reviewt, keine Secrets |
+| Beispieldaten in der Doku | Repo, Wiki | Anonymisieren, Secrets als `<REDACTED>` oder `${env:VAR}` |
+
+**Heute:** nur das Demo-Repo, kein Kundencode, Transfer als Diskussion.
 
 <!--
-Moderation: Demo-Repo-URL einblenden, sobald sie feststeht (OFFEN).
+Moderation: Der Agent schickt alles, was er liest, an den Modell-Anbieter – nicht nur den Prompt. Also: Was liegt im Repo, was öffnet er?
+Vor dem Einsatz im Projekt klären: Ist das Werkzeug vom Kunden freigegeben? Welche Daten verlassen das Netz? Wird protokolliert oder trainiert?
+Projekt B regelt das in der Guideline selbst: keine Credentials, Beispieldaten anonymisiert.
+OFFEN: Verweis auf die interne KI-Richtlinie bzw. freigegebene Werkzeuge ergänzen. Demo-Repo-URL einblenden, sobald sie feststeht.
 -->
 
 ---
@@ -504,6 +564,68 @@ Unser eigener Skill verbindet Text, Diagramm und Prüfung.
 
 <!--
 Moderation: Rückbezug Kapitel „Sichtenmodell und Notation“ – Konsistenz zwischen Sichten, Level of Detail.
+-->
+
+---
+class: gepardec-text-sm
+---
+
+# Welches Diagramm-Werkzeug?
+
+| | Structurizr | Draw&#46;io | Mermaid |
+|---|---|---|---|
+| Was es ist | Modell, Sichten daraus | Bild, frei gezeichnet | Diagramm aus Text |
+| Agent kann | schreiben, validieren, rendern | XML schreiben, Skript rendert PNG | schreiben, rendert fast überall |
+| Stärke | Konsistenz über Sichten | volle Layout-Kontrolle | einfach, im Git und Wiki sichtbar |
+| Schwäche | nur C4, eigenes Werkzeug | XML schwer zu reviewen | wenig Layout-Kontrolle |
+| Beispiel | Projekt A, Demo heute | Projekt B | diese Folien |
+
+Welche Notation passt zu **euren Lesern** und **eurem Änderungsrhythmus**?
+
+<!--
+Moderation: Rückbezug Tag 1 (Notationen wählen nach Zweck). Projekt B hat Mermaid bewusst ausgeschlossen und eine feste Draw.io-Palette in der Guideline festgelegt – Lesbarkeit im Wiki ging vor.
+Projekt A rendert aus Structurizr-DSL nach PlantUML/SVG. Kein Werkzeug ist „richtig“; wichtig ist, dass die Wahl festgehalten wird (ADR!).
+Diskussionsfrage 3–5 min.
+-->
+
+---
+
+# Übung: Finde die Fehler
+
+**10 Minuten · zu zweit · `demo/uebung-kritisch-pruefen/arc42-auszug.md`**
+
+1. **5 min ohne KI:** Auszug lesen, alles markieren, was nicht stimmt
+2. **5 min mit Junie oder Claude:** gegen `demo/structurizr/workspace.dsl` prüfen lassen
+3. Vergleichen: Was hast du gefunden, was der Agent?
+
+Achte auf: **Generik** · **Halluzination** · **Widerspruch zum Modell** · **Annahme als Fakt** · **Lücke**
+
+<!--
+Moderation: Auszug ist ein KI-generierter arc42-Auszug (Qualitätsziele, Stakeholder, Kontext) zur Pflanzenbewässerung mit sechs eingebauten Fehlern.
+Lösung: demo/uebung-kritisch-pruefen/LOESUNG.md – nicht vorher zeigen.
+Prompt für Schritt 2: „Prüfe arc42-auszug.md gegen demo/structurizr/workspace.dsl. Liste Widersprüche, erfundene Elemente und unmarkierte Annahmen.“
+-->
+
+---
+class: gepardec-text-sm
+---
+
+# Auflösung
+
+| Stelle | Fehlerart | Was falsch ist |
+|---|---|---|
+| Qualitätsziele | Generik | passen auf jedes System |
+| Stakeholder | kein Projektbezug | Allerwelts-Rollen und -Erwartungen |
+| Sensor → Pumpe | Widerspruch | umgeht den Bewässerungsdienst |
+| Wetterdienst-API | Halluzination | kommt in keiner Quelle vor |
+| MQTT, HiveMQ, Keycloak | Annahme als Fakt | im Fall bewusst offen |
+| Benachrichtigung | Lücke | im Modell, fehlt im Kontext |
+
+Prüfen geht nur **gegen eine Referenz** – deshalb braucht jeder Workflow ein Gate.
+
+<!--
+Moderation: Typisch findet der Agent Widersprüche zum Modell, Halluzination und Lücke zuverlässig, Generik nur auf ausdrückliche Nachfrage.
+Rückbezug auf „Das gemeinsame Muster“: Standard → Agent → Gate.
 -->
 
 ---
