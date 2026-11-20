@@ -9,9 +9,11 @@
 - **Zwei Workflows für „Doku aktuell halten“:** OpenSpec (spec-driven) und grill-with-docs (Interview, Glossar und ADRs entstehen nebenbei). Phase 4 braucht dafür ca. 15 statt 10 min.
 - **Skill-Beispiele:** grilling / grill-me, grill-with-docs, domain-modeling, arc42-adr / arc42-change-sync
 
-## Slides
+## Slides und Unterlagen
 
-[`slides-ai/`](../../slides-ai/README.md)
+- Deck: [`slides-ai/`](../../slides-ai/README.md)
+- Handoff (Stand, Folienliste, offene Punkte): [`presentation-ai-handoff.md`](presentation-ai-handoff.md)
+- Praxisbeispiel Projekt A: [`projekt-a-workflow.md`](projekt-a-workflow.md)
 
 ## Initiale Notizen
 

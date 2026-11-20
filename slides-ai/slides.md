@@ -67,13 +67,36 @@ layout: section
 
 # Projekt A: arc42 aus Legacy-Code
 
-- **Ausgangslage:** _in Ausarbeitung_
-- **KI-Einsatz:** _in Ausarbeitung_
-- **Ergebnis:** _in Ausarbeitung_
+- **Ausgangslage:** Bestandssystem wird modernisiert, arc42 liegt als AsciiDoc im Repo
+- **KI-Einsatz:** agentischer Workflow mit Skills – jeder Change läuft durch OpenSpec, architekturrelevante Changes ziehen arc42 nach
+- **Ergebnis:** ADRs pro Entscheidung, Diagramme aus Structurizr, Doku wächst mit jedem Change
 
 <!--
 Moderation: 15 min. Intern: Media Data. Auf den Folien anonymisiert (Entscheidung 16.10.).
-TODO: Inhalte und anonymisierte Ausschnitte ergänzen.
+Quelle: documents/ai/projekt-a-workflow.md (anonymisiert).
+TODO: konkrete Ergebnisse/Zahlen (Anzahl ADRs, Sektionen, Erfahrungen) und anonymisierte Ausschnitte ergänzen.
+-->
+
+---
+
+# Projekt A: Der Workflow
+
+```mermaid
+flowchart LR
+  OS["OpenSpec<br/>new → apply → verify"] --> Q{"Architektur-<br/>relevant?"}
+  Q -- ja --> S["arc42-change-sync<br/>+ arc42-adr / Structurizr"]
+  S --> A["archive"]
+  Q -- nein --> A
+  A --> QS["Code-Review<br/>Security-Audit"]
+  QS --> H["Git-Hooks<br/>Tests, Commit-Format"]
+```
+
+- Ein Mensch entscheidet, ob arc42 betroffen ist – mit Entscheidungsmatrix
+- Bugfix, Refactoring, UI: kein Update. Neues Modul, Schnittstelle, Deployment: Update
+
+<!--
+Moderation: Werkzeug im Projekt: OpenCode. Dieselben Skills wie heute im Training.
+Matrix im Detail: documents/ai/projekt-a-workflow.md.
 -->
 
 ---
@@ -183,23 +206,35 @@ layout: quadrants
 ### grilling / grill-me
 Fragt dich zu Plan oder Entscheidung aus, Ast für Ast, bis alles geklärt ist. Pro Frage eine Empfehlung.
 
+[mattpocock/skills: grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) · [grill-me](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)
+
 ::two::
 
 ### grill-with-docs
 grilling plus domain-modeling: Während des Interviews entstehen ADRs und Glossar.
+
+[mattpocock/skills: grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)
 
 ::three::
 
 ### domain-modeling
 Schärft Fachbegriffe, deckt Widersprüche auf und pflegt `GLOSSARY.md`.
 
+[mattpocock/skills: domain-modeling](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)
+
 ::four::
 
 ### arc42-adr / arc42-change-sync
 ADRs im Nygard-Format plus arc42-Sektion 9. Nach einem Change die arc42-Doku nachziehen.
 
+Eigene Skills: `.junie/skills/arc42-adr`, `.junie/skills/arc42-change-sync`
+
 <!--
-Moderation: Alle liegen im Trainings-Repo unter .claude/skills/ bzw. .junie/skills/.
+Moderation: Quellen der Skills im Trainings-Repo:
+- grill-me: .claude/skills/grill-me (mattpocock/skills, siehe skills-lock.json)
+- grilling, domain-modeling, grill-with-docs: .junie/skills/ (mattpocock/skills)
+- arc42-adr, arc42-change-sync: eigene Skills unter .junie/skills/
+- Weitere: arc42-Sektionen von https://github.com/MSiccDev/arc42-toolkit, Brainstorming von https://github.com/obra/superpowers/tree/main/skills/brainstorming
 grill-me ist die Variante ohne Doku, grill-with-docs ruft grilling und domain-modeling zusammen auf.
 arc42-change-sync hängt zwischen openspec-verify und openspec-archive.
 -->
