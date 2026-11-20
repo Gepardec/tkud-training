@@ -41,7 +41,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | [`../../slides-ai/README.md`](../../slides-ai/README.md) | Befehle (dev, build, export) und Konventionen fürs Deck |
 | [`../../demo/structurizr/workspace.dsl`](../../demo/structurizr/workspace.dsl) | Structurizr-Demo: Pflanzenbewässerung (fiktiv) |
 | [`../../demo/uebung-kritisch-pruefen/`](../../demo/uebung-kritisch-pruefen/arc42-auszug.md) | Übung „Finde die Fehler“: `arc42-auszug.md` für Teilnehmende, `LOESUNG.md` nur für die Moderation |
-| Hauptdokument `../Technische Dokumentation und Kommunikation_ Reboot - Ausarbeitung.md` | Kapitel „Dokumentation mit KI“ (Langtext, Stand vor diesen Entscheidungen) |
+| Hauptdokument `../Technische Dokumentation und Kommunikation_ Reboot - Ausarbeitung.md` | Kapitel „Dokumentation mit KI“ (Langtext; Ablauf-Tabelle und Dauer aktuell, Rest noch Stand vor diesen Entscheidungen) |
 | `../../openspec/specs/training/ki-kapitel/spec.md` | Anforderungen ans KI-Kapitel |
 | `../how-tos/` | Setup Junie, arc42-Toolkit, Structurizr |
 
@@ -119,7 +119,6 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 - [ ] **Demo-Repo:** URL auf GitHub (Folie Vertraulichkeit)
 - [ ] **Domäne** des fiktiven Kunden-Briefs für die Übung
 - [ ] **IST-/Wunschstand:** Format (Karten, Board, Datei im Demo-Repo?) und genauer Zeitpunkt der Auswertung
-- [ ] **Agenda übertragen:** Agenda-Folie (Zeiten in den Moderationsnotizen) und Ablauf-Tabelle im Kapitel des Hauptdokuments an die grobe Agenda oben angleichen
 - [ ] **Junie-Spike** (`openspec/changes/ki-junie-spike`): laufen Skills und Structurizr-MCP in Junie? Davon hängt die Live-Demo mit Junie ab
 - [ ] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen oben anpassen (nennt noch AI Assistant, nur OpenSpec, Klarnamen)
 - [ ] **Brainstorming-Skill** (Phase 1, obra/superpowers) liegt nicht im Repo: einbinden oder auf der Folie als Plugin nennen
@@ -148,3 +147,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-20 | Projekt-B-Handoff übernommen (`projekt-b-workflow.md`), Folie 7 befüllt, Folie 8 „Projekt B: Der Workflow“ neu (farbig + Legende); Folien ab 8 um eins verschoben (jetzt 36) |
 | 2026-11-20 | Neu: „Das gemeinsame Muster“, „Doku hat jetzt zwei Leser“, „Vertraulichkeit: Was geht wohin?“ (ersetzt alte Folie), „Welches Diagramm-Werkzeug?“, Übung „Finde die Fehler“ + Auflösung (`demo/uebung-kritisch-pruefen/`); jetzt 41 Folien |
 | 2026-11-20 | Grobe Agenda mit Zeiten und Folienbereichen ergänzt; abgestimmt: Rahmen 4–5 h, Greenfield-Durchstich 90 min, 15 min Puffer, Ende 4:30 |
+| 2026-11-20 | Agenda übertragen: Zeiten in die Moderationsnotizen der Agenda-Folie, Ablauf-Tabelle und Dauer (ca. 4:30 h) im Kapitel des Hauptdokuments; dort Praxisbeispiele als Projekt A/B anonymisiert |

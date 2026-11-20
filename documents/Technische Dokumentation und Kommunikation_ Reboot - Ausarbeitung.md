@@ -406,7 +406,7 @@ Dokumentation, die nicht geprüft wird, verfällt.
 | Inhalt | Praxisbeispiele aus Legacy-Projekten (Media Data, MM) • Phasenmodell: Vorprojekt, Architektur, Entscheiden, Umsetzung • Brownfield vs. Greenfield • Skills und MCP als Bausteine (arc42-Toolkit, Structurizr) • ADRs mit KI • Dokumentation aktuell halten (Ausblick OpenSpec) |
 | Lernziele | Die Teilnehmenden können …<br>1. für jede Projektphase erklären, wie KI bei der Dokumentation unterstützt und wo ihre Grenzen liegen;<br>2. Brownfield und Greenfield nach Quelle, Rolle der KI und Hauptrisiko unterscheiden;<br>3. mit KI-Unterstützung Qualitätsziele, Stakeholder und Nicht-Ziele erheben und messbar formulieren;<br>4. Skills und MCP-Server als Bausteine einordnen und wissen, wie sie in ein Repository kommen;<br>5. KI-generierte Dokumentation kritisch prüfen (Generik, Halluzination, fehlender Projektbezug). |
 | Übung | Greenfield-Durchstich in Teams à 3–4 Personen: Aus einem fiktiven Kunden-Brief erheben die Teams mit KI Qualitätsziele, Stakeholder und Nicht-Ziele, erstellen arc42-Sektion 1 und 2, erzeugen ein Kontextdiagramm mit Structurizr, schreiben einen ADR und vergleichen anschließend ihre Ergebnisse. |
-| Dauer | ca. 3:45 h (halber Tag) |
+| Dauer | ca. 4:30 h (Rahmen 4–5 h) |
 
 Die vorherigen Kapitel haben gezeigt, *was* gute Architekturdokumentation ausmacht: passende Sichten und Notationen (Kapitel „Sichtenmodell und Notation“) und nachvollziehbare Entscheidungen (Kapitel „Architekturentscheidungen dokumentieren (ADR)“). Dieses Kapitel führt keine neuen Dokumentationskonzepte ein. Es legt eine KI-Schicht darüber und zeigt, wie sich dieselben Artefakte – arc42-Sektionen, C4-Diagramme, ADRs – mit KI schneller erstellen und vor allem aktuell halten lassen.
 
@@ -472,16 +472,18 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 
 | Start | Block | Dauer |
 | :---- | :---- | :---- |
-| 0:00 | Praxis-Einstieg Brownfield: Media Data (15 min) und MM (10 min) | 25 min |
-| 0:25 | Einordnung: Phasenmodell, Brownfield/Greenfield, Skills und MCP | 10 min |
-| 0:35 | Vorprojekt: Konzept und Live-Demo Brainstorming-Skill | 20 min |
-| 0:55 | Architektur: arc42-Toolkit und Structurizr | 20 min |
-| 1:15 | Entscheiden: ADRs mit KI, Kreuztabelle | 15 min |
-| 1:30 | Umsetzung: Dokumentation aktuell halten, Spec-driven mit OpenSpec als Beispiel | 10 min |
-| 1:40 | Pause | 15 min |
-| 1:55 | Übung: Greenfield-Durchstich | 90 min |
-| 3:25 | Transfer aufs eigene Projekt und Abschluss | 20 min |
-| 3:45 | Ende (15 min Puffer bis 4 h) | |
+| 0:00 | Einstieg: Rahmen, IST- und Wunschstand schreiben | 10 min |
+| 0:10 | Praxis-Einstieg Brownfield: Projekt A (15 min), Projekt B (10 min), gemeinsames Muster (5 min) | 30 min |
+| 0:40 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP, Vertraulichkeit | 10 min |
+| 0:50 | Vorprojekt: Konzept und Live-Demo Brainstorming-Skill | 15 min |
+| 1:05 | Architektur: arc42-Toolkit, Structurizr mit Live-Demo, Diagramm-Werkzeug, Übung „Finde die Fehler“ | 40 min |
+| 1:45 | Pause | 15 min |
+| 2:00 | Entscheiden: ADRs mit KI, Kreuztabelle | 10 min |
+| 2:10 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
+| 2:25 | Übung: Greenfield-Durchstich | 90 min |
+| 3:55 | Transfer aufs eigene Projekt, Muster aus IST-/Wunschstand, Abschluss | 20 min |
+| 4:15 | Puffer | 15 min |
+| 4:30 | Ende | |
 
 Die Live-Demos laufen an einem eigenen Demo-Projekt, nicht am Kunden-Brief der Übung – sonst übernehmen die Teams die Demo-Ergebnisse.
 

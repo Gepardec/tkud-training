@@ -34,8 +34,18 @@ layout: agenda
 - Transfer und Muster
 
 <!--
-Moderation: Ablauf laut Kapitel ca. 3:45 h plus Einstieg IST/Wunsch.
-Erst Praxis, dann Theorie – bewusst so herum.
+Moderation: Ca. 4:30 h (Rahmen 4–5 h). Erst Praxis, dann Theorie – bewusst so herum.
+0:00 Einstieg, IST- und Wunschstand (10)
+0:10 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
+0:40 Einordnung (10)
+0:50 Phase 1 Vorprojekt (15)
+1:05 Phase 2 Architektur inkl. Structurizr-Demo und Übung „Finde die Fehler“ (40)
+1:45 Pause (15)
+2:00 Phase 3 Entscheiden (10)
+2:10 Phase 4 Umsetzung, zwei Workflows (15)
+2:25 Übung Greenfield-Durchstich (90)
+3:55 Transfer und Muster (20)
+4:15 Puffer (15) – Ende 4:30
 -->
 
 ---
