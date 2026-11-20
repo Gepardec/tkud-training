@@ -6,9 +6,28 @@ Stand: 2026-11-20 · Verantwortlich: Mattias Fankhauser · Branch: `setup/mf-ai-
 
 ## Worum es geht
 
-Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und Dokumentation“. Der KI-Teil führt keine neuen Doku-Konzepte ein, sondern legt eine KI-Schicht über Tag 1: Sichten/C4, arc42 und ADRs mit KI erstellen und vor allem aktuell halten.
+Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentation“. Der KI-Teil führt keine neuen Doku-Konzepte ein, sondern legt eine KI-Schicht über Tag 1: Sichten/C4, arc42 und ADRs mit KI erstellen und vor allem aktuell halten.
 
 **Didaktischer Ablauf:** IST-/Wunschstand → Beispiel aus der Praxis → erst dann Theorie → Phasen → Übung → Transfer und Muster.
+
+## Grobe Agenda (ca. 4:30 h)
+
+| Start | Block | Inhalt | Folien | Dauer |
+|---|---|---|---|---|
+| 0:00 | Einstieg | Rahmen, IST- und Wunschstand schreiben | 1–3 | 10 min |
+| 0:10 | Aus der Praxis | Projekt A (15), Projekt B (10), gemeinsames Muster (5) | 4–9 | 30 min |
+| 0:40 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills, Vertraulichkeit | 10–17 | 10 min |
+| 0:50 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo Brainstorming-Skill | 18–19 | 15 min |
+| 1:05 | Phase 2: Architektur | arc42-Toolkit, Structurizr mit Live-Demo (20), Diagramm-Werkzeug (5), Übung „Finde die Fehler“ mit Auflösung (15) | 20–30 | 40 min |
+| 1:45 | Pause | | | 15 min |
+| 2:00 | Phase 3: Entscheiden | ADRs mit KI | 31–32 | 10 min |
+| 2:10 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 33–36 | 15 min |
+| 2:25 | Übung | Greenfield-Durchstich in Teams | 37–39 | 90 min |
+| 3:55 | Transfer | Muster aus IST-/Wunschstand, eigenes Projekt, Abschluss | 40–41 | 20 min |
+| 4:15 | Puffer | für Demos, Fragen, Überzug der Übung | | 15 min |
+| 4:30 | Ende | | | |
+
+> **Abgestimmt (2026-11-20):** Rahmen für den KI-Teil sind 4–5 h. Greenfield-Durchstich bleibt bei 90 min, 15 min Puffer am Ende. Gegenüber dem Kapitel im Hauptdokument (3:45 h) neu: gemeinsames Muster, zwei Leser, Diagramm-Werkzeug, Übung „Finde die Fehler“, Phase 4 mit zwei Workflows.
 
 ## Dateien
 
@@ -100,7 +119,7 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 - [ ] **Demo-Repo:** URL auf GitHub (Folie Vertraulichkeit)
 - [ ] **Domäne** des fiktiven Kunden-Briefs für die Übung
 - [ ] **IST-/Wunschstand:** Format (Karten, Board, Datei im Demo-Repo?) und genauer Zeitpunkt der Auswertung
-- [ ] **Zeitplan neu rechnen:** Phase 4 ca. 15 statt 10 min, Übung „Finde die Fehler“ 10 min + Auflösung, Diskussion Diagramm-Werkzeug 3–5 min
+- [ ] **Agenda übertragen:** Agenda-Folie (Zeiten in den Moderationsnotizen) und Ablauf-Tabelle im Kapitel des Hauptdokuments an die grobe Agenda oben angleichen
 - [ ] **Junie-Spike** (`openspec/changes/ki-junie-spike`): laufen Skills und Structurizr-MCP in Junie? Davon hängt die Live-Demo mit Junie ab
 - [ ] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen oben anpassen (nennt noch AI Assistant, nur OpenSpec, Klarnamen)
 - [ ] **Brainstorming-Skill** (Phase 1, obra/superpowers) liegt nicht im Repo: einbinden oder auf der Folie als Plugin nennen
@@ -128,3 +147,4 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | 2026-11-20 | Folie 6 „Projekt A: Der Workflow“: OpenSpec-Schritte gelb, weitere Skills weiß umrandet, Entscheidung Mensch grau, Git-Hooks gestrichelt; Legende ergänzt |
 | 2026-11-20 | Projekt-B-Handoff übernommen (`projekt-b-workflow.md`), Folie 7 befüllt, Folie 8 „Projekt B: Der Workflow“ neu (farbig + Legende); Folien ab 8 um eins verschoben (jetzt 36) |
 | 2026-11-20 | Neu: „Das gemeinsame Muster“, „Doku hat jetzt zwei Leser“, „Vertraulichkeit: Was geht wohin?“ (ersetzt alte Folie), „Welches Diagramm-Werkzeug?“, Übung „Finde die Fehler“ + Auflösung (`demo/uebung-kritisch-pruefen/`); jetzt 41 Folien |
+| 2026-11-20 | Grobe Agenda mit Zeiten und Folienbereichen ergänzt; abgestimmt: Rahmen 4–5 h, Greenfield-Durchstich 90 min, 15 min Puffer, Ende 4:30 |
