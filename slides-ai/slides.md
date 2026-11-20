@@ -85,11 +85,37 @@ TODO: konkrete Ergebnisse/Zahlen (Anzahl ADRs, Sektionen, Erfahrungen) und anony
 flowchart LR
   OS["OpenSpec<br/>new → apply → verify"] --> Q{"Architektur-<br/>relevant?"}
   Q -- ja --> S["arc42-change-sync<br/>+ arc42-adr / Structurizr"]
-  S --> A["archive"]
+  S --> A["OpenSpec<br/>archive"]
   Q -- nein --> A
   A --> QS["Code-Review<br/>Security-Audit"]
   QS --> H["Git-Hooks<br/>Tests, Commit-Format"]
+
+  classDef openspec fill:#FFC800,stroke:#FFC800,color:#000
+  classDef agent fill:#000,stroke:#fff,stroke-width:2px,color:#fff
+  classDef human fill:#000,stroke:#999,color:#ccc
+  classDef auto fill:#000,stroke:#666,stroke-dasharray:5 4,color:#999
+  class OS,A openspec
+  class S,QS agent
+  class Q human
+  class H auto
 ```
+
+<div class="legend">
+  <span><i class="sw sw-openspec"></i>OpenSpec-Skills</span>
+  <span><i class="sw sw-agent"></i>weitere Skills (agentisch)</span>
+  <span><i class="sw sw-human"></i>Entscheidung Mensch</span>
+  <span><i class="sw sw-auto"></i>automatisch, ohne KI</span>
+</div>
+
+<style>
+.legend { display: flex; gap: 1.6rem; flex-wrap: wrap; font-size: var(--gepardec-text-xs); margin: 0.4rem 0 0.8rem; }
+.legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.legend .sw { display: inline-block; width: 1.1rem; height: 0.8rem; background: #000; }
+.legend .sw-openspec { background: #FFC800; border: 1px solid #FFC800; }
+.legend .sw-agent { border: 2px solid #fff; }
+.legend .sw-human { border: 1px solid #999; width: 0.8rem; transform: rotate(45deg); }
+.legend .sw-auto { border: 1px dashed #666; }
+</style>
 
 - Ein Mensch entscheidet, ob arc42 betroffen ist – mit Entscheidungsmatrix
 - Bugfix, Refactoring, UI: kein Update. Neues Modul, Schnittstelle, Deployment: Update

@@ -46,7 +46,7 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | 3 | Dein IST- und Wunschstand | default | Format offen |
 | 4 | Aus der Praxis | section | fertig |
 | 5 | Projekt A: arc42 aus Legacy-Code | default | Ergebnisse/Zahlen fehlen |
-| 6 | Projekt A: Der Workflow | default | fertig |
+| 6 | Projekt A: Der Workflow | default (Mermaid, farbig + Legende) | fertig |
 | 7 | Projekt B: Camel-Route-Guideline | default | **Platzhalter** |
 | 8 | Einordnung | section | fertig |
 | 9 | KI bringt keine neuen Konzepte | statement | fertig |
@@ -109,3 +109,4 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | 2026-11-20 | Projekt-A-Workflow anonymisiert übernommen (`projekt-a-workflow.md`), Folie 5 befüllt, Folie 6 „Projekt A: Der Workflow“ neu; Handoff-Dokument angelegt |
 | 2026-11-20 | Folie „Nützliche Skills“: Quellen-Links (mattpocock/skills) und Pfade der eigenen Skills ergänzt |
 | 2026-11-20 | Skills der Folie „Nützliche Skills“ für Claude und Junie verlinkt (`.claude/skills/` ↔ `.junie/skills/`), kaputten Symlink `grill-with-docs` ersetzt |
+| 2026-11-20 | Folie 6 „Projekt A: Der Workflow“: OpenSpec-Schritte gelb, weitere Skills weiß umrandet, Entscheidung Mensch grau, Git-Hooks gestrichelt; Legende ergänzt |
