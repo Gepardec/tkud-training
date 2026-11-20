@@ -8,6 +8,9 @@
   },
   "devDependencies": {
     "@gepardec/slidev-theme-gepardec": "latest",
-    "@slidev/cli": "^53.0.0"
+    "@slidev/cli": "^53.0.0",
+    "playwright-chromium": "^1.65.1",
+    "slidev-addon-qrcode": "^1.0.2",
+    "vue": "^3.5.45"
   }
 }
