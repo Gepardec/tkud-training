@@ -14,6 +14,7 @@
 - Deck: [`slides-ai/`](../../slides-ai/README.md)
 - Handoff (Stand, Folienliste, offene Punkte): [`presentation-ai-handoff.md`](presentation-ai-handoff.md)
 - Praxisbeispiel Projekt A: [`projekt-a-workflow.md`](projekt-a-workflow.md)
+- Praxisbeispiel Projekt B: [`projekt-b-workflow.md`](projekt-b-workflow.md)
 
 ## Initiale Notizen
 

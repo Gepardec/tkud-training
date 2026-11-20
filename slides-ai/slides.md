@@ -129,13 +129,62 @@ Matrix im Detail: documents/ai/projekt-a-workflow.md.
 
 # Projekt B: Camel-Route-Guideline
 
-- **Ausgangslage:** _in Ausarbeitung_
-- **KI-Einsatz:** _in Ausarbeitung_
-- **Ergebnis:** _in Ausarbeitung_
+- **Ausgangslage:** viele Integrationsrouten (Camel/Quarkus), Wissen steckt im Code
+- **KI-Einsatz:** Agent dokumentiert Route für Route nach einer verbindlichen Guideline – per Skill oder mit Sub-Agents fürs ganze Repo
+- **Ergebnis:** pro Route Markdown, zwei Draw.io-Diagramme und eine abgehakte Checkliste
 
 <!--
 Moderation: 10 min. Intern: MM. Auf den Folien anonymisiert (Entscheidung 16.10.).
-TODO: Inhalte und anonymisierte Ausschnitte ergänzen.
+Quelle: documents/ai/projekt-b-workflow.md (Handoff aus dem Projekt, dort schon anonymisiert).
+Kernpunkte: Guideline gewinnt bei Widersprüchen. Nichts wird still erfunden – Lücken <TBD>, synthetische Beispiele <GENERATED>.
+TODO: anonymisierten Ausschnitt einer echten Route-Doku (Decision Tree oder Diagramm) zeigen.
+-->
+
+---
+
+# Projekt B: Der Workflow
+
+```mermaid
+flowchart LR
+  V["Guideline<br/>Template, Checkliste"] --> S["Skill create-route-docu<br/>Code lesen, Diagramme,<br/>Decision Tree, Markdown"]
+  S --> R["Render-Skript<br/>Draw.io → PNG"]
+  R --> C["Compliance-Check<br/>Checkliste abhaken"]
+  C --> G{"validate-docu-<br/>checklist.sh<br/>Exit 0?"}
+  G -- nein --> C
+  G -- ja --> D["Route fertig"]
+
+  classDef rule fill:#FFC800,stroke:#FFC800,color:#000
+  classDef agent fill:#000,stroke:#fff,stroke-width:2px,color:#fff
+  classDef auto fill:#000,stroke:#666,stroke-dasharray:5 4,color:#999
+  classDef done fill:#000,stroke:#999,color:#ccc
+  class V rule
+  class S,C agent
+  class R,G auto
+  class D done
+```
+
+<div class="legend">
+  <span><i class="sw sw-rule"></i>verbindliche Vorgaben</span>
+  <span><i class="sw sw-agent"></i>Agent (Skill)</span>
+  <span><i class="sw sw-auto"></i>automatisch, ohne KI</span>
+</div>
+
+- Fertig heißt **geschrieben und geprüft** – Checkliste plus Skript-Gate
+- Ganzes Repo: Orchestrator gibt jeder Route einen eigenen Sub-Agent
+
+<style>
+.legend { display: flex; gap: 1.6rem; flex-wrap: wrap; font-size: var(--gepardec-text-xs); margin: 0.4rem 0 0.8rem; }
+.legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.legend .sw { display: inline-block; width: 1.1rem; height: 0.8rem; background: #000; }
+.legend .sw-rule { background: #FFC800; border: 1px solid #FFC800; }
+.legend .sw-agent { border: 2px solid #fff; }
+.legend .sw-auto { border: 1px dashed #666; }
+</style>
+
+<!--
+Moderation: Single-Route-Ablauf hat 8 Schritte (Analyse, Diagramme, Decision Tree, Markdown, Dateien, Compliance, Skript, Report) – hier verdichtet.
+Orchestrator: Discover (NEW/STALE/SKIP) → 1 Route = 1 Sub-Agent → Reports sammeln → Gesamtbericht FAIL → TBD → PASS.
+Vergleich zu Projekt A: dort OpenSpec pro Change, hier Guideline pro Route. Beide: Mensch setzt den Standard, Agent arbeitet ihn ab, Prüfung entscheidet über „fertig“.
 -->
 
 ---
