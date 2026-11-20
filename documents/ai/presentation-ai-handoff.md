@@ -88,7 +88,7 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 - [ ] **Zeitplan:** Phase 4 auf ca. 15 min anheben, Gesamtablauf neu rechnen
 - [ ] **Junie-Spike** (`openspec/changes/ki-junie-spike`): laufen Skills und Structurizr-MCP in Junie? Davon hängt die Live-Demo mit Junie ab
 - [ ] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen oben anpassen (nennt noch AI Assistant, nur OpenSpec, Klarnamen)
-- [ ] **Skills im Repo vervollständigen:** grilling, domain-modeling, arc42-adr, arc42-change-sync liegen nur unter `.junie/skills/`, nicht unter `.claude/skills/`; `.claude/skills/grill-with-docs` ist ein kaputter Symlink auf das leere `.agents/skills/`; der Brainstorming-Skill (Phase 1, obra/superpowers) fehlt im Repo
+- [ ] **Brainstorming-Skill** (Phase 1, obra/superpowers) liegt nicht im Repo: einbinden oder auf der Folie als Plugin nennen
 - [ ] Freigabe, ob Kundennamen (ITSV/SAK) im Transfer genannt werden dürfen – bis dahin generisch
 
 ## Konventionen fürs Deck
@@ -108,3 +108,4 @@ Halber Tag (ca. 3:45 h) am zweiten Trainingstag „Technische Kommunikation und 
 | 2026-11-20 | Structurizr-Erklärung und Demo (`demo/structurizr/`), zweiter Workflow grill-with-docs, Folie „Nützliche Skills“ |
 | 2026-11-20 | Projekt-A-Workflow anonymisiert übernommen (`projekt-a-workflow.md`), Folie 5 befüllt, Folie 6 „Projekt A: Der Workflow“ neu; Handoff-Dokument angelegt |
 | 2026-11-20 | Folie „Nützliche Skills“: Quellen-Links (mattpocock/skills) und Pfade der eigenen Skills ergänzt |
+| 2026-11-20 | Skills der Folie „Nützliche Skills“ für Claude und Junie verlinkt (`.claude/skills/` ↔ `.junie/skills/`), kaputten Symlink `grill-with-docs` ersetzt |

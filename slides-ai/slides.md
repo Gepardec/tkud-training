@@ -231,9 +231,9 @@ Eigene Skills: `.junie/skills/arc42-adr`, `.junie/skills/arc42-change-sync`
 
 <!--
 Moderation: Quellen der Skills im Trainings-Repo:
-- grill-me: .claude/skills/grill-me (mattpocock/skills, siehe skills-lock.json)
-- grilling, domain-modeling, grill-with-docs: .junie/skills/ (mattpocock/skills)
-- arc42-adr, arc42-change-sync: eigene Skills unter .junie/skills/
+- Alle fünf liegen in .claude/skills/ (Claude) und .junie/skills/ (Junie), jeweils ein Ordner echt, der andere Symlink. Junie liest .claude/skills/ nicht.
+- grill-me, grilling, domain-modeling, grill-with-docs: mattpocock/skills
+- arc42-adr, arc42-change-sync: eigene Skills
 - Weitere: arc42-Sektionen von https://github.com/MSiccDev/arc42-toolkit, Brainstorming von https://github.com/obra/superpowers/tree/main/skills/brainstorming
 grill-me ist die Variante ohne Doku, grill-with-docs ruft grilling und domain-modeling zusammen auf.
 arc42-change-sync hängt zwischen openspec-verify und openspec-archive.
