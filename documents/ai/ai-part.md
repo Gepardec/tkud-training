@@ -5,6 +5,14 @@
 - **Showcase und alle Übungen laufen mit Junie oder Claude.**
 - **IST- und Wunschstand (TKuD):** Jede:r Teilnehmende schreibt den eigenen IST-Stand und den eigenen Wunschstand nieder. Daraus suchen wir später gemeinsam Muster.
 
+- **Structurizr:** Erklärung (ein Modell, viele Sichten, MCP) plus Live-Demo am fiktiven System Pflanzenbewässerung aus Tag 1. Workspace: [`demo/structurizr/workspace.dsl`](../../demo/structurizr/workspace.dsl)
+- **Zwei Workflows für „Doku aktuell halten“:** OpenSpec (spec-driven) und grill-with-docs (Interview, Glossar und ADRs entstehen nebenbei). Phase 4 braucht dafür ca. 15 statt 10 min.
+- **Skill-Beispiele:** grilling / grill-me, grill-with-docs, domain-modeling, arc42-adr / arc42-change-sync
+
+## Slides
+
+[`slides-ai/`](../../slides-ai/README.md)
+
 ## Initiale Notizen
 
 ### Projektphasen (Beispiel anhand von MD)

@@ -173,6 +173,38 @@ Moderation: Konzepte sind werkzeugneutral – die Agenten sind ein Beispiel, kei
 -->
 
 ---
+layout: quadrants
+---
+
+# Nützliche Skills
+
+::one::
+
+### grilling / grill-me
+Fragt dich zu Plan oder Entscheidung aus, Ast für Ast, bis alles geklärt ist. Pro Frage eine Empfehlung.
+
+::two::
+
+### grill-with-docs
+grilling plus domain-modeling: Während des Interviews entstehen ADRs und Glossar.
+
+::three::
+
+### domain-modeling
+Schärft Fachbegriffe, deckt Widersprüche auf und pflegt `GLOSSARY.md`.
+
+::four::
+
+### arc42-adr / arc42-change-sync
+ADRs im Nygard-Format plus arc42-Sektion 9. Nach einem Change die arc42-Doku nachziehen.
+
+<!--
+Moderation: Alle liegen im Trainings-Repo unter .claude/skills/ bzw. .junie/skills/.
+grill-me ist die Variante ohne Doku, grill-with-docs ruft grilling und domain-modeling zusammen auf.
+arc42-change-sync hängt zwischen openspec-verify und openspec-archive.
+-->
+
+---
 
 # Vertraulichkeit
 
@@ -235,27 +267,115 @@ Team-Variante: Plugin per .claude/settings.json im Projekt festlegen.
 -->
 
 ---
+layout: two-cols-header
+---
 
 # Structurizr: Architektur als Code
 
+::left::
+
+### Ein Modell
+- Personen, Systeme, Container, Komponenten
+- Beziehungen einmal beschrieben
+- Textdatei (DSL), versioniert im Git
+
+::right::
+
+### Viele Sichten
+- Kontext, Container, Komponente, Deployment
+- Jede Sicht ist ein Ausschnitt des Modells
+- Export nach PlantUML, Mermaid, PNG
+
+::bottom::
+
+Ändert sich das Modell, ziehen **alle Sichten** mit. Keine Kopien, die auseinanderlaufen.
+
+<!--
+Moderation: Rückbezug auf C4 von gestern. Unterschied zu Zeichenwerkzeugen: Diagramme sind Sichten auf ein Modell, nicht einzelne Bilder.
+Konsistenz zwischen Sichten (Kapitel „Sichtenmodell und Notation“) ist damit eingebaut.
+-->
+
+---
+
+# Structurizr-MCP
+
+Der Agent schreibt die DSL und **prüft sie selbst**:
+
+- `validate` – ist die DSL gültig?
+- `parse` / `inspect` – was steckt im Modell, gibt es Auffälligkeiten?
+- `export-mermaid` / `export-plantuml` – Sicht rendern
+
+Eingebunden für Claude in `.mcp.json`, für Junie in `.junie/mcp/mcp.json`.
+
+<!--
+Moderation: Gehosteter Server https://mcp.structurizr.com/mcp, nichts zu installieren. Setup: documents/how-tos/structurizr-setup.md.
+Hinweis Vertraulichkeit: Der gehostete Server bekommt die DSL. Für Kundenmodelle lokal per Docker betreiben.
+-->
+
+---
+
+# Demo: Pflanzenbewässerung
+
 ```text
-workspace {
-  model {
-    user = person "Nutzer:in"
-    system = softwareSystem "Unser System"
-    user -> system "nutzt"
+model {
+  nutzer = person "Pflanzenverantwortliche Person"
+  system = softwareSystem "Bewässerungssystem" {
+    dienst = container "Bewässerungsdienst"
   }
-  views {
-    systemContext system { include * }
-  }
+  sensor = softwareSystem "Feuchtigkeitssensor"
+  pumpe  = softwareSystem "Pumpensteuerung"
+
+  sensor -> system.dienst "liefert Messwerte"
+  system.dienst -> pumpe "sendet Bewässerungsbefehl"
+}
+views {
+  systemContext system "Kontext" { include * }
 }
 ```
 
-Über den **Structurizr-MCP** prüft und rendert der Agent die DSL selbst.
+Vollständig in `demo/structurizr/workspace.dsl`.
 
 <!--
-Moderation: Kurze allgemeine Vorstellung: ein Modell, mehrere Views; C4 von gestern.
-MCP: https://mcp.structurizr.com/mcp, Tools validate / parse / export (PlantUML, Mermaid).
+Moderation: Das fiktive System von gestern. Technologien sind im Workspace als „Annahme:“ markiert.
+-->
+
+---
+
+# Ergebnis: Kontextsicht
+
+```mermaid
+flowchart LR
+  P["Pflanzenverantwortliche Person<br/>[Person]"]
+  B["Bewässerungssystem<br/>[Software System]"]
+  S["Feuchtigkeitssensor<br/>[Extern]"]
+  PU["Pumpensteuerung<br/>[Extern]"]
+  N["Benachrichtigungsdienst<br/>[Extern]"]
+  P -- "konfiguriert Grenzwerte,<br/>sieht Status" --> B
+  S -- "liefert Messwerte" --> B
+  B -- "sendet Bewässerungsbefehl" --> PU
+  PU -- "meldet Status zurück" --> B
+  B -- "löst Warnung aus" --> N
+  N -- "benachrichtigt" --> P
+```
+
+<!--
+Moderation: Erzeugt über export-mermaid aus dem Workspace (Styling fürs Theme entfernt).
+Die Containersicht kommt aus demselben Modell – live zeigen.
+-->
+
+---
+
+# Live-Demo: Structurizr mit dem Agenten
+
+1. Prompt: „Erstelle die Kontextsicht für die Pflanzenbewässerung“
+2. Agent schreibt die DSL, ruft `validate` auf, korrigiert selbst
+3. `export-mermaid` rendert die Sicht
+4. Nachfrage: „Ergänze die Container“ – Kontextsicht bleibt konsistent
+5. Diagramm in arc42-Sektion 3 bzw. 5 einbinden
+
+<!--
+Moderation: Mit Junie oder Claude. Fallback ohne Netz: fertigen Workspace aus demo/structurizr/ zeigen und lokal per Docker rendern.
+Fehler bewusst provozieren (z. B. Tippfehler in einem Identifier), damit validate etwas findet.
 -->
 
 ---
@@ -322,23 +442,68 @@ layout: section
 
 ---
 
-# Doku aktuell halten
+# Workflow 1: OpenSpec
 
 ```mermaid
 flowchart LR
   P["Proposal"] --> D["Design + Specs<br/>+ Tasks"]
   D --> A["Apply"]
-  A --> X["Archive"]
+  A --> V["Verify"]
+  V --> S["arc42-change-sync"]
+  S --> X["Archive"]
   X -. nächster Change .-> P
 ```
 
 - Doku wird bei jeder Änderung mitgezogen, nicht nachträglich repariert
-- OpenSpec als Beispiel für Spec-driven Development
 - Proposal, Design und Archiv wirken wie ein ADR-Log
+- `arc42-change-sync` zieht die arc42-Doku vor dem Archivieren nach
 
 <!--
-Moderation: 10 min, keine eigene Phase. Kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv.
+Moderation: Kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv.
 Rückbezug: Docs-as-Code, ADR-Workflow, Review-Prozess.
+-->
+
+---
+
+# Workflow 2: grill-with-docs
+
+```mermaid
+flowchart LR
+  I["Idee, Plan,<br/>Änderung"] --> G["grilling<br/>Frage für Frage"]
+  G --> M["domain-modeling<br/>Begriffe schärfen"]
+  M --> G
+  M --> GL["GLOSSARY.md"]
+  M --> ADR["docs/adr/"]
+```
+
+- Kein Spec-Framework: der Agent interviewt dich, die Doku entsteht nebenbei
+- Begriffe landen im Glossar, sobald sie geklärt sind
+- Entscheidungen landen als ADR, sobald sie fallen
+
+<!--
+Moderation: Leichtgewichtige Alternative, passt auch zu Vorprojekt und Entscheiden.
+Live zeigen: grill-with-docs auf eine Frage zur Pflanzenbewässerung ansetzen (z. B. „Was passiert, wenn der Sensor keine Daten liefert?“) und zeigen, wie Glossar und ADR entstehen.
+-->
+
+---
+class: gepardec-text-sm
+---
+
+# Zwei Workflows im Vergleich
+
+| | OpenSpec | grill-with-docs |
+|---|---|---|
+| Einstieg | Change-Proposal | Gespräch mit dem Agenten |
+| Artefakte | Proposal, Design, Specs, Tasks | Glossar, ADRs |
+| Stärke | Nachvollziehbar pro Änderung | Leichtgewichtig, schärft das Denken |
+| Passt für | Feature-Arbeit im Team | Klärung, Entscheidungen, Fachsprache |
+| Werkzeug | CLI + Skills | nur Skills |
+
+Beide halten die Doku aktuell. Welcher passt, hängt vom Projekt ab.
+
+<!--
+Moderation: Insgesamt ca. 15 min für Phase 4 einplanen (bisher 10 min nur OpenSpec) – Ablauf entsprechend anpassen.
+Kombinierbar: grill-with-docs im explore-Schritt vor einem OpenSpec-Proposal.
 -->
 
 ---
