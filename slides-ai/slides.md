@@ -427,7 +427,7 @@ layout: section
 Moderation: 3 min. Demo gleich zu Beginn starten, das Ergebnis kommt nach Structurizr, arc42-Toolkit und Orchestrierung (ca. 20 min Laufzeit).
 
 Vorbereitung (vor dem Training):
-- Zoo-Repo ~/IdeaProjects/openspec-quarkus-angular: `git switch -C live-demo arc42-live-start` (Tag auf Commit 1b80931: Skills und Structurizr-MCP da, noch keine Doku; `-C` setzt den Branch nach der Probe zurück). Danach `git status` und `git clean -n docs/`: Reste aus der Probe löschen, sonst startet der Agent auf vorhandener Doku
+- Zoo-Repo ~/IdeaProjects/openspec-quarkus-angular: `git switch -C live-demo arc42-live-start` (Tag auf Commit 6898c74: Skills und Structurizr-MCP da, noch keine Doku; `-C` setzt den Branch nach der Probe zurück). Danach `git status` und `git clean -n docs/`: Reste aus der Probe löschen, sonst startet der Agent auf vorhandener Doku
 - `which plantuml` prüfen, Structurizr-MCP verbunden (`/mcp`)
 - Claude Code so starten, dass Edits, `plantuml` und vom Agenten angelegte Render-Skripte ohne Freigabe laufen (`render.sh` gibt es am Startpunkt noch nicht). Genaue Einstellung in der Probe festlegen und hier eintragen. TODO
 - Fallback: fertiges Ergebnis von Branch `arc42` als Worktree in einem zweiten IDE-Fenster öffnen (`git worktree add ../zoo-arc42 arc42`), im Demo-Checkout läuft ja der Agent

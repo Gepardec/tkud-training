@@ -48,7 +48,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | Hauptdokument `../Technische Dokumentation und Kommunikation_ Reboot - Ausarbeitung.md` | Kapitel „Dokumentation mit KI“ (Langtext; Ablauf-Tabelle und Dauer aktuell, Rest noch Stand vor diesen Entscheidungen) |
 | `../../openspec/specs/training/ki-kapitel/spec.md` | Anforderungen ans KI-Kapitel |
 | `../how-tos/` | Setup Junie, arc42-Toolkit, Structurizr |
-| Zoo-Repo `~/IdeaProjects/openspec-quarkus-angular` (GitHub `Gepardec/openspec-quarkus-angular`) | Brownfield-Beispiel: Branch `arc42` (arc42-Doku + Structurizr-Workspace unter `docs/architecture/`, 4 nachträgliche ADRs, `GLOSSARY.md`, Skills unter `.agents/skills/`), Tag `arc42-live-start` (Commit `1b80931`: Skills + MCP, noch keine Doku, Startpunkt der Live-Demo in Phase 2), Tag `arc42-demo-start` (Teil-Doku, aus der früheren Demo-Variante, nicht mehr verwendet), Branch `arc42-unique-names` (Change umgesetzt, Doku bewusst nicht nachgezogen) |
+| Zoo-Repo `~/IdeaProjects/openspec-quarkus-angular` (GitHub `Gepardec/openspec-quarkus-angular`) | Brownfield-Beispiel: Branch `arc42` (arc42-Doku + Structurizr-Workspace unter `docs/architecture/`, 4 nachträgliche ADRs, `GLOSSARY.md`, Skills unter `.agents/skills/`), Tag `arc42-live-start` (Commit `6898c74` = `1b80931` plus aktualisierter ADR-Skill: Skills + MCP, noch keine Doku, Startpunkt der Live-Demo in Phase 2), Tag `arc42-demo-start` (Teil-Doku, aus der früheren Demo-Variante, nicht mehr verwendet), Branch `arc42-unique-names` (Change umgesetzt, Doku bewusst nicht nachgezogen) |
 
 ## Entscheidungen
 
@@ -117,7 +117,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 ## Offene Punkte
 
-- [ ] **Zoo-Repo, ADR-Format:** `.agents/skills/arc42-adr` im Zoo-Repo hat noch „Implications“. Neuen Skill-Stand rüberkopieren, committen und `arc42-live-start` neu setzen (siehe Nachbereitung in `demo/prompts/phase2-zoo-arc42.md`); die vier ADRs auf `arc42` optional auf „Bezüge“ umbenennen
+- [x] **Zoo-Repo, ADR-Format:** neuer Skill-Stand übernommen: Commit `6898c74` auf `1b80931` (Tag `arc42-live-start` dorthin verschoben), Cherry-Pick auf `arc42` (`f312889`) und `arc42-unique-names` (`a7fd3d1`). Noch zu pushen. Die vier ADRs auf `arc42` haben weiter „Implications“ (bewusst nicht umgeschrieben, ADRs sind unveränderlich)
 - [ ] **Live-Demo Phase 2:** Probelauf mit Zeitmessung (Ziel ca. 20 min). Startbefehl/Berechtigungen für Claude Code festlegen (Edits, `plantuml`, `render.sh` ohne Freigabe) und in die Notiz von Folie 20 eintragen. Prüfen, ob der Agent ohne Rückfragen durchläuft und die offenen Changes ignoriert. Tag `arc42-live-start` liegt nur lokal (Commit ist über `arc42-unique-names` schon auf origin)
 - [ ] **Projekt B:** anonymisierten Ausschnitt einer echten Route-Doku (Decision Tree oder Diagramm) für die Folie
 - [ ] **Projekt A:** konkrete Ergebnisse (Anzahl ADRs, Sektionen, Erfahrungen) und anonymisierte Ausschnitte
@@ -174,3 +174,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Übung Greenfield-Durchstich gestrichen: Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“ entfernt, Agenda (Folie + Notiz), „Zwei Einstiege“ und „Die Bausteine“ angepasst; Hauptdokument: Überblick, Zwei Einstiege, Ablauf, Abschnitt Übung entfernt; Ende jetzt 3:15, 37 Folien |
 | 2026-11-25 | Neue Folie 31 „ADRs: Format, Skills, Werkzeuge“ (Nygard/MADR, Skills, Structurizr `!adrs`, Links) vor „ADRs mit KI“; Phase 3 auf 15 min, Ende 3:20; jetzt 38 Folien |
 | 2026-11-25 | ADR-Format vereinheitlicht auf das schlanke Format von Tag 1: Skill `arc42-adr` (Reihenfolge wie Tag 1, „Bezüge“ statt „Implications“), `arc42-change-sync`, Folien 16, 31, 32, Hauptdokument (neuer Abschnitt „Im Training: das schlanke Format“) |
+| 2026-11-25 | Zoo-Repo: ADR-Skill im schlanken Format übernommen, Tag `arc42-live-start` auf `6898c74`, Branches `arc42` und `arc42-unique-names` je ein Commit dazu; Verweise in Folie 20 und Prompt-Datei angepasst |

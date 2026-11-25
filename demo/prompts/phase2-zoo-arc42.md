@@ -3,7 +3,7 @@
 Wird zu Beginn von Phase 2 gestartet (Folie „Live-Demo: Zoo-Verwaltung dokumentieren“). Während der Agent arbeitet, laufen die Folien zu Structurizr, arc42-Toolkit und Orchestrierung. Danach kommt das Ergebnis.
 
 - **Repo:** `~/IdeaProjects/openspec-quarkus-angular` (GitHub `Gepardec/openspec-quarkus-angular`)
-- **Startpunkt:** Tag `arc42-live-start` (Commit `1b80931`: Skills und Structurizr-MCP sind da, noch keine Doku)
+- **Startpunkt:** Tag `arc42-live-start` (Commit `6898c74` = `1b80931` plus aktualisierter ADR-Skill: Skills und Structurizr-MCP sind da, noch keine Doku)
 - **Fallback:** fertiges Ergebnis auf Branch `arc42`
 
 ## Vorbereitung
