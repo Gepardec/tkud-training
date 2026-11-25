@@ -498,31 +498,35 @@ Kurz ins Terminal der Live-Demo schauen: Ruft der Agent schon validate auf?
 -->
 
 ---
+class: gepardec-text-sm
+---
 
-# Greenfield-Beispiel: Pflanzenbewässerung
+# Greenfield: Pflanzenbewässerung
 
 ```text
+!identifiers hierarchical
 model {
-  nutzer = person "Pflanzenverantwortliche Person"
-  system = softwareSystem "Bewässerungssystem" {
+  verantwortliche = person "Pflanzenverantwortliche Person"
+  bewaesserung = softwareSystem "Bewässerungssystem" {
+    app    = container "Web-App"
     dienst = container "Bewässerungsdienst"
   }
   sensor = softwareSystem "Feuchtigkeitssensor"
-  pumpe  = softwareSystem "Pumpensteuerung"
-
-  sensor -> system.dienst "liefert Messwerte"
-  system.dienst -> pumpe "sendet Bewässerungsbefehl"
+  sensor -> bewaesserung.dienst "liefert Messwerte"
+  // … weitere Container, Systeme, Beziehungen
 }
 views {
-  systemContext system "Kontext" { include * }
+  systemContext bewaesserung "Kontext" { include * }
+  container bewaesserung "Container" { include * }
 }
 ```
 
-Vollständig in `demo/structurizr/workspace.dsl`.
+Auszug aus `demo/structurizr/workspace.dsl`. In IntelliJ zeigt das Plugin [Structurizr DSL](https://plugins.jetbrains.com/plugin/29351-structurizr-dsl) Kontext- und Containersicht live neben dem Code.
 
 <!--
 Moderation: Das fiktive System von gestern, Greenfield: Das Modell entsteht aus dem Brief, nicht aus Code. Technologien sind im Workspace als „Annahme:“ markiert.
 Wird nicht live erzeugt, sondern vorgestellt. Kontrast zur laufenden Zoo-Demo: dort Brownfield aus dem Code.
+Auf der Folie gekürzt (Beschreibungen, Technologien, weitere Beziehungen, Styles fehlen). Zeigen: demo/structurizr/workspace.dsl in IntelliJ öffnen, Plugin „Structurizr DSL“ (Jakub Jirák) → Split Editor mit Live-Vorschau, zwischen den Sichten „Kontext“ und „Container“ umschalten. Ein Modell, zwei Sichten – eine Beziehung im Code ändern, beide Sichten ziehen mit.
 -->
 
 ---

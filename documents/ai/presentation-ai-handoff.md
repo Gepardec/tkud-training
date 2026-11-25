@@ -98,7 +98,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 20 | Live-Demo: Zoo-Verwaltung dokumentieren | default (Prompt in den Notizen) | Probelauf mit Zeitmessung und Startbefehl offen |
 | 21 | Structurizr: Architektur als Code | two-cols-header | fertig |
 | 22 | Structurizr-MCP | default | fertig |
-| 23 | Greenfield-Beispiel: Pflanzenbewässerung | default (DSL) | fertig |
+| 23 | Greenfield: Pflanzenbewässerung | default (DSL) | fertig |
 | 24 | Ergebnis: Kontextsicht | default (Mermaid) | fertig |
 | 25 | arc42-Toolkit: ein Skill pro Sektion | default | fertig |
 | 26 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
@@ -178,3 +178,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Zoo-Repo: ADR-Skill im schlanken Format übernommen, Tag `arc42-live-start` auf `6898c74`, Branches `arc42` und `arc42-unique-names` je ein Commit dazu; Verweise in Folie 20 und Prompt-Datei angepasst |
 | 2026-11-25 | Notiz Folie 21: Structurizr-Oberfläche (local, server, statischer Export) kurz erklärt und gegen unseren Export-Workflow abgegrenzt |
 | 2026-11-25 | Statement „Der Code zeigt, was gebaut wurde – nicht, worauf es ankommt. Qualitätsziele sind Entscheidungen, keine Ableitungen.“ als Folie 28 nach dem Zoo-Ergebnis (ersetzt die Pointe der gestrichenen Übung); jetzt 39 Folien |
+| 2026-11-25 | Folie 23: DSL-Auszug an `demo/structurizr/workspace.dsl` angeglichen (Bezeichner, `!identifiers hierarchical`, Containersicht), Hinweis und Link auf IntelliJ-Plugin „Structurizr DSL“ (Live-Vorschau Kontext/Container); README der Demo ergänzt |

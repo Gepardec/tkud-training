@@ -12,6 +12,10 @@ Der MCP ist für Claude in `.mcp.json` und für Junie in `.junie/mcp/mcp.json` e
 - „Exportiere die Sicht `Kontext` als Mermaid.“
 - „Ergänze einen Container für die Regelverwaltung und prüfe, ob die Kontextsicht noch passt.“
 
+## In IntelliJ
+
+Plugin [Structurizr DSL](https://plugins.jetbrains.com/plugin/29351-structurizr-dsl) (Jakub Jirák) installieren, `workspace.dsl` öffnen. Der Split Editor zeigt die Sichten `Kontext` und `Container` live neben dem Code.
+
 ## Lokal ohne MCP
 
 ```bash
