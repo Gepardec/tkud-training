@@ -62,5 +62,3 @@
 - ~~Wann im Ablauf IST- und Wunschstand erhoben werden und wann die Muster ausgewertet werden~~ → entschieden 2026-11-25: schreiben und gemeinsam clustern im Einstieg, Besprechung und Optimierung im Transfer
 
 - ~~Fiktive Domäne für den Kunden-Brief~~ → entfällt, Übung gestrichen (2026-11-25)
-- URL des Demo-Repos auf GitHub
-- Media Data und MM anonymisieren

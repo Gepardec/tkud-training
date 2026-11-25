@@ -7,12 +7,17 @@ Legt fest, welche Inhalte, welche Struktur und welches Übungsformat das KI-Kapi
 ## Requirements
 
 ### Requirement: Überblick-Tabelle
-Das KI-Kapitel SHALL mit einer Überblick-Tabelle beginnen, die wie bei den übrigen Kapiteln mindestens Inhalt, Lernziele und Übung ausweist.
+Das KI-Kapitel SHALL mit einer Überblick-Tabelle beginnen, die wie bei den übrigen Kapiteln mindestens Inhalt, Lernziele und Übung ausweist. Gibt es keine eigene Übung, SHALL die Zeile „Übung“ das ausdrücklich festhalten und die aktivierenden Anteile des Kapitels nennen.
 
 #### Scenario: Kapitelanfang prüfen
 - **WHEN** ein:e Leser:in den Abschnitt „KI“ im Trainingsdokument öffnet
 - **THEN** steht vor dem Fließtext eine Tabelle mit den Zeilen Inhalt, Lernziele und Übung
 - **AND** jede Zeile ist inhaltlich befüllt, nicht mit Platzhaltern
+
+#### Scenario: Keine eigene Übung
+- **WHEN** das Kapitel keine eigene Übung enthält
+- **THEN** steht in der Zeile „Übung“, dass es keine eigene Übung gibt
+- **AND** die Zeile nennt, wo die Teilnehmenden aktiv werden (IST-/Wunschstand, Transfer aufs eigene Projekt)
 
 ### Requirement: KI-Schicht über das bisherige Training
 Das KI-Kapitel SHALL sich als Erweiterung der vorherigen Kapitel verstehen: Es zeigt, wie Sichten/C4, arc42 und ADRs mit KI erstellt und aktuell gehalten werden, und führt keine Dokumentationskonzepte neu ein, die in früheren Kapiteln bereits erklärt sind.
@@ -44,11 +49,19 @@ Das KI-Kapitel SHALL zwei Einstiege in dasselbe Phasenmodell unterscheiden: Brow
 - **THEN** münden beide in denselben Zyklus „Dokumentation aktuell halten“
 
 ### Requirement: Brownfield-Praxisbeispiele
-Das KI-Kapitel SHALL den Brownfield-Einstieg anhand der Legacy-Praxisbeispiele Media Data (arc42) und MM (Camel-Route-Guideline) zeigen.
+Das KI-Kapitel SHALL den Brownfield-Einstieg anhand zweier anonymisierter Legacy-Praxisbeispiele zeigen: Projekt A (arc42 aus Legacy-Code mit agentischem Workflow) und Projekt B (Camel-Route-Guideline). Kunden- und Projektnamen SHALL weder im Kapiteltext noch auf Folien erscheinen.
 
 #### Scenario: Beide Beispiele vorhanden
 - **WHEN** der Brownfield-Einstieg behandelt wird
-- **THEN** werden Media Data und MM jeweils mit Ausgangslage, KI-Einsatz und Ergebnis vorgestellt
+- **THEN** werden Projekt A und Projekt B jeweils mit Ausgangslage, KI-Einsatz und Ergebnis vorgestellt
+
+#### Scenario: Gemeinsames Muster
+- **WHEN** beide Beispiele vorgestellt sind
+- **THEN** fasst das Kapitel das gemeinsame Muster zusammen: Mensch setzt den Standard, Agent arbeitet ihn ab, ein Gate entscheidet über „fertig“
+
+#### Scenario: Anonymisierung
+- **WHEN** Kapiteltext oder Folien die Praxisbeispiele nennen
+- **THEN** erscheinen nur die Bezeichnungen Projekt A und Projekt B, keine Kunden- oder Projektnamen
 
 ### Requirement: Greenfield-Erhebung mit KI
 Der Greenfield-Einstieg SHALL zeigen, wie Qualitätsziele, Anforderungen und Nicht-Ziele mit KI erhoben werden, wobei die KI Fragen stellt, Priorisierung und Messbarkeit einfordert und nicht selbst Antworten liefert.
@@ -62,7 +75,7 @@ Der Greenfield-Einstieg SHALL zeigen, wie Qualitätsziele, Anforderungen und Nic
 - **THEN** zeigt das Kapitel, dass die KI nach einer konkreten, messbaren Formulierung fragt
 
 ### Requirement: Ablauf für einen halben Tag
-Das KI-Kapitel SHALL auf 3 bis 4 Stunden ausgelegt sein und der Reihenfolge Praxis-Einstieg, je Phase Konzept mit Live-Demo, Hands-on und Transfer aufs eigene Projekt folgen.
+Das KI-Kapitel SHALL auf 3 bis 4 Stunden ausgelegt sein und der Reihenfolge Praxis-Einstieg, Einordnung, je Phase Konzept mit Live-Demo und Transfer aufs eigene Projekt folgen.
 
 #### Scenario: Zeitplan vorhanden
 - **WHEN** ein:e Trainer:in das Kapitel vorbereitet
@@ -72,31 +85,24 @@ Das KI-Kapitel SHALL auf 3 bis 4 Stunden ausgelegt sein und der Reihenfolge Prax
 - **WHEN** das Kapitel startet
 - **THEN** kommt der Praxis-Einstieg vor der ersten Konzepterklärung
 
-### Requirement: Greenfield-Durchstich als Übung
-Die Übung SHALL ein Greenfield-Durchstich in Teams sein: Ausgehend von einem fiktiven, bewusst lückenhaften Kunden-Brief erarbeiten Teams mit KI Qualitätsziele, Stakeholder und Nicht-Ziele, arc42-Sektion 1 und 2, ein Kontextdiagramm und einen ADR.
-
-#### Scenario: Ergebnisse je Team
-- **WHEN** ein Team die Übung abschließt
-- **THEN** liegen arc42-Sektion 1 und 2, ein Kontextdiagramm und mindestens ein ADR mit Bezug zu einem Qualitätsziel vor
-
-#### Scenario: Teamvergleich
-- **WHEN** alle Teams fertig sind
-- **THEN** werden die Qualitätsziele der Teams verglichen und Unterschiede trotz gleichem Brief besprochen
-
-#### Scenario: Keine vollständige arc42-Doku
-- **WHEN** die Übung geplant wird
-- **THEN** umfasst sie nur den Durchstich und nicht alle zwölf arc42-Sektionen
+#### Scenario: Live-Demo je Phase
+- **WHEN** eine der vier Phasen behandelt wird
+- **THEN** zeigt eine Live-Demo oder ein vorbereitetes Demo-Beispiel, wie die KI in dieser Phase eingesetzt wird
 
 ### Requirement: Werkzeug und Tool-Neutralität
-Live-Demo und Hands-on SHALL mit JetBrains Junie bzw. IntelliJ AI Assistant durchgeführt werden; die Konzepte SHALL werkzeugneutral über Agent Skills, MCP und Spec-driven Development erklärt werden.
+Live-Demos SHALL mit JetBrains Junie oder Claude Code durchgeführt werden; die Konzepte SHALL werkzeugneutral über Agent Skills, MCP und Spec-driven Development erklärt werden.
 
 #### Scenario: Konzept ohne Produktbindung
 - **WHEN** das Kapitel einen Skill oder MCP-Server erklärt
-- **THEN** ist die Erklärung auch ohne Junie verständlich und das Tool nur als Beispiel genannt
+- **THEN** ist die Erklärung auch ohne ein bestimmtes Werkzeug verständlich und Junie bzw. Claude Code werden nur als Beispiel genannt
 
 ### Requirement: Kein Kundencode in KI-Tools
-Hands-on-Übungen SHALL ausschließlich im Demo-Repo stattfinden; der Transfer auf eigene Kundenprojekte SHALL als Diskussion erfolgen, ohne Kundencode oder -dokumente in KI-Tools einzugeben.
+Live-Demos SHALL ausschließlich in vorbereiteten Demo-Repositories stattfinden; der Transfer auf eigene Kundenprojekte SHALL als Diskussion erfolgen, ohne Kundencode oder -dokumente in KI-Tools einzugeben.
 
 #### Scenario: Transfer aufs eigene Projekt
 - **WHEN** Teilnehmende das Gelernte auf ihr Projekt übertragen
 - **THEN** geschieht dies im Gespräch bzw. als Hausaufgabe nach Projektfreigabe, nicht live mit Kundencode im Training
+
+#### Scenario: Demo-Material
+- **WHEN** eine Live-Demo vorbereitet wird
+- **THEN** läuft sie an einem fiktiven oder freigegebenen Demo-System (z. B. Zoo-Verwaltung, Pflanzenbewässerung), nicht an Kundencode

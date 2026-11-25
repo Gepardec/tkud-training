@@ -28,7 +28,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 > **Abgestimmt (2026-11-20):** Rahmen für den KI-Teil sind 4–5 h. Greenfield-Durchstich bleibt bei 90 min, 15 min Puffer am Ende. Gegenüber dem Kapitel im Hauptdokument (3:45 h) neu: gemeinsames Muster, zwei Leser, Diagramm-Werkzeug, Übung „Finde die Fehler“, Phase 4 mit zwei Workflows.
 
-> **Abgestimmt (2026-11-25, später):** Übung **Greenfield-Durchstich gestrichen** (90 min, Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“). Der KI-Teil dauert damit ca. 3:15 h statt 4:45 h; Greenfield wird nur noch gezeigt (Phase-1-Demo, Pflanzenbewässerung). Die Spec `openspec/specs/training/ki-kapitel/spec.md` (Requirement „Greenfield-Durchstich als Übung“, Überblick-Zeile Übung) ist noch nicht angepasst.
+> **Abgestimmt (2026-11-25, später):** Übung **Greenfield-Durchstich gestrichen** (90 min, Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“). Der KI-Teil dauert damit ca. 3:15 h statt 4:45 h; Greenfield wird nur noch gezeigt (Phase-1-Demo, Pflanzenbewässerung). Die Spec `openspec/specs/training/ki-kapitel/spec.md` ist über den Change `ki-kapitel-spec-abgleich` angepasst (Übung entfernt, Ablauf ohne Hands-on, Projekt A/B, Junie/Claude).
 
 > **Abgestimmt (2026-11-25):** IST-/Wunschstand bei 12 Teilnehmenden: keine Einzelvorstellung. Karten schreiben und **gemeinsam clustern direkt im Einstieg** (20 min), Cluster bleiben den Tag über sichtbar. **Besprechung und Optimierung im Transfer** (25 min). Ende damit 4:45.
 
@@ -123,7 +123,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 - [ ] **Projekt B:** anonymisierten Ausschnitt einer echten Route-Doku (Decision Tree oder Diagramm) für die Folie
 - [ ] **Projekt A:** konkrete Ergebnisse (Anzahl ADRs, Sektionen, Erfahrungen) und anonymisierte Ausschnitte
 - [ ] **Datum** von Tag 2 (Cover)
-- [ ] **Demo-Repo:** URL auf GitHub (z. B. auf der Ergebnis-Folie der Zoo-Demo oder im Transfer)
+- [x] **Demo-Repo:** URL auf GitHub – https://github.com/Gepardec/openspec-quarkus-angular, auf Folie 20 verlinkt (2026-11-25)
 - [x] ~~**Domäne** des fiktiven Kunden-Briefs für die Übung~~ → entfällt, Übung gestrichen (2026-11-25)
 - [ ] **IST-/Wunschstand:** Karten physisch an der Wand oder digital (Miro o. Ä.)?
 - [ ] **Junie-Spike** (`openspec/changes/ki-junie-spike`): laufen Skills und Structurizr-MCP in Junie? Davon hängt die Live-Demo mit Junie ab
@@ -182,3 +182,5 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Folie 24 „Ergebnis: Kontextsicht“: mit MCP-Export des Workspaces abgeglichen (Elemente und Beziehungen identisch), Technologie-Labels „Annahme: MQTT“ an den drei Pfeilen ergänzt |
 | 2026-11-25 | Hauptdokument bereinigt: Überblick (Projekt A/B, zwei Workflows), Werkzeuge (Junie/Claude statt AI Assistant), Praxis-Einstieg mit Projekt A/B und gemeinsamem Muster befüllt, Phase 2 (Prompt-Datei, Statement, Abschluss), Phase 3 (ADR-Grundlagen, schlankes Format), Phase 4 (zwei Workflows), Inhaltsverzeichnis ohne Übung; veraltete TODO-Notiz auf Folie 37 entfernt |
 | 2026-11-25 | Hauptdokument: Hinweise „In Ausarbeitung → Change `ki-kapitel-phasen`“ entfernt (Change existiert nicht, Inhalte stehen im Text) |
+| 2026-11-25 | OpenSpec-Change `ki-kapitel-spec-abgleich` umgesetzt und archiviert: Spec `training/ki-kapitel` ohne Übung, Ablauf mit Live-Demo je Phase, Projekt A/B anonymisiert, Junie oder Claude Code, Kundencode-Regel für Demos |
+| 2026-11-25 | Folie 20: Link zum Demo-Repo Gepardec/openspec-quarkus-angular ergänzt |
