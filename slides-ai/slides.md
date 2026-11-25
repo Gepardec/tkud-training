@@ -474,6 +474,7 @@ Moderation: Im Browser zeigen (ca. 5 min), Structurizr ist von Simon Brown, dem 
 1. Beispiele: https://docs.structurizr.com/example – dieselben Beispieldiagramme wie auf c4model.com, je eine Seite pro Sichttyp. Link „Structurizr DSL source“ öffnet die DSL im Playground (playground.structurizr.com).
 2. Setup: https://docs.structurizr.com/getting-started – Varianten von lokal/Docker bis Export nach PlantUML/Mermaid. Wir nutzen: DSL im Repo, Export über den MCP.
 3. Interaktives Beispiel: https://c4model.com/example/ (Link „Interactive version“ auf der Beispielseite) – durch die Sichten klicken, Zoom von Kontext bis Komponente.
+Die Oberfläche dahinter: Structurizr liest dieselbe workspace.dsl auch im Browser – `local` (früher Lite, Docker, nur localhost), `server` (selbst gehostet fürs Team) oder als statischer Export wie dieses Beispiel. Kann Navigation durch die Sichten, Layout per Drag-and-drop, Doku und ADRs neben dem Modell (`!docs`, `!adrs`). In unserem Workflow nicht nötig: Der Agent exportiert über den MCP nach PlantUML/SVG in die arc42-Sektionen. Lohnt sich, wenn Leser:innen nicht ins Repo schauen.
 Rückbezug auf C4 von gestern. Unterschied zu Zeichenwerkzeugen: Diagramme sind Sichten auf ein Modell, nicht einzelne Bilder.
 Konsistenz zwischen Sichten (Kapitel „Sichtenmodell und Notation“) ist damit eingebaut.
 -->

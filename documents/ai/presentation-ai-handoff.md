@@ -175,3 +175,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Neue Folie 31 „ADRs: Format, Skills, Werkzeuge“ (Nygard/MADR, Skills, Structurizr `!adrs`, Links) vor „ADRs mit KI“; Phase 3 auf 15 min, Ende 3:20; jetzt 38 Folien |
 | 2026-11-25 | ADR-Format vereinheitlicht auf das schlanke Format von Tag 1: Skill `arc42-adr` (Reihenfolge wie Tag 1, „Bezüge“ statt „Implications“), `arc42-change-sync`, Folien 16, 31, 32, Hauptdokument (neuer Abschnitt „Im Training: das schlanke Format“) |
 | 2026-11-25 | Zoo-Repo: ADR-Skill im schlanken Format übernommen, Tag `arc42-live-start` auf `6898c74`, Branches `arc42` und `arc42-unique-names` je ein Commit dazu; Verweise in Folie 20 und Prompt-Datei angepasst |
+| 2026-11-25 | Notiz Folie 21: Structurizr-Oberfläche (local, server, statischer Export) kurz erklärt und gegen unseren Export-Workflow abgegrenzt |
