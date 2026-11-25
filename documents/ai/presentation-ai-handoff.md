@@ -10,7 +10,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 **Didaktischer Ablauf:** IST-/Wunschstand → Beispiel aus der Praxis → erst dann Theorie → Phasen (mit Live-Demos) → Transfer und Muster.
 
-## Grobe Agenda (ca. 3:15 h)
+## Grobe Agenda (ca. 3:20 h)
 
 | Start | Block | Inhalt | Folien | Dauer |
 |---|---|---|---|---|
@@ -20,11 +20,11 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 1:00 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
 | 1:15 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10), Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–29 | 40 min |
 | 1:55 | Pause | | | 15 min |
-| 2:10 | Phase 3: Entscheiden | ADRs mit KI | 30–31 | 10 min |
-| 2:20 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 32–35 | 15 min |
-| 2:35 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 36–37 | 25 min |
-| 3:00 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
-| 3:15 | Ende | | | |
+| 2:10 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 30–32 | 15 min |
+| 2:25 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 33–36 | 15 min |
+| 2:40 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 37–38 | 25 min |
+| 3:05 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
+| 3:20 | Ende | | | |
 
 > **Abgestimmt (2026-11-20):** Rahmen für den KI-Teil sind 4–5 h. Greenfield-Durchstich bleibt bei 90 min, 15 min Puffer am Ende. Gegenüber dem Kapitel im Hauptdokument (3:45 h) neu: gemeinsames Muster, zwei Leser, Diagramm-Werkzeug, Übung „Finde die Fehler“, Phase 4 mit zwei Workflows.
 
@@ -71,7 +71,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | Workflow-Folien | Einheitliche Farblogik: gelb = Vorgabe bzw. OpenSpec, weiß umrandet = Agent/Skill, gestrichelt = automatisch ohne KI, graue Raute = Entscheidung Mensch; jeweils mit Legende |
 | Deck | Eigenes Slidev-Deck in `slides-ai/`, Gepardec-Theme, erste Folie `cover`, letzte `contact` |
 
-## Folienliste (37)
+## Folienliste (38)
 
 | # | Folie | Layout | Status |
 |---|---|---|---|
@@ -105,13 +105,14 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 28 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
 | 29 | Typische Fehler in KI-Doku | default (Tabelle) | fertig |
 | 30 | Phase 3 | section | fertig |
-| 31 | ADRs mit KI | two-cols-header | fertig |
-| 32 | Phase 4 | section | fertig |
-| 33 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
-| 34 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
-| 35 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
-| 36 | Transfer aufs eigene Projekt | default | fertig |
-| 37 | Danke! | contact | fertig |
+| 31 | ADRs: Format, Skills, Werkzeuge | default | fertig |
+| 32 | ADRs mit KI | two-cols-header | fertig |
+| 33 | Phase 4 | section | fertig |
+| 34 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
+| 35 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
+| 36 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
+| 37 | Transfer aufs eigene Projekt | default | fertig |
+| 38 | Danke! | contact | fertig |
 
 ## Offene Punkte
 
@@ -169,3 +170,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Folie 21 „Structurizr: Architektur als Code“: Link docs.structurizr.com/example ergänzt, Notizen mit Browser-Ablauf (Beispiele, Getting started, interaktives Beispiel auf c4model.com) |
 | 2026-11-25 | Restliche „Brainstorming“-Stellen aus Branch `mf/phase1-skills` übernommen (Folie 15, Notiz Folie 16, Übungsschritt 1 auf Folie 37 → grill-me); Worktree und Branch `mf/phase1-skills` entfernt |
 | 2026-11-25 | Übung Greenfield-Durchstich gestrichen: Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“ entfernt, Agenda (Folie + Notiz), „Zwei Einstiege“ und „Die Bausteine“ angepasst; Hauptdokument: Überblick, Zwei Einstiege, Ablauf, Abschnitt Übung entfernt; Ende jetzt 3:15, 37 Folien |
+| 2026-11-25 | Neue Folie 31 „ADRs: Format, Skills, Werkzeuge“ (Nygard/MADR, Skills, Structurizr `!adrs`, Links) vor „ADRs mit KI“; Phase 3 auf 15 min, Ende 3:20; jetzt 38 Folien |

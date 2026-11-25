@@ -35,17 +35,17 @@ layout: agenda
 - Transfer und Muster
 
 <!--
-Moderation: Ca. 3:15 h. Erst Praxis, dann Theorie – bewusst so herum.
+Moderation: Ca. 3:20 h. Erst Praxis, dann Theorie – bewusst so herum.
 0:00 Einstieg, IST- und Wunschstand schreiben und gemeinsam clustern (20)
 0:20 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
 0:50 Einordnung (10)
 1:00 Phase 1 Vorprojekt (15)
 1:15 Phase 2 Architektur: Live-Demo Zoo starten, Structurizr, arc42-Toolkit, Ergebnis Zoo, Diagramm-Werkzeug, typische Fehler (40)
 1:55 Pause (15)
-2:10 Phase 3 Entscheiden (10)
-2:20 Phase 4 Umsetzung, zwei Workflows (15)
-2:35 Transfer: Cluster besprechen, Wunschstand optimieren (25)
-3:00 Puffer (15) – Ende 3:15
+2:10 Phase 3 Entscheiden: ADR-Grundlagen, ADRs mit KI (15)
+2:25 Phase 4 Umsetzung, zwei Workflows (15)
+2:40 Transfer: Cluster besprechen, Wunschstand optimieren (25)
+3:05 Puffer (15) – Ende 3:20
 -->
 
 ---
@@ -666,6 +666,25 @@ layout: section
 ## Entscheiden
 
 ---
+class: gepardec-text-sm
+---
+
+# ADRs: Format, Skills, Werkzeuge
+
+- **ADR:** eine Entscheidung pro Datei – Kontext, Entscheidung, Konsequenzen. Ändert sie sich, gibt es ein neues ADR („Superseded by“)
+- **Formate:** Nygard (minimal) oder MADR (mit Optionen, Pro und Contra)
+- **Skills:** `arc42-adr` (Nygard, pflegt Sektion 9), `arc42-section-09` aus dem Toolkit, `grill-with-docs` (ADRs entstehen im Interview)
+- **Kein eigener MCP nötig:** ADRs sind Markdown im Repo. Structurizr bindet sie per `!adrs` ins Modell ein
+- [adr.github.io](https://adr.github.io/) · [MADR](https://adr.github.io/madr/) · [Nygard 2011](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions) · [Structurizr `!adrs`](https://docs.structurizr.com/dsl/adrs)
+
+<!--
+Moderation: 3–5 min, Rückbezug auf das ADR-Kapitel von gestern (MADR, Kreuztabelle).
+Nygard vs. MADR: Unser Skill arc42-adr schreibt Nygard plus „Implications“; MADR ergänzt betrachtete Optionen und Entscheidungstreiber. Welches Format, ist selbst eine Entscheidung – im Projekt einmal festlegen.
+ADRs sind unveränderlich: Status Proposed → Accepted → Superseded/Deprecated. Der Agent darf alte ADRs nicht umschreiben, sondern legt ein neues an (steht so im Skill).
+Structurizr !adrs erwartet standardmäßig das adr-tools-Format; MADR geht über einen eigenen Importer. Sammlung von Vorlagen und Beispielen: github.com/joelparkerhenderson/architecture-decision-record.
+-->
+
+---
 layout: two-cols-header
 ---
 
@@ -690,7 +709,7 @@ layout: two-cols-header
 Format wie gestern: MADR. Verknüpfung über die Kreuztabelle.
 
 <!--
-Moderation: 15 min. Rückbezug ADR-Kapitel (MADR, Kreuztabelle QS ↔ Entscheidungen).
+Moderation: 10 min. Rückbezug ADR-Kapitel (MADR, Kreuztabelle QS ↔ Entscheidungen).
 Brownfield-Beispiel (Achtung: Nygard-Format aus dem Skill arc42-adr, nicht MADR – Unterschied kurz benennen): Zoo-Verwaltung, Branch arc42, docs/architecture/adr/ – vier nachträgliche ADRs (H2 in-memory, ein Deployment mit Quinoa, keine Service-Schicht, Sheriff). Wo das Motiv nicht im Code steht, steht „Kontext rekonstruiert, unbestätigt“ – genau das meint „Annahmen sichtbar markieren“.
 -->
 

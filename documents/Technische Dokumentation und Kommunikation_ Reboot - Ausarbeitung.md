@@ -406,7 +406,7 @@ Dokumentation, die nicht geprüft wird, verfällt.
 | Inhalt | Praxisbeispiele aus Legacy-Projekten (Media Data, MM) • Phasenmodell: Vorprojekt, Architektur, Entscheiden, Umsetzung • Brownfield vs. Greenfield • Skills und MCP als Bausteine (arc42-Toolkit, Structurizr) • ADRs mit KI • Dokumentation aktuell halten (Ausblick OpenSpec) |
 | Lernziele | Die Teilnehmenden können …<br>1. für jede Projektphase erklären, wie KI bei der Dokumentation unterstützt und wo ihre Grenzen liegen;<br>2. Brownfield und Greenfield nach Quelle, Rolle der KI und Hauptrisiko unterscheiden;<br>3. mit KI-Unterstützung Qualitätsziele, Stakeholder und Nicht-Ziele erheben und messbar formulieren;<br>4. Skills und MCP-Server als Bausteine einordnen und wissen, wie sie in ein Repository kommen;<br>5. KI-generierte Dokumentation kritisch prüfen (Generik, Halluzination, fehlender Projektbezug). |
 | Übung | Keine eigene Übung. IST- und Wunschstand im Einstieg und Transfer aufs eigene Projekt; die Phasen werden mit Live-Demos gezeigt. |
-| Dauer | ca. 3:15 h |
+| Dauer | ca. 3:20 h |
 
 Die vorherigen Kapitel haben gezeigt, *was* gute Architekturdokumentation ausmacht: passende Sichten und Notationen (Kapitel „Sichtenmodell und Notation“) und nachvollziehbare Entscheidungen (Kapitel „Architekturentscheidungen dokumentieren (ADR)“). Dieses Kapitel führt keine neuen Dokumentationskonzepte ein. Es legt eine KI-Schicht darüber und zeigt, wie sich dieselben Artefakte – arc42-Sektionen, C4-Diagramme, ADRs – mit KI schneller erstellen und vor allem aktuell halten lassen.
 
@@ -478,11 +478,11 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 | 1:00 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
 | 1:15 | Architektur: Live-Demo (Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code), währenddessen Structurizr mit Greenfield-Beispiel Pflanzenbewässerung und arc42-Toolkit, danach Ergebnis, Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
 | 1:55 | Pause | 15 min |
-| 2:10 | Entscheiden: ADRs mit KI, Kreuztabelle | 10 min |
-| 2:20 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
-| 2:35 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
-| 3:00 | Puffer | 15 min |
-| 3:15 | Ende | |
+| 2:10 | Entscheiden: ADR-Grundlagen (Nygard, MADR, Skills, Structurizr `!adrs`), ADRs mit KI, Kreuztabelle | 15 min |
+| 2:25 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
+| 2:40 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
+| 3:05 | Puffer | 15 min |
+| 3:20 | Ende | |
 
 Die Live-Demos laufen an eigenen Demo-Projekten (Zoo-Verwaltung, Pflanzenbewässerung), nie an Kundencode.
 
