@@ -481,6 +481,8 @@ Konsistenz zwischen Sichten (Kapitel „Sichtenmodell und Notation“) ist damit
 -->
 
 ---
+class: gepardec-text-sm
+---
 
 # Structurizr-MCP
 
@@ -490,10 +492,15 @@ Der Agent schreibt die DSL und **prüft sie selbst**:
 - `parse` / `inspect` – was steckt im Modell, gibt es Auffälligkeiten?
 - `export-mermaid` / `export-plantuml` – Sicht rendern
 
-Eingebunden für Claude in `.mcp.json`, für Junie in `.junie/mcp/mcp.json`.
+```text
+claude mcp add --transport http --scope project structurizr https://mcp.structurizr.com/mcp
+```
+
+Schreibt `.mcp.json` ins Repo. Junie liest stattdessen `.junie/mcp/mcp.json`.
 
 <!--
 Moderation: Gehosteter Server https://mcp.structurizr.com/mcp, nichts zu installieren. Setup: documents/how-tos/structurizr-setup.md.
+Befehl für Claude Code; --scope project schreibt .mcp.json (im Team einchecken), --scope user gilt für alle eigenen Projekte. Junie: Eintrag in .junie/mcp/mcp.json bzw. Settings → Tools → Junie → MCP Settings (documents/how-tos/junie-setup.md).
 Hinweis Vertraulichkeit: Der gehostete Server bekommt die DSL. Für Kundenmodelle lokal per Docker betreiben.
 Kurz ins Terminal der Live-Demo schauen: Ruft der Agent schon validate auf?
 -->

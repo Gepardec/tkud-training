@@ -184,3 +184,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Hauptdokument: Hinweise „In Ausarbeitung → Change `ki-kapitel-phasen`“ entfernt (Change existiert nicht, Inhalte stehen im Text) |
 | 2026-11-25 | OpenSpec-Change `ki-kapitel-spec-abgleich` umgesetzt und archiviert: Spec `training/ki-kapitel` ohne Übung, Ablauf mit Live-Demo je Phase, Projekt A/B anonymisiert, Junie oder Claude Code, Kundencode-Regel für Demos |
 | 2026-11-25 | Folie 20: Link zum Demo-Repo Gepardec/openspec-quarkus-angular ergänzt |
+| 2026-11-25 | Folie 22 „Structurizr-MCP“: Befehl `claude mcp add … structurizr` eingebunden (analog Plugin-Befehl auf Folie 25), Notiz zu Scope und Junie |
