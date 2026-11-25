@@ -405,8 +405,8 @@ Dokumentation, die nicht geprüft wird, verfällt.
 | :---- | :---- |
 | Inhalt | Praxisbeispiele aus Legacy-Projekten (Media Data, MM) • Phasenmodell: Vorprojekt, Architektur, Entscheiden, Umsetzung • Brownfield vs. Greenfield • Skills und MCP als Bausteine (arc42-Toolkit, Structurizr) • ADRs mit KI • Dokumentation aktuell halten (Ausblick OpenSpec) |
 | Lernziele | Die Teilnehmenden können …<br>1. für jede Projektphase erklären, wie KI bei der Dokumentation unterstützt und wo ihre Grenzen liegen;<br>2. Brownfield und Greenfield nach Quelle, Rolle der KI und Hauptrisiko unterscheiden;<br>3. mit KI-Unterstützung Qualitätsziele, Stakeholder und Nicht-Ziele erheben und messbar formulieren;<br>4. Skills und MCP-Server als Bausteine einordnen und wissen, wie sie in ein Repository kommen;<br>5. KI-generierte Dokumentation kritisch prüfen (Generik, Halluzination, fehlender Projektbezug). |
-| Übung | Greenfield-Durchstich in Teams à 3–4 Personen: Aus einem fiktiven Kunden-Brief erheben die Teams mit KI Qualitätsziele, Stakeholder und Nicht-Ziele, erstellen arc42-Sektion 1 und 2, erzeugen ein Kontextdiagramm mit Structurizr, schreiben einen ADR und vergleichen anschließend ihre Ergebnisse. |
-| Dauer | ca. 4:45 h (Rahmen 4–5 h) |
+| Übung | Keine eigene Übung. IST- und Wunschstand im Einstieg und Transfer aufs eigene Projekt; die Phasen werden mit Live-Demos gezeigt. |
+| Dauer | ca. 3:15 h |
 
 Die vorherigen Kapitel haben gezeigt, *was* gute Architekturdokumentation ausmacht: passende Sichten und Notationen (Kapitel „Sichtenmodell und Notation“) und nachvollziehbare Entscheidungen (Kapitel „Architekturentscheidungen dokumentieren (ADR)“). Dieses Kapitel führt keine neuen Dokumentationskonzepte ein. Es legt eine KI-Schicht darüber und zeigt, wie sich dieselben Artefakte – arc42-Sektionen, C4-Diagramme, ADRs – mit KI schneller erstellen und vor allem aktuell halten lassen.
 
@@ -460,7 +460,7 @@ Dasselbe Phasenmodell wird je nach Ausgangslage von verschiedenen Enden her durc
 | Rolle der KI | Sparringspartner und Strukturgeber: stellt Fragen, fordert Priorisierung und Messbarkeit ein | Analyst: liest den Bestand, leitet Struktur und Zusammenhänge ab |
 | Hauptrisiko | Generische Dokumentation ohne Projektbezug („alles ist wichtig“) | Halluzinierte oder falsch abgeleitete Zusammenhänge |
 | ADRs | Entscheidungen festhalten, während sie fallen | Gründe für bestehende Entscheidungen rekonstruieren („Warum ist das so?“) |
-| Im Training | selbst gemacht (Übung) | gezeigt (Praxisbeispiele) |
+| Im Training | gezeigt (Live-Demo Vorprojekt, Beispiel Pflanzenbewässerung) | gezeigt (Praxisbeispiele, Live-Demo Zoo-Verwaltung) |
 
 ### Werkzeuge und Vertraulichkeit
 
@@ -480,12 +480,11 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 | 1:55 | Pause | 15 min |
 | 2:10 | Entscheiden: ADRs mit KI, Kreuztabelle | 10 min |
 | 2:20 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
-| 2:35 | Übung: Greenfield-Durchstich | 90 min |
-| 4:05 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
-| 4:30 | Puffer | 15 min |
-| 4:45 | Ende | |
+| 2:35 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
+| 3:00 | Puffer | 15 min |
+| 3:15 | Ende | |
 
-Die Live-Demos laufen an einem eigenen Demo-Projekt, nicht am Kunden-Brief der Übung – sonst übernehmen die Teams die Demo-Ergebnisse.
+Die Live-Demos laufen an eigenen Demo-Projekten (Zoo-Verwaltung, Pflanzenbewässerung), nie an Kundencode.
 
 ### Praxis-Einstieg: Brownfield
 
@@ -534,26 +533,6 @@ Rückbezug: Kapitel „Architekturentscheidungen dokumentieren (ADR)“ (MADR, K
 
 Ziel: Dokumentation bei jeder Änderung mitziehen, statt sie nachträglich zu reparieren. Konzept Spec-driven Development: Spezifikation, Umsetzung und Dokumentation entstehen in einem Zyklus. OpenSpec dient als Werkzeug-Beispiel, keine eigene Phase (10 min): kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv. Brownfield-Beispiel: Am Change `unique-animal-names` der Zoo-Verwaltung findet `arc42-change-sync` zwischen Verify und Archiv, was in der arc42-Doku fehlt (Unique-Constraint, `409 Conflict`).
 Rückbezug: „Best Practices & Technischer Workflow“ (Docs-as-Code, ADR-Workflow, Review-Prozess) und „Architekturentscheidungen dokumentieren (ADR)“ – Proposal, Design und Archiv wirken wie ein ADR-Log.
-
-### Übung: Greenfield-Durchstich
-
-> **Detailanleitung in Ausarbeitung** → Change `ki-uebung-durchstich`
-
-Ziel: Einmal alle Phasen im Kleinen durchlaufen – von der Projektidee bis zum ersten ADR. Es entsteht bewusst keine vollständige arc42-Dokumentation, sondern ein Durchstich.
-
-Rahmen: Teams à 3–4 Personen, 90 Minuten, im Demo-Repository. Grundlage ist ein fiktiver Kunden-Brief, der absichtlich Lücken, Widersprüche und versteckte Zielkonflikte enthält.
-
-| Schritt | Inhalt | Dauer |
-| :---- | :---- | :---- |
-| 1 | Mit KI klären (grill-me): Qualitätsziele (Top 3), Stakeholder, Nicht-Ziele | 30 min |
-| 2 | arc42-Sektion 1 und 2 erstellen | 15 min |
-| 3 | Kontextdiagramm mit Structurizr erzeugen | 20 min |
-| 4 | Einen ADR zu einer Entscheidung schreiben, mit Bezug zu einem Qualitätsziel | 15 min |
-| 5 | Teamvergleich: gleicher Brief, andere Qualitätsziele – warum? | 10 min |
-
-Ergebnis je Team: arc42-Sektion 1 und 2, ein Kontextdiagramm und mindestens ein ADR mit Bezug zu einem Qualitätsziel.
-
-Im Teamvergleich zeigt sich: Qualitätsziele sind Entscheidungen, keine Ableitungen aus dem Brief. Teams, die die KI nur „generieren lassen“, landen bei generischen Ergebnissen.
 
 ### Transfer aufs eigene Projekt
 

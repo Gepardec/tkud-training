@@ -8,9 +8,9 @@ Stand: 2026-11-25 · Verantwortlich: Mattias Fankhauser · Branch: `setup/mf-ai-
 
 Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentation“. Der KI-Teil führt keine neuen Doku-Konzepte ein, sondern legt eine KI-Schicht über Tag 1: Sichten/C4, arc42 und ADRs mit KI erstellen und vor allem aktuell halten.
 
-**Didaktischer Ablauf:** IST-/Wunschstand → Beispiel aus der Praxis → erst dann Theorie → Phasen → Übung → Transfer und Muster.
+**Didaktischer Ablauf:** IST-/Wunschstand → Beispiel aus der Praxis → erst dann Theorie → Phasen (mit Live-Demos) → Transfer und Muster.
 
-## Grobe Agenda (ca. 4:45 h)
+## Grobe Agenda (ca. 3:15 h)
 
 | Start | Block | Inhalt | Folien | Dauer |
 |---|---|---|---|---|
@@ -22,12 +22,13 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 1:55 | Pause | | | 15 min |
 | 2:10 | Phase 3: Entscheiden | ADRs mit KI | 30–31 | 10 min |
 | 2:20 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 32–35 | 15 min |
-| 2:35 | Übung | Greenfield-Durchstich in Teams | 36–38 | 90 min |
-| 4:05 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 39–40 | 25 min |
-| 4:30 | Puffer | für Demos, Fragen, Überzug der Übung | | 15 min |
-| 4:45 | Ende | | | |
+| 2:35 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 36–37 | 25 min |
+| 3:00 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
+| 3:15 | Ende | | | |
 
 > **Abgestimmt (2026-11-20):** Rahmen für den KI-Teil sind 4–5 h. Greenfield-Durchstich bleibt bei 90 min, 15 min Puffer am Ende. Gegenüber dem Kapitel im Hauptdokument (3:45 h) neu: gemeinsames Muster, zwei Leser, Diagramm-Werkzeug, Übung „Finde die Fehler“, Phase 4 mit zwei Workflows.
+
+> **Abgestimmt (2026-11-25, später):** Übung **Greenfield-Durchstich gestrichen** (90 min, Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“). Der KI-Teil dauert damit ca. 3:15 h statt 4:45 h; Greenfield wird nur noch gezeigt (Phase-1-Demo, Pflanzenbewässerung). Die Spec `openspec/specs/training/ki-kapitel/spec.md` (Requirement „Greenfield-Durchstich als Übung“, Überblick-Zeile Übung) ist noch nicht angepasst.
 
 > **Abgestimmt (2026-11-25):** IST-/Wunschstand bei 12 Teilnehmenden: keine Einzelvorstellung. Karten schreiben und **gemeinsam clustern direkt im Einstieg** (20 min), Cluster bleiben den Tag über sichtbar. **Besprechung und Optimierung im Transfer** (25 min). Ende damit 4:45.
 
@@ -53,7 +54,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 | Thema | Entscheidung |
 |---|---|
-| Werkzeuge | Showcase und alle Übungen mit **Junie oder Claude**. IntelliJ AI Assistant ist raus. |
+| Werkzeuge | Showcase und alle Demos mit **Junie oder Claude**. IntelliJ AI Assistant ist raus. |
 | Einstieg | **TKuD-IST-/Wunschstand:** Jede:r schreibt IST- und Wunschstand auf Karten, gemeinsames Clustern direkt danach. Besprechung, Zuordnung zu Phasen/Skills und Optimierung des eigenen Wunschstands im Transfer am Ende. |
 | Anonymisierung | Praxisbeispiele auf Folien und in Unterlagen nur anonymisiert: Media Data → **Projekt A**, MM → **Projekt B**. Keine Kunden- oder Projektnamen (auch nicht ITSV/SAK) auf Folien. |
 | Structurizr | Erklärung (ein Modell, viele Sichten, MCP, Homepage im Browser) mit dem fiktiven System **Pflanzenbewässerung** aus Tag 1 als vorgestelltem Greenfield-Beispiel (nicht mehr live). **Live-Demo (2026-11-25) am Anfang von Phase 2:** Ein Prompt lässt den Agenten die vollständige arc42-Doku der **Zoo-Verwaltung** aus dem Code erzeugen (Start bei Tag `arc42-live-start`, ohne Rückfragen, Lücken als „Annahme:“); während er läuft, Theorie zu Structurizr und arc42-Toolkit, danach Ergebnis. Die Zoo-Verwaltung ist das Brownfield-Beispiel, das sich durch Phase 2 (Sichten aus dem Code), 3 (nachträgliche ADRs) und 4 (`arc42-change-sync` an `unique-animal-names`) zieht |
@@ -66,11 +67,11 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | Gemeinsames Muster | Nach den Praxisbeispielen: Mensch setzt Standard → Agent arbeitet ab → Gate entscheidet |
 | Zwei Leser | Doku für Menschen und für Agenten (`AGENTS.md`, Guidelines, Skills) – Rückbezug auf Zielgruppen von Tag 1 |
 | Diagramm-Werkzeug | Structurizr vs. Draw.io vs. Mermaid als Entscheidung, Diskussionsfrage |
-| Vertraulichkeit | Keine eigene Folie mehr (2026-11-25, nicht relevant). Regel „kein Kundencode, nur Demo-Repo“ bleibt (Übung, Transfer), Hinweis zum gehosteten Structurizr-MCP in den Moderationsnotizen |
+| Vertraulichkeit | Keine eigene Folie mehr (2026-11-25, nicht relevant). Regel „kein Kundencode, nur Demo-Repo“ bleibt (Demos, Transfer), Hinweis zum gehosteten Structurizr-MCP in den Moderationsnotizen |
 | Workflow-Folien | Einheitliche Farblogik: gelb = Vorgabe bzw. OpenSpec, weiß umrandet = Agent/Skill, gestrichelt = automatisch ohne KI, graue Raute = Entscheidung Mensch; jeweils mit Legende |
 | Deck | Eigenes Slidev-Deck in `slides-ai/`, Gepardec-Theme, erste Folie `cover`, letzte `contact` |
 
-## Folienliste (40)
+## Folienliste (37)
 
 | # | Folie | Layout | Status |
 |---|---|---|---|
@@ -109,11 +110,8 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 33 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
 | 34 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
 | 35 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
-| 36 | Übung | section | fertig |
-| 37 | Greenfield-Durchstich | default (Tabelle) | Domäne offen |
-| 38 | Qualitätsziele sind Entscheidungen | statement | fertig |
-| 39 | Transfer aufs eigene Projekt | default | fertig |
-| 40 | Danke! | contact | fertig |
+| 36 | Transfer aufs eigene Projekt | default | fertig |
+| 37 | Danke! | contact | fertig |
 
 ## Offene Punkte
 
@@ -121,8 +119,8 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 - [ ] **Projekt B:** anonymisierten Ausschnitt einer echten Route-Doku (Decision Tree oder Diagramm) für die Folie
 - [ ] **Projekt A:** konkrete Ergebnisse (Anzahl ADRs, Sektionen, Erfahrungen) und anonymisierte Ausschnitte
 - [ ] **Datum** von Tag 2 (Cover)
-- [ ] **Demo-Repo:** URL auf GitHub (z. B. auf der Folie Greenfield-Durchstich)
-- [ ] **Domäne** des fiktiven Kunden-Briefs für die Übung
+- [ ] **Demo-Repo:** URL auf GitHub (z. B. auf der Ergebnis-Folie der Zoo-Demo oder im Transfer)
+- [x] ~~**Domäne** des fiktiven Kunden-Briefs für die Übung~~ → entfällt, Übung gestrichen (2026-11-25)
 - [ ] **IST-/Wunschstand:** Karten physisch an der Wand oder digital (Miro o. Ä.)?
 - [ ] **Junie-Spike** (`openspec/changes/ki-junie-spike`): laufen Skills und Structurizr-MCP in Junie? Davon hängt die Live-Demo mit Junie ab
 - [ ] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen oben anpassen (nennt noch AI Assistant, nur OpenSpec, Klarnamen)
@@ -170,3 +168,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | `demo/prompts/phase2-zoo-arc42.md`: Abschnitt Nachbereitung (Demo-Stand verwerfen, Tag neu setzen bei Skill-Updates) und Hinweis zur MCP-Freigabe auf frischem Klon ergänzt |
 | 2026-11-25 | Folie 21 „Structurizr: Architektur als Code“: Link docs.structurizr.com/example ergänzt, Notizen mit Browser-Ablauf (Beispiele, Getting started, interaktives Beispiel auf c4model.com) |
 | 2026-11-25 | Restliche „Brainstorming“-Stellen aus Branch `mf/phase1-skills` übernommen (Folie 15, Notiz Folie 16, Übungsschritt 1 auf Folie 37 → grill-me); Worktree und Branch `mf/phase1-skills` entfernt |
+| 2026-11-25 | Übung Greenfield-Durchstich gestrichen: Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“ entfernt, Agenda (Folie + Notiz), „Zwei Einstiege“ und „Die Bausteine“ angepasst; Hauptdokument: Überblick, Zwei Einstiege, Ablauf, Abschnitt Übung entfernt; Ende jetzt 3:15, 37 Folien |

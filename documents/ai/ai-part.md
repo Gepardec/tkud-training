@@ -2,7 +2,7 @@
 
 ## Vorgaben
 
-- **Showcase und alle Übungen laufen mit Junie oder Claude.**
+- **Showcase und alle Demos laufen mit Junie oder Claude.** Eine Übung gibt es nicht mehr (Greenfield-Durchstich 2026-11-25 gestrichen).
 - **IST- und Wunschstand (TKuD):** Jede:r Teilnehmende schreibt den eigenen IST-Stand und den eigenen Wunschstand nieder. Daraus suchen wir später gemeinsam Muster.
 
 - **Structurizr:** Erklärung (ein Modell, viele Sichten, MCP) mit der Pflanzenbewässerung aus Tag 1 als vorgestelltem Greenfield-Beispiel; Live-Demo zu Beginn von Phase 2: Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code. Workspace: [`demo/structurizr/workspace.dsl`](../../demo/structurizr/workspace.dsl)
@@ -61,6 +61,6 @@
 
 - ~~Wann im Ablauf IST- und Wunschstand erhoben werden und wann die Muster ausgewertet werden~~ → entschieden 2026-11-25: schreiben und gemeinsam clustern im Einstieg, Besprechung und Optimierung im Transfer
 
-- Fiktive Domäne für den Kunden-Brief
+- ~~Fiktive Domäne für den Kunden-Brief~~ → entfällt, Übung gestrichen (2026-11-25)
 - URL des Demo-Repos auf GitHub
 - Media Data und MM anonymisieren

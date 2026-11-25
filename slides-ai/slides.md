@@ -32,11 +32,10 @@ layout: agenda
 - Aus der Praxis
 - Einordnung
 - Vier Phasen mit KI
-- Übung: Greenfield-Durchstich
 - Transfer und Muster
 
 <!--
-Moderation: Ca. 4:45 h (Rahmen 4–5 h). Erst Praxis, dann Theorie – bewusst so herum.
+Moderation: Ca. 3:15 h. Erst Praxis, dann Theorie – bewusst so herum.
 0:00 Einstieg, IST- und Wunschstand schreiben und gemeinsam clustern (20)
 0:20 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
 0:50 Einordnung (10)
@@ -45,9 +44,8 @@ Moderation: Ca. 4:45 h (Rahmen 4–5 h). Erst Praxis, dann Theorie – bewusst s
 1:55 Pause (15)
 2:10 Phase 3 Entscheiden (10)
 2:20 Phase 4 Umsetzung, zwei Workflows (15)
-2:35 Übung Greenfield-Durchstich (90)
-4:05 Transfer: Cluster besprechen, Wunschstand optimieren (25)
-4:30 Puffer (15) – Ende 4:45
+2:35 Transfer: Cluster besprechen, Wunschstand optimieren (25)
+3:00 Puffer (15) – Ende 3:15
 -->
 
 ---
@@ -270,7 +268,7 @@ Moderation: Rückbezüge – Vorprojekt → Kreuztabelle (ADR-Kapitel), Architek
 | Rolle der KI | Sparringspartner: fragt nach | Analyst: leitet ab |
 | Hauptrisiko | generisch, „alles ist wichtig“ | halluzinierte Zusammenhänge |
 | ADRs | festhalten, während sie fallen | Gründe rekonstruieren |
-| Heute | selbst gemacht (Übung) | gezeigt (Praxis) |
+| Heute | gezeigt (Phase 1, Pflanzenbewässerung) | gezeigt (Praxis, Zoo-Demo) |
 
 <!--
 Moderation: Greenfield läuft Vorprojekt → Umsetzung, Brownfield startet bei der Umsetzung (Code als Quelle) und arbeitet sich zurück. Beide münden in denselben Zyklus: Doku aktuell halten.
@@ -316,7 +314,7 @@ layout: quadrants
 ::one::
 
 ### Agent
-Junie, Claude usw. Showcase und alle Übungen laufen damit.
+Junie, Claude usw. Alle Demos laufen damit.
 
 ::two::
 
@@ -401,7 +399,7 @@ layout: section
 Werkzeug: **grill-me** für die Fragen, **arc42-section-01 / -10** für das Ergebnis
 
 <!--
-Moderation: 20 min inkl. Live-Demo grill-me am Demo-Projekt (nicht am Übungs-Brief).
+Moderation: 20 min inkl. Live-Demo grill-me am Demo-Projekt.
 grill-me klärt Qualitätsziele, Stakeholder und Nicht-Ziele im Interview. arc42-section-01 schreibt daraus Sektion 1 (Ziele, Stakeholder), arc42-section-10 macht die Qualitätsziele zu messbaren Szenarien und hakt bei vagen Metriken nach. Randbedingungen bei Bedarf mit arc42-section-02.
 Die arc42-Sektions-Skills liegen nur unter .junie/skills (arc42-toolkit), grill-me in beiden Ordnern.
 Alternative: Brainstorming-Skill aus obra/superpowers (Plugin, nicht im Repo).
@@ -769,45 +767,6 @@ Beide halten die Doku aktuell. Welcher passt, hängt vom Projekt ab.
 <!--
 Moderation: Insgesamt ca. 15 min für Phase 4 einplanen (bisher 10 min nur OpenSpec) – Ablauf entsprechend anpassen.
 Kombinierbar: grill-with-docs im explore-Schritt vor einem OpenSpec-Proposal.
--->
-
----
-layout: section
----
-
-# Übung
-
-## Greenfield-Durchstich
-
----
-class: gepardec-text-sm
----
-
-# Greenfield-Durchstich
-
-**Teams à 3–4 · 90 Minuten · Demo-Repo · Junie oder Claude**
-
-| # | Schritt | Dauer |
-|---|---|---|
-| 1 | Mit KI klären (grill-me): Top-3-Qualitätsziele, Stakeholder, Nicht-Ziele | 30 min |
-| 2 | arc42-Sektion 1 und 2 | 15 min |
-| 3 | Kontextdiagramm mit Structurizr | 20 min |
-| 4 | Ein ADR mit Bezug zu einem Qualitätsziel | 15 min |
-| 5 | Teamvergleich | 10 min |
-
-<!--
-Moderation: Grundlage ist ein fiktiver Kunden-Brief mit Lücken, Widersprüchen und versteckten Zielkonflikten.
-OFFEN: Domäne des Kunden-Briefs.
--->
-
----
-layout: statement
----
-
-# Gleicher Brief, andere Qualitätsziele. **Qualitätsziele sind Entscheidungen, keine Ableitungen.**
-
-<!--
-Moderation: Im Teamvergleich zeigen – wer die KI nur generieren lässt, landet bei generischen Ergebnissen.
 -->
 
 ---
