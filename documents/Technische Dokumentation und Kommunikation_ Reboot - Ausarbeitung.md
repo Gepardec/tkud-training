@@ -406,7 +406,7 @@ Dokumentation, die nicht geprüft wird, verfällt.
 | Inhalt | Praxisbeispiele aus Legacy-Projekten (Media Data, MM) • Phasenmodell: Vorprojekt, Architektur, Entscheiden, Umsetzung • Brownfield vs. Greenfield • Skills und MCP als Bausteine (arc42-Toolkit, Structurizr) • ADRs mit KI • Dokumentation aktuell halten (Ausblick OpenSpec) |
 | Lernziele | Die Teilnehmenden können …<br>1. für jede Projektphase erklären, wie KI bei der Dokumentation unterstützt und wo ihre Grenzen liegen;<br>2. Brownfield und Greenfield nach Quelle, Rolle der KI und Hauptrisiko unterscheiden;<br>3. mit KI-Unterstützung Qualitätsziele, Stakeholder und Nicht-Ziele erheben und messbar formulieren;<br>4. Skills und MCP-Server als Bausteine einordnen und wissen, wie sie in ein Repository kommen;<br>5. KI-generierte Dokumentation kritisch prüfen (Generik, Halluzination, fehlender Projektbezug). |
 | Übung | Greenfield-Durchstich in Teams à 3–4 Personen: Aus einem fiktiven Kunden-Brief erheben die Teams mit KI Qualitätsziele, Stakeholder und Nicht-Ziele, erstellen arc42-Sektion 1 und 2, erzeugen ein Kontextdiagramm mit Structurizr, schreiben einen ADR und vergleichen anschließend ihre Ergebnisse. |
-| Dauer | ca. 4:30 h (Rahmen 4–5 h) |
+| Dauer | ca. 4:45 h (Rahmen 4–5 h) |
 
 Die vorherigen Kapitel haben gezeigt, *was* gute Architekturdokumentation ausmacht: passende Sichten und Notationen (Kapitel „Sichtenmodell und Notation“) und nachvollziehbare Entscheidungen (Kapitel „Architekturentscheidungen dokumentieren (ADR)“). Dieses Kapitel führt keine neuen Dokumentationskonzepte ein. Es legt eine KI-Schicht darüber und zeigt, wie sich dieselben Artefakte – arc42-Sektionen, C4-Diagramme, ADRs – mit KI schneller erstellen und vor allem aktuell halten lassen.
 
@@ -472,18 +472,18 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 
 | Start | Block | Dauer |
 | :---- | :---- | :---- |
-| 0:00 | Einstieg: Rahmen, IST- und Wunschstand schreiben | 10 min |
-| 0:10 | Praxis-Einstieg Brownfield: Projekt A (15 min), Projekt B (10 min), gemeinsames Muster (5 min) | 30 min |
-| 0:40 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP, Vertraulichkeit | 10 min |
-| 0:50 | Vorprojekt: Konzept und Live-Demo Brainstorming-Skill | 15 min |
-| 1:05 | Architektur: arc42-Toolkit, Structurizr mit Live-Demo, Diagramm-Werkzeug, Übung „Finde die Fehler“ | 40 min |
-| 1:45 | Pause | 15 min |
-| 2:00 | Entscheiden: ADRs mit KI, Kreuztabelle | 10 min |
-| 2:10 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
-| 2:25 | Übung: Greenfield-Durchstich | 90 min |
-| 3:55 | Transfer aufs eigene Projekt, Muster aus IST-/Wunschstand, Abschluss | 20 min |
-| 4:15 | Puffer | 15 min |
-| 4:30 | Ende | |
+| 0:00 | Einstieg: Rahmen, IST- und Wunschstand auf Karten schreiben, gemeinsam clustern | 20 min |
+| 0:20 | Praxis-Einstieg Brownfield: Projekt A (15 min), Projekt B (10 min), gemeinsames Muster (5 min) | 30 min |
+| 0:50 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP | 10 min |
+| 1:00 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
+| 1:15 | Architektur: arc42-Toolkit, Structurizr mit Live-Demo (Greenfield: Pflanzenbewässerung, Brownfield: Zoo-Verwaltung), Diagramm-Werkzeug, Übung „Finde die Fehler“ | 40 min |
+| 1:55 | Pause | 15 min |
+| 2:10 | Entscheiden: ADRs mit KI, Kreuztabelle | 10 min |
+| 2:20 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
+| 2:35 | Übung: Greenfield-Durchstich | 90 min |
+| 4:05 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
+| 4:30 | Puffer | 15 min |
+| 4:45 | Ende | |
 
 Die Live-Demos laufen an einem eigenen Demo-Projekt, nicht am Kunden-Brief der Übung – sonst übernehmen die Teams die Demo-Ergebnisse.
 
@@ -509,14 +509,15 @@ Zwei Legacy-Projekte zeigen, wie mit KI Dokumentation aus bestehendem Code entst
 
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
-Ziel: Mit KI zu Qualitätszielen, Anforderungen und Nicht-Zielen kommen – also zu dem, was die Architektur später tragen muss und was bewusst nicht gebaut wird. Die KI liefert dabei keine Antworten, sondern stellt die unbequemen Fragen: Was ist wirklich wichtig? Woran wird das gemessen? Was bauen wir ausdrücklich nicht? Werkzeug: Brainstorming-Skill.
-Die Ergebnisse fließen in arc42-Sektion 1 und 2 und später in die Kreuztabelle aus dem Kapitel „Architekturentscheidungen dokumentieren (ADR)“.
+Ziel: Mit KI zu Qualitätszielen, Anforderungen und Nicht-Zielen kommen – also zu dem, was die Architektur später tragen muss und was bewusst nicht gebaut wird. Die KI liefert dabei keine Antworten, sondern stellt die unbequemen Fragen: Was ist wirklich wichtig? Woran wird das gemessen? Was bauen wir ausdrücklich nicht? Werkzeug: grill-me für die Fragen, arc42-section-01 und arc42-section-10 für das Ergebnis (Ziele und Stakeholder, messbare Qualitätsszenarien).
+Die Ergebnisse fließen in arc42-Sektion 1, 2 und 10 und später in die Kreuztabelle aus dem Kapitel „Architekturentscheidungen dokumentieren (ADR)“.
 
 ### Phase 2: Architektur
 
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
 Ziel: arc42-Sektionen und C4-Diagramme mit KI erstellen – im Greenfield aus den Ergebnissen des Vorprojekts, im Brownfield aus dem Code. Werkzeuge: arc42-Toolkit (Skills je Sektion), Structurizr mit MCP-Anbindung und ein Orchestrierungs-Skill, der beides verbindet.
+Zwei Beispiele: die Pflanzenbewässerung aus Tag 1 (Greenfield) und die Zoo-Verwaltung aus der OpenSpec-Schulung (Brownfield, Repository `openspec-quarkus-angular`, Branch `arc42`). Am Zoo erzeugt der Agent Kontext-, Container-, Komponenten-, Laufzeit- und Verteilungssicht aus einem einzigen Structurizr-Workspace. Dabei zeigt sich, was nur der Code liefert (ein Gehege ist keine Entity, es gibt keine Service-Schicht, `AGENTS.md` beschreibt Personal, das es nicht gibt) und was er nicht liefert: Qualitätsziele muss die KI erfragen.
 Rückbezug: Kapitel „Sichtenmodell und Notation“ (C4, Konsistenz zwischen Sichten, Level of Detail).
 
 ### Phase 3: Entscheiden
@@ -524,13 +525,14 @@ Rückbezug: Kapitel „Sichtenmodell und Notation“ (C4, Konsistenz zwischen Si
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
 Ziel: ADRs mit KI formulieren (Greenfield) bzw. die Gründe hinter bestehenden Entscheidungen rekonstruieren (Brownfield) und mit den Qualitätszielen verknüpfen.
+Brownfield-Beispiel: vier nachträgliche ADRs zur Zoo-Verwaltung (H2 in-memory, ein Deployment mit Quinoa, keine Service-Schicht, Sheriff für Domänengrenzen). Wo das Motiv nicht im Code steht, ist der Kontext als „rekonstruiert, unbestätigt“ markiert.
 Rückbezug: Kapitel „Architekturentscheidungen dokumentieren (ADR)“ (MADR, Kreuztabelle).
 
 ### Phase 4: Umsetzung
 
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
-Ziel: Dokumentation bei jeder Änderung mitziehen, statt sie nachträglich zu reparieren. Konzept Spec-driven Development: Spezifikation, Umsetzung und Dokumentation entstehen in einem Zyklus. OpenSpec dient als Werkzeug-Beispiel, keine eigene Phase (10 min): kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv.
+Ziel: Dokumentation bei jeder Änderung mitziehen, statt sie nachträglich zu reparieren. Konzept Spec-driven Development: Spezifikation, Umsetzung und Dokumentation entstehen in einem Zyklus. OpenSpec dient als Werkzeug-Beispiel, keine eigene Phase (10 min): kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv. Brownfield-Beispiel: Am Change `unique-animal-names` der Zoo-Verwaltung findet `arc42-change-sync` zwischen Verify und Archiv, was in der arc42-Doku fehlt (Unique-Constraint, `409 Conflict`).
 Rückbezug: „Best Practices & Technischer Workflow“ (Docs-as-Code, ADR-Workflow, Review-Prozess) und „Architekturentscheidungen dokumentieren (ADR)“ – Proposal, Design und Archiv wirken wie ein ADR-Log.
 
 ### Übung: Greenfield-Durchstich
@@ -543,7 +545,7 @@ Rahmen: Teams à 3–4 Personen, 90 Minuten, im Demo-Repository. Grundlage ist e
 
 | Schritt | Inhalt | Dauer |
 | :---- | :---- | :---- |
-| 1 | Brainstorming mit KI: Qualitätsziele (Top 3), Stakeholder, Nicht-Ziele | 30 min |
+| 1 | Mit KI klären (grill-me): Qualitätsziele (Top 3), Stakeholder, Nicht-Ziele | 30 min |
 | 2 | arc42-Sektion 1 und 2 erstellen | 15 min |
 | 3 | Kontextdiagramm mit Structurizr erzeugen | 20 min |
 | 4 | Einen ADR zu einer Entscheidung schreiben, mit Bezug zu einem Qualitätsziel | 15 min |
@@ -554,6 +556,8 @@ Ergebnis je Team: arc42-Sektion 1 und 2, ein Kontextdiagramm und mindestens ein 
 Im Teamvergleich zeigt sich: Qualitätsziele sind Entscheidungen, keine Ableitungen aus dem Brief. Teams, die die KI nur „generieren lassen“, landen bei generischen Ergebnissen.
 
 ### Transfer aufs eigene Projekt
+
+Zum Einstieg schreibt jede:r den eigenen IST- und Wunschstand auf Karten, die Gruppe clustert sie gemeinsam; die Cluster bleiben den Tag über sichtbar. Im Transfer werden sie besprochen und den Phasen und Skills zugeordnet. Danach überarbeitet jede:r den eigenen Wunschstand und notiert einen konkreten ersten Schritt.
 
 Abschließend überträgt jede:r Teilnehmer:in das Gelernte gedanklich auf das eigene Projekt, z. B. auf ein Systemarchitekturkonzept beim Kunden: Ist es Brownfield oder Greenfield? Welche Phase hat den größten Nachholbedarf? Welcher Skill würde am meisten bringen? Der Transfer erfolgt als Diskussion – nicht live mit Kundencode. Die Umsetzung im Projekt ist ein nächster Schritt nach Abstimmung mit dem Projekt bzw. Kunden.
 

@@ -25,7 +25,7 @@ docs/architecture/
 │   ├── adr-002-quarkus-als-laufzeit.md
 │   └── adr-<next-id>-<kurztitel>.md
 └── sections/
-    └── 09-architecture-decisions.adoc    # Übersichtsseite (Decision Log + Kurzbeschreibungen)
+    └── 09-architecture-decisions.md      # Übersichtsseite (Decision Log + Kurzbeschreibungen)
 ```
 
 ## ADR-Format (Nygard + Implications)
@@ -90,20 +90,20 @@ Prüfkriterien für Architekturrelevanz:
 
 ## Workflow: Section 9 aktualisieren
 
-Nachdem alle ADR-Dateien geschrieben sind, aktualisiere die Übersichtsseite `docs/architecture/sections/09-architecture-decisions.adoc`:
+Nachdem alle ADR-Dateien geschrieben sind, aktualisiere die Übersichtsseite `docs/architecture/sections/09-architecture-decisions.md`:
 
 1. **Decision Log**: Füge die neuen ADRs oben in die Tabelle ein (neueste zuerst). Die Tabelle hat Spalten: ID, Titel, Status, Datum.
 
 2. **Kurzbeschreibung**: Füge für jedes neue ADR einen Abschnitt mit Status-Link und Kurzbeschreibung ein, Format:
-   ```adoc
-   === ADR-<XXX>: <Titel>
+   ```markdown
+   ### ADR-<XXX>: <Titel>
 
-   *Status:* Angenommen — link:../adr/adr-<xxx>-<titel>.md[Vollständiges ADR]
+   **Status:** Angenommen – [Vollständiges ADR](../adr/adr-<xxx>-<titel>.md)
 
-   *Kurzbeschreibung:* Ein Satz zur Entscheidung.
+   **Kurzbeschreibung:** Ein Satz zur Entscheidung.
    ```
 
-3. Überprüfe die Cross-References: Anker `[[adr-xxx]]` müssen in Section 9 vorhanden sein (für interne Verweise aus anderen Sektionen).
+3. Überprüfe die Cross-References: Andere Sektionen verlinken ADRs über die Überschrift in Section 9 (`09-architecture-decisions.md#adr-xxx-titel`) oder direkt auf die ADR-Datei. Diese Links müssen auflösen.
 
 ## Workflow: Einzelnes ADR anlegen (User gibt Kontext)
 

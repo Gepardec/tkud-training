@@ -36,7 +36,7 @@ which plantuml
 - **Verfügbar →** Standard-Export: `structurizr_export-plantuml` + `plantuml -tsvg`
 - **Nicht verfügbar →** frage: "PlantUML ist nicht installiert. Soll ich es installieren (`brew install plantuml`) oder Mermaid-Diagramme verwenden?"
   - Zustimmung → `brew install plantuml` und mit PlantUML fortfahren
-  - Ablehnung → `structurizr_export-mermaid` und als Mermaid-Block in Adoc einbetten
+  - Ablehnung → `structurizr_export-mermaid` und als Mermaid-Block in die Markdown-Sektion einbetten
 
 ### 3. arc42-Section-Skills
 
@@ -54,7 +54,7 @@ Fehlende Skills werden mit Hinweis übersprungen.
 arc42-section-N (befüllen)
   → ggf. Structurizr DSL erstellen (abhängig von Sektion)
   → PlantUML exportieren + SVG rendern
-  → In Adoc einbinden
+  → In Markdown-Sektion einbinden
   → arc42-lint (Cross-Referenzen prüfen)
   → arc42-review (Inhalt prüfen)
   → Issues fixen anbieten
@@ -62,24 +62,30 @@ arc42-section-N (befüllen)
 
 ## Mapping: arc42-Sektion ↔ Structurizr-View-Typ
 
-| arc42-Sektion | Structurizr View | C4-Ebene | Dateiname (DSL) | Dateiname (SVG) |
+Alle Views liegen in **einem** `workspace.dsl`. Das Modell (Personen, Systeme, Container, Komponenten, Beziehungen) gibt es nur einmal; jede Sicht ist ein View-Key darauf. Getrennte DSL-Dateien pro Sicht würden das Modell duplizieren und auseinanderlaufen.
+
+| arc42-Sektion | Structurizr View | C4-Ebene | View-Key (Beispiel) | Dateiname (SVG) |
 |---|---|---|---|---|
-| 3 (Kontextabgrenzung) | SystemContext | C1 | `system-context-{as-is|to-be}.dsl` | `03-context-{as-is|to-be}.svg` |
-| 5 (Bausteinsicht) | Container + Component | C2 + C3 | `container-{as-is|to-be}.dsl`, `component-{service}.dsl` | `05-container-{as-is|to-be}.svg`, `05-component-{service}.svg` |
-| 6 (Laufzeitsicht) | — | — | Kein C4-Standard-View; Sequence-Diagramme separat |
-| 7 (Verteilungssicht) | Deployment | C2/C3 | `deployment-{as-is|to-be}.dsl` | `07-deployment-{as-is|to-be}.svg` |
+| 3 (Kontextabgrenzung) | `systemContext` | C1 | `context` | `03-context.svg` |
+| 5 (Bausteinsicht) | `container` + `component` | C2 + C3 | `containers`, `components-{container}` | `05-containers.svg`, `05-components-{container}.svg` |
+| 6 (Laufzeitsicht) | `dynamic` | C2/C3 | `runtime-{szenario}` | `06-runtime-{szenario}.svg` |
+| 7 (Verteilungssicht) | `deployment` | C2/C3 | `deployment-{umgebung}` | `07-deployment-{umgebung}.svg` |
 | 8 (Querschnittskonzepte) | — | — | Nur wenn ein Konzept ein Diagramm erfordert |
+
+**Vorrang vor den Section-Skills:** Die arc42-section-N Skills schreiben Diagramme als eigene PlantUML-Dateien nach `docs/diagrams/`. In diesem Workflow gilt das NICHT: Alle C4-Diagramme (Sektion 3, 5, 6, 7) entstehen ausschließlich aus dem `workspace.dsl`. Die Diagramm-Anweisungen der Section-Skills werden ignoriert, ihre Fragen und Textvorlagen gelten weiter. Ausnahme: Diagramme ohne C4-Entsprechung (z. B. Domänenmodell in Sektion 8) dürfen weiter als eigene `.puml` unter `docs/architecture/diagrams/` liegen.
 
 ## Verzeichnisstruktur
 
 ```
 docs/architecture/
-├── sections/           # arc42-Sektionen (*.adoc)
-├── diagrams/
-│   ├── structurizr/    # DSL-Quelldateien (*.dsl)
-│   ├── *.puml          # Exportierte PlantUML-Dateien
-│   └── *.svg           # Gerenderte Diagramme
-└── arc42-konzept.adoc  # Hauptdokument (übergeordnet)
+├── README.md           # Einstieg: Inhaltsverzeichnis der Sektionen
+├── sections/           # arc42-Sektionen (*.md), z. B. 05-bausteinsicht.md
+├── adr/                # ADRs (siehe arc42-adr)
+└── diagrams/
+    ├── structurizr/
+    │   └── workspace.dsl   # EIN Workspace mit allen Views
+    ├── *.puml          # Exportierte PlantUML-Dateien (generiert)
+    └── *.svg           # Gerenderte Diagramme (generiert)
 ```
 
 ## Schritt 1: Sektion befüllen
@@ -93,7 +99,7 @@ Lade den passenden arc42-section-N Skill. Frage ob Ist, Ziel oder beide Zuständ
 
 ## Schritt 2: Structurizr DSL erstellen
 
-Sobald die arc42-Sektion befüllt ist (oder parallel dazu), erstelle die passende Structurizr DSL.
+Sobald die arc42-Sektion befüllt ist (oder parallel dazu), ergänze Modell und View im bestehenden `workspace.dsl`. Lege nur dann eine neue Datei an, wenn es noch keinen Workspace gibt.
 
 ### DSL-Struktur (gültige Structurizr DSL)
 
@@ -112,6 +118,7 @@ workspace "Title" "Description" {
         // Section 3: systemContext <system> "Key" "Description"
         // Section 5: container <system> "Key" "Description"
         // Section 5: component <container> "Key" "Description"
+        // Section 6: dynamic <container|system> "Key" "Description" { a -> b "Schritt" ... }
         // Section 7: deployment * "EnvironmentName"
 
         styles {
@@ -145,7 +152,7 @@ which plantuml
 - **PlantUML verfügbar →** verwende `structurizr_export-plantuml` und rendere SVGs mit `plantuml -tsvg`.
 - **PlantUML nicht verfügbar →** frage den Benutzer: "PlantUML ist nicht installiert. Soll ich es installieren (`brew install plantuml`) oder sollen Mermaid-Diagramme verwendet werden?"
   - Bei Zustimmung: `brew install plantuml` ausführen und mit PlantUML fortfahren.
-  - Bei Ablehnung: `structurizr_export-mermaid` verwenden. Mermaid-Diagramme werden direkt im Adoc-Block gerendert (kein separater SVG-Export nötig).
+  - Bei Ablehnung: `structurizr_export-mermaid` verwenden. Mermaid-Diagramme werden direkt im Markdown-Codeblock gerendert (kein separater SVG-Export nötig).
 
 ## Schritt 3: Validieren + Exportieren
 
@@ -158,28 +165,22 @@ Nachdem die DSL geschrieben wurde:
 
 **Alternativ (Mermaid):**
 - Exportiere mit `structurizr_export-mermaid` (DSL + viewKey).
-- Extrahiere den `definition`-Wert und bette ihn als Mermaid-Codeblock in die Adoc-Datei ein:
-  ```adoc
-  [mermaid]
-  ....
-  {{definition}}
-  ....
-  ```
-  asciidoc unterstützt `[mermaid]`-Blöcke, die vom AsciiDoc-Prozessor gerendert werden (kein separates SVG nötig).
+- Extrahiere den `definition`-Wert und bette ihn als ```` ```mermaid ```` -Codeblock in die Markdown-Sektion ein (GitHub und IntelliJ rendern das direkt, kein separates SVG nötig).
 
 **Dateinamen-Konvention:**
-- `{sektion}-{typ}.puml` und `{sektion}-{typ}.svg`
-- z.B. `05-container-as-is.puml`, `05-container-to-be.puml`
+- `{sektion}-{view-key}.puml` und `{sektion}-{view-key}.svg`
+- z.B. `03-context.svg`, `05-containers.svg`, `06-runtime-tier-anlegen.svg`
 
-## Schritt 4: In Adoc einbinden
+## Schritt 4: In Markdown einbinden
 
 Füge die SVG-Referenz in die entsprechende arc42-Sektion ein. Verwende:
 
-```adoc
-[[diagram-name]]
-==== Beschreibender Titel
+```markdown
+### Beschreibender Titel
 
-image::../diagrams/dateiname.svg[Beschreibung, pdfwidth=80%, align=center]
+![Beschreibung](../diagrams/05-containers.svg)
+
+Quelle: `diagrams/structurizr/workspace.dsl`, View `containers`
 ```
 
 ## Schritt 5: Review + Lint (automatisch am Ende)
@@ -198,7 +199,7 @@ Nachdem eine oder mehrere Sektionen bearbeitet wurden:
 
 ## Konventionen & Empfehlungen
 
-- **Ist + Ziel trennen**: Erstelle getrennte DSLs für Ist- und Ziel-Zustand (z.B. `container-as-is.dsl` + `container-to-be.dsl`).
+- **Ist + Ziel trennen**: Nur wenn wirklich beides dokumentiert wird, zwei Workspaces anlegen (`workspace-as-is.dsl`, `workspace-to-be.dsl`). Sonst ein Workspace für den Ist-Stand.
 - **Konsistente Farben**:
   - Person: `#08427B` (dunkelblau), Text weiß
   - Eigenes System: `#1168BD` (blau), Text weiß
@@ -206,7 +207,7 @@ Nachdem eine oder mehrere Sektionen bearbeitet wurden:
   - Externes System: `#B3D9FF` (pastellblau), Text schwarz, Shape Box
   - Component: `#85BBF0` (hellblau), Text schwarz
   - Deployment Node: `#E8E8E8` (hellgrau), Text schwarz
-- **C3 Component** nur für repräsentative Services (z.B. Encashment als Beispiel, die anderen 5 sind strukturell identisch).
+- **C3 Component** nur für repräsentative Container oder Domänen, nicht für jeden. Sind mehrere strukturell gleich, reicht einer als Beispiel.
 - **Deployment Environment** immer mit aussagekräftigem Namen wie `"Produktion (Ist)"` oder `"Produktion (Ziel)"`.
 
 ## Fehlerbehebung Structurizr

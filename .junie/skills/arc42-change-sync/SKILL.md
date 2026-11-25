@@ -33,7 +33,7 @@ Implementierung zurückbleibt.
 ## Wann diesen Skill verwenden
 
 1. **Automatisch**: Immer, wenn `openspec-archive-change` geladen wird und
-   eine arc42-Dokumentation im Projekt existiert (`docs/architecture/arc42-konzept.adoc`).
+   eine arc42-Dokumentation im Projekt existiert (`docs/architecture/README.md` oder `docs/architecture/sections/`).
 2. **Manuell**: Wenn der User sagt "arc42 sync", "Doku nachziehen",
    "Architekturdokumentation aktualisieren" o.ä.
 
@@ -167,7 +167,7 @@ ob ADRs erstellt werden sollen.
 Wenn der User zustimmt:
 
 1. **Für einfache Änderungen** (neue Zeile in Tabelle, aktualisierte
-   Beschreibung): Führe sie direkt durch (edit der betroffenen `.adoc`-Datei).
+   Beschreibung): Führe sie direkt durch (edit der betroffenen Sektionsdatei).
 2. **Für komplexe Änderungen** (neuer ADR, neues Diagramm): Lade den
    passenden arc42-section-N Skill, um die Sektion strukturiert zu befüllen.
    Verwende dazu den `arc42-with-structurizr` Skill, wenn auch Diagramme
@@ -181,11 +181,11 @@ Wenn der User zustimmt:
 ## Konventionen für dieses Projekt
 
 ### Projekt-Struktur
-- arc42 Hauptdokument: `docs/architecture/arc42-konzept.adoc`
+- arc42 Einstieg: `docs/architecture/README.md`
 - arc42 Sektionen: `docs/architecture/sections/`
-  - `01-introduction-and-goals.adoc` bis `12-glossary.adoc`
+  - `01-introduction-and-goals.md` bis `12-glossary.md`
 - Diagramme: `docs/architecture/diagrams/`
-- Structurizr DSLs: `docs/architecture/diagrams/structurizr/`
+- Structurizr: ein Workspace `docs/architecture/diagrams/structurizr/workspace.dsl` mit allen Views
 - OpenSpec Changes: `openspec/changes/<name>/`
 - OpenSpec Specs: `openspec/specs/<capability>/`
 

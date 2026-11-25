@@ -3,7 +3,7 @@ theme: '@gepardec/slidev-theme-gepardec'
 title: Dokumentation mit KI
 info: |
   ## Dokumentation mit KI
-  Technische Kommunikation und Dokumentation – Tag 2
+  Technische Dokumentation und Kommunikation – Tag 2
 transition: slide-left
 mdc: true
 layout: cover
@@ -11,9 +11,11 @@ layout: cover
 
 # Dokumentation mit KI
 
-## TKuD · Tag 2
+## Technische Dokumentation und Kommunikation
 
 Mattias Fankhauser
+
+Tag 2
 
 <!--
 Moderation: Datum ergänzen, sobald Tag 2 fixiert ist.
@@ -34,35 +36,40 @@ layout: agenda
 - Transfer und Muster
 
 <!--
-Moderation: Ca. 4:30 h (Rahmen 4–5 h). Erst Praxis, dann Theorie – bewusst so herum.
-0:00 Einstieg, IST- und Wunschstand (10)
-0:10 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
-0:40 Einordnung (10)
-0:50 Phase 1 Vorprojekt (15)
-1:05 Phase 2 Architektur inkl. Structurizr-Demo und Übung „Finde die Fehler“ (40)
-1:45 Pause (15)
-2:00 Phase 3 Entscheiden (10)
-2:10 Phase 4 Umsetzung, zwei Workflows (15)
-2:25 Übung Greenfield-Durchstich (90)
-3:55 Transfer und Muster (20)
-4:15 Puffer (15) – Ende 4:30
+Moderation: Ca. 4:45 h (Rahmen 4–5 h). Erst Praxis, dann Theorie – bewusst so herum.
+0:00 Einstieg, IST- und Wunschstand schreiben und gemeinsam clustern (20)
+0:20 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
+0:50 Einordnung (10)
+1:00 Phase 1 Vorprojekt (15)
+1:15 Phase 2 Architektur inkl. Structurizr-Demo und Übung „Finde die Fehler“ (40)
+1:55 Pause (15)
+2:10 Phase 3 Entscheiden (10)
+2:20 Phase 4 Umsetzung, zwei Workflows (15)
+2:35 Übung Greenfield-Durchstich (90)
+4:05 Transfer: Cluster besprechen, Wunschstand optimieren (25)
+4:30 Puffer (15) – Ende 4:45
 -->
 
 ---
 
 # Dein IST- und Wunschstand
 
-**10 Minuten · allein · schriftlich**
+**8 Minuten allein schreiben · dann gemeinsam clustern**
 
 - **IST:** Wie dokumentierst du heute? Womit, wann, für wen?
 - **Wunsch:** Wie willst du dokumentieren?
-- Wo hilft dir KI heute schon – und wo nicht?
+- **KI:** Wo hilft sie dir heute schon – und wo nicht?
 
-Wir sammeln alles und suchen am Ende gemeinsam nach Mustern.
+Eine Karte pro Frage. Danach clustern wir gemeinsam – die Cluster begleiten uns durch den Tag.
 
 <!--
-Moderation: TKuD-Vorgabe – jede:r schreibt IST- und Wunschstand nieder, um später Muster zu finden.
-OFFEN: Format (Karten, Board, Datei im Demo-Repo?) und wann genau die Muster ausgewertet werden. Aktuell: Auswertung im Transfer-Block am Ende.
+Moderation: 20 min. TKuD-Vorgabe – jede:r schreibt IST- und Wunschstand nieder, um Muster zu finden.
+Ablauf: Rahmen und Agenda (3), still auf Karten schreiben, je eine Karte IST, Wunsch, KI (8),
+gemeinsam clustern: alle schieben gleichzeitig und still Karten zusammen (5), dann Cluster benennen (4).
+Keine Einzelvorstellung – bei 12 Personen zu lang.
+Cluster bleiben den Tag über sichtbar; in den Blöcken darauf verweisen („euer Cluster ‚Doku veraltet‘ – hier hilft Phase 4“).
+Besprechung und Optimierung im Transfer am Ende.
+OFFEN: physisch an der Wand oder digital (Miro o. Ä.)?
 -->
 
 ---
@@ -309,7 +316,7 @@ layout: quadrants
 ::one::
 
 ### Agent
-Junie oder Claude. Showcase und alle Übungen laufen damit.
+Junie, Claude usw. Showcase und alle Übungen laufen damit.
 
 ::two::
 
@@ -375,28 +382,6 @@ arc42-change-sync hängt zwischen openspec-verify und openspec-archive.
 -->
 
 ---
-class: gepardec-text-sm
----
-
-# Vertraulichkeit: Was geht wohin?
-
-| Was | Wohin | Regel |
-|---|---|---|
-| Prompt, Code, Dateien im Kontext | Modell-Anbieter | Nur, wenn Werkzeug und Vertrag für das Projekt freigegeben sind |
-| Structurizr-DSL | gehosteter MCP-Server | Nur fiktive oder öffentliche Modelle, sonst lokal per Docker |
-| Skills, Guidelines, `AGENTS.md` | Repo | Wie Code behandeln: versioniert, reviewt, keine Secrets |
-| Beispieldaten in der Doku | Repo, Wiki | Anonymisieren, Secrets als `<REDACTED>` oder `${env:VAR}` |
-
-**Heute:** nur das Demo-Repo, kein Kundencode, Transfer als Diskussion.
-
-<!--
-Moderation: Der Agent schickt alles, was er liest, an den Modell-Anbieter – nicht nur den Prompt. Also: Was liegt im Repo, was öffnet er?
-Vor dem Einsatz im Projekt klären: Ist das Werkzeug vom Kunden freigegeben? Welche Daten verlassen das Netz? Wird protokolliert oder trainiert?
-Projekt B regelt das in der Guideline selbst: keine Credentials, Beispieldaten anonymisiert.
-OFFEN: Verweis auf die interne KI-Richtlinie bzw. freigegebene Werkzeuge ergänzen. Demo-Repo-URL einblenden, sobald sie feststeht.
--->
-
----
 layout: section
 ---
 
@@ -413,11 +398,14 @@ layout: section
 - Wer sind die **Stakeholder** – und was brauchen sie von der Doku?
 - Was bauen wir ausdrücklich **nicht**?
 
-Werkzeug: **Brainstorming-Skill**
+Werkzeug: **grill-me** für die Fragen, **arc42-section-01 / -10** für das Ergebnis
 
 <!--
-Moderation: 20 min inkl. Live-Demo Brainstorming-Skill am Demo-Projekt (nicht am Übungs-Brief).
-Ergebnisse fließen in arc42-Sektion 1 und 2 und später in die Kreuztabelle.
+Moderation: 20 min inkl. Live-Demo grill-me am Demo-Projekt (nicht am Übungs-Brief).
+grill-me klärt Qualitätsziele, Stakeholder und Nicht-Ziele im Interview. arc42-section-01 schreibt daraus Sektion 1 (Ziele, Stakeholder), arc42-section-10 macht die Qualitätsziele zu messbaren Szenarien und hakt bei vagen Metriken nach. Randbedingungen bei Bedarf mit arc42-section-02.
+Die arc42-Sektions-Skills liegen nur unter .junie/skills (arc42-toolkit), grill-me in beiden Ordnern.
+Alternative: Brainstorming-Skill aus obra/superpowers (Plugin, nicht im Repo).
+Ergebnisse fließen in arc42-Sektion 1, 2 und 10 und später in die Kreuztabelle.
 -->
 
 ---
@@ -577,6 +565,23 @@ Moderation: Rückbezug Kapitel „Sichtenmodell und Notation“ – Konsistenz z
 -->
 
 ---
+
+# Demo: Zoo-Verwaltung (Brownfield)
+
+- Bestehende App aus der OpenSpec-Schulung: Angular + Quarkus, keine Architekturdoku
+- Live: Agent erzeugt die **Komponentensicht** der Domäne `animals` aus dem Code
+- Live: **Sektion 1** im Interview – der Code kennt keine Qualitätsziele
+- Befunde, die nur der Code liefert: Gehege ist keine Entity, keine Service-Schicht, `AGENTS.md` nennt Personal, das es nicht gibt
+
+<!--
+Moderation: Repo Gepardec/openspec-quarkus-angular. Start bei Tag arc42-demo-start (Kontext, Container, API-Komponenten, Verteilung, ADRs, Glossar schon da). Fertiges Ergebnis auf Branch arc42 als Fallback.
+Ablauf: Skill arc42-with-structurizr → „Erstelle die Komponentensicht für die Domäne animals“ → Agent ergänzt workspace.dsl, validiert, docs/architecture/diagrams/render.sh rendert. Danach arc42-section-01: Agent fragt nach Qualitätszielen, weil der Code sie nicht hergibt.
+Fehlableitungen des Agenten nicht still korrigieren, sondern zeigen (typisch: Gehege als eigene Entity, SPA und API als ein Container).
+Kontrast zur Pflanzenbewässerung: dort Greenfield aus dem Brief, hier Brownfield aus dem Code.
+OFFEN: Zeitbedarf ca. 10 min – aus dem Puffer nehmen oder die Pflanzenbewässerungs-Demo kürzen.
+-->
+
+---
 class: gepardec-text-sm
 ---
 
@@ -672,6 +677,7 @@ Format wie gestern: MADR. Verknüpfung über die Kreuztabelle.
 
 <!--
 Moderation: 15 min. Rückbezug ADR-Kapitel (MADR, Kreuztabelle QS ↔ Entscheidungen).
+Brownfield-Beispiel (Achtung: Nygard-Format aus dem Skill arc42-adr, nicht MADR – Unterschied kurz benennen): Zoo-Verwaltung, Branch arc42, docs/architecture/adr/ – vier nachträgliche ADRs (H2 in-memory, ein Deployment mit Quinoa, keine Service-Schicht, Sheriff). Wo das Motiv nicht im Code steht, steht „Kontext rekonstruiert, unbestätigt“ – genau das meint „Annahmen sichtbar markieren“.
 -->
 
 ---
@@ -702,6 +708,7 @@ flowchart LR
 
 <!--
 Moderation: Kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv.
+Zoo-Verwaltung, Branch arc42-unique-names: Change unique-animal-names ist umgesetzt (Tests grün), die arc42-Doku aber noch nicht nachgezogen. Live: openspec-verify-change → arc42-change-sync (findet z. B. 409 Conflict und Unique-Constraint, die in Sektion 5/8 fehlen) → openspec-archive-change.
 Rückbezug: Docs-as-Code, ADR-Workflow, Review-Prozess.
 -->
 
@@ -791,14 +798,17 @@ Moderation: Im Teamvergleich zeigen – wer die KI nur generieren lässt, landet
 
 # Transfer aufs eigene Projekt
 
-- Zurück zu deinem IST- und Wunschstand: **Welche Muster sehen wir?**
-- Brownfield oder Greenfield?
-- Welche Phase hat den größten Nachholbedarf?
-- Welcher Skill würde dir am meisten bringen?
+- Zurück zu euren Clustern: **Welche Phase, welcher Skill passt dazu?**
+- Wo ist der größte Nachholbedarf? Fehlt ein Cluster?
+- **Dein Wunschstand, überarbeitet:** Was ändert sich nach heute?
+- **Dein erster Schritt:** konkret und im Projekt umsetzbar
 - Wie passt das zu den Vorgaben im Projekt, z. B. einem Systemarchitekturkonzept?
 
 <!--
-Moderation: 20 min, als Diskussion – nicht live mit Kundencode. Umsetzung im Projekt erst nach Abstimmung mit Projekt bzw. Kunden.
+Moderation: 25 min, als Diskussion – nicht live mit Kundencode. Umsetzung im Projekt erst nach Abstimmung mit Projekt bzw. Kunden.
+Ablauf: Cluster vom Einstieg besprechen – Phase/Skill zuordnen, Nachholbedarf, ggf. umhängen oder ergänzen (10).
+Optimieren: jede:r überarbeitet den eigenen Wunschstand und notiert einen konkreten ersten Schritt, wer mag, liest kurz vor (10).
+Abschluss (5).
 -->
 
 ---
