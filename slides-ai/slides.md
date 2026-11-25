@@ -799,7 +799,7 @@ class: gepardec-text-sm
 Beide halten die Doku aktuell. Welcher passt, hängt vom Projekt ab.
 
 <!--
-Moderation: Insgesamt ca. 15 min für Phase 4 einplanen (bisher 10 min nur OpenSpec) – Ablauf entsprechend anpassen.
+Moderation: Phase 4 insgesamt 15 min (beide Workflows und Vergleich).
 Kombinierbar: grill-with-docs im explore-Schritt vor einem OpenSpec-Proposal.
 -->
 

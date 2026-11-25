@@ -29,7 +29,6 @@
     * [Phase 2: Architektur](#phase-2-architektur)
     * [Phase 3: Entscheiden](#phase-3-entscheiden)
     * [Phase 4: Umsetzung](#phase-4-umsetzung)
-    * [Übung: Greenfield-Durchstich](#übung-greenfield-durchstich)
     * [Transfer aufs eigene Projekt](#transfer-aufs-eigene-projekt)
 * [Referenzen](#referenzen)
 
@@ -407,7 +406,7 @@ Dokumentation, die nicht geprüft wird, verfällt.
 
 | Überblick |  |
 | :---- | :---- |
-| Inhalt | Praxisbeispiele aus Legacy-Projekten (Media Data, MM) • Phasenmodell: Vorprojekt, Architektur, Entscheiden, Umsetzung • Brownfield vs. Greenfield • Skills und MCP als Bausteine (arc42-Toolkit, Structurizr) • ADRs mit KI • Dokumentation aktuell halten (Ausblick OpenSpec) |
+| Inhalt | Praxisbeispiele aus zwei Legacy-Projekten (Projekt A, Projekt B, anonymisiert) • Phasenmodell: Vorprojekt, Architektur, Entscheiden, Umsetzung • Brownfield vs. Greenfield • Skills und MCP als Bausteine (arc42-Toolkit, Structurizr) • ADRs mit KI im schlanken Format • Dokumentation aktuell halten: OpenSpec und grill-with-docs |
 | Lernziele | Die Teilnehmenden können …<br>1. für jede Projektphase erklären, wie KI bei der Dokumentation unterstützt und wo ihre Grenzen liegen;<br>2. Brownfield und Greenfield nach Quelle, Rolle der KI und Hauptrisiko unterscheiden;<br>3. mit KI-Unterstützung Qualitätsziele, Stakeholder und Nicht-Ziele erheben und messbar formulieren;<br>4. Skills und MCP-Server als Bausteine einordnen und wissen, wie sie in ein Repository kommen;<br>5. KI-generierte Dokumentation kritisch prüfen (Generik, Halluzination, fehlender Projektbezug). |
 | Übung | Keine eigene Übung. IST- und Wunschstand im Einstieg und Transfer aufs eigene Projekt; die Phasen werden mit Live-Demos gezeigt. |
 | Dauer | ca. 3:20 h |
@@ -468,9 +467,9 @@ Dasselbe Phasenmodell wird je nach Ausgangslage von verschiedenen Enden her durc
 
 ### Werkzeuge und Vertraulichkeit
 
-Die Konzepte sind werkzeugneutral: **Agent Skills** (wiederverwendbare Anleitungen für den KI-Agenten), **MCP-Server** (Anbindung externer Werkzeuge wie Structurizr) und **Spec-driven Development** funktionieren mit jedem Agenten, der diese Standards unterstützt. Im Training wird mit JetBrains Junie bzw. dem IntelliJ AI Assistant gearbeitet, weil diese bei Gepardec lizenziert sind – sie sind ein Beispiel, keine Voraussetzung.
+Die Konzepte sind werkzeugneutral: **Agent Skills** (wiederverwendbare Anleitungen für den KI-Agenten), **MCP-Server** (Anbindung externer Werkzeuge wie Structurizr) und **Spec-driven Development** funktionieren mit jedem Agenten, der diese Standards unterstützt. Im Training wird mit JetBrains Junie oder Claude Code gearbeitet – beide sind ein Beispiel, keine Voraussetzung.
 
-Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Kundencode und Kundendokumente werden im Training nicht in KI-Tools eingegeben. Der Transfer auf das eigene Projekt erfolgt als Diskussion.
+Alle Demos laufen in vorbereiteten Demo-Repositories (Zoo-Verwaltung, Pflanzenbewässerung). Kundencode und Kundendokumente werden im Training nicht in KI-Tools eingegeben. Der gehostete Structurizr-MCP bekommt die DSL zu sehen; für Kundenmodelle wird er lokal betrieben. Der Transfer auf das eigene Projekt erfolgt als Diskussion.
 
 ### Ablauf
 
@@ -494,19 +493,23 @@ Die Live-Demos laufen an eigenen Demo-Projekten (Zoo-Verwaltung, Pflanzenbewäss
 
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
-Zwei Legacy-Projekte zeigen, wie mit KI Dokumentation aus bestehendem Code entstanden ist.
+Zwei Legacy-Projekte zeigen, wie mit KI Dokumentation aus bestehendem Code entstanden ist. Beide sind anonymisiert (Details: `documents/ai/projekt-a-workflow.md`, `documents/ai/projekt-b-workflow.md`).
 
-#### Media Data (arc42)
+#### Projekt A: arc42 aus Legacy-Code
 
-* Ausgangslage: *in Ausarbeitung*
-* KI-Einsatz: *in Ausarbeitung*
-* Ergebnis: *in Ausarbeitung*
+* Ausgangslage: Ein Bestandssystem wird modernisiert, arc42 liegt als AsciiDoc im Repository.
+* KI-Einsatz: Agentischer Workflow mit Skills. Jeder Change läuft durch OpenSpec; architekturrelevante Changes ziehen arc42 per `arc42-change-sync` nach, danach Review, Security Audit, Tests und Commit.
+* Ergebnis: ADRs pro Entscheidung, Diagramme aus Structurizr, die Doku wächst mit jedem Change. Konkrete Zahlen folgen.
 
-#### MM (Camel-Route-Guideline)
+#### Projekt B: Camel-Route-Guideline
 
-* Ausgangslage: *in Ausarbeitung*
-* KI-Einsatz: *in Ausarbeitung*
-* Ergebnis: *in Ausarbeitung*
+* Ausgangslage: Viele Integrationsrouten (Camel/Quarkus), das Wissen steckt im Code.
+* KI-Einsatz: Der Agent dokumentiert Route für Route nach einer verbindlichen Guideline, per Skill oder mit Sub-Agents für das ganze Repository. Lücken werden als `<TBD>` markiert, erfundene Beispiele als `<GENERATED>`.
+* Ergebnis: Pro Route ein Markdown-Dokument, zwei Draw.io-Diagramme und eine abgehakte Checkliste. Fertig ist eine Route erst, wenn Compliance-Check und Validierungs-Skript bestehen.
+
+#### Das gemeinsame Muster
+
+Der Mensch setzt den Standard (OpenSpec-Change bzw. Guideline), der Agent arbeitet ihn ab (Skills), ein Gate entscheidet, ob es fertig ist (Verify, Review, Git-Hooks bzw. Checkliste und Skript). Ohne Standard schreibt der Agent generisch, ohne Gate weiß niemand, ob es stimmt.
 
 ### Phase 1: Vorprojekt
 
@@ -520,7 +523,8 @@ Die Ergebnisse fließen in arc42-Sektion 1, 2 und 10 und später in die Kreuztab
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
 Ziel: arc42-Sektionen und C4-Diagramme mit KI erstellen – im Greenfield aus den Ergebnissen des Vorprojekts, im Brownfield aus dem Code. Werkzeuge: arc42-Toolkit (Skills je Sektion), Structurizr mit MCP-Anbindung und ein Orchestrierungs-Skill, der beides verbindet.
-Zwei Beispiele: die Pflanzenbewässerung aus Tag 1 (Greenfield, vorgestellt) und die Zoo-Verwaltung aus der OpenSpec-Schulung (Brownfield, Repository `openspec-quarkus-angular`, Branch `arc42`). Die Zoo-Demo läuft live und gleich zu Beginn der Phase: Ein Prompt startet den Agenten, der ohne Rückfragen arbeitet und Lücken als Annahme markiert; während er läuft, werden Structurizr und das arc42-Toolkit erklärt, danach wird das Ergebnis besprochen. Am Zoo erzeugt der Agent Kontext-, Container-, Komponenten-, Laufzeit- und Verteilungssicht aus einem einzigen Structurizr-Workspace. Dabei zeigt sich, was nur der Code liefert (ein Gehege ist keine Entity, es gibt keine Service-Schicht, `AGENTS.md` beschreibt Personal, das es nicht gibt) und was er nicht liefert: Qualitätsziele muss die KI erfragen.
+Zwei Beispiele: die Pflanzenbewässerung aus Tag 1 (Greenfield, vorgestellt) und die Zoo-Verwaltung aus der OpenSpec-Schulung (Brownfield, Repository `openspec-quarkus-angular`, Branch `arc42`). Die Zoo-Demo läuft live und gleich zu Beginn der Phase: Ein Prompt startet den Agenten, der ohne Rückfragen arbeitet und Lücken als Annahme markiert; während er läuft, werden Structurizr und das arc42-Toolkit erklärt, danach wird das Ergebnis besprochen. Den Prompt und die Vorbereitung enthält `demo/prompts/phase2-zoo-arc42.md`. Am Zoo erzeugt der Agent Kontext-, Container-, Komponenten-, Laufzeit- und Verteilungssicht aus einem einzigen Structurizr-Workspace. Dabei zeigt sich, was nur der Code liefert (ein Gehege ist keine Entity, es gibt keine Service-Schicht, `AGENTS.md` beschreibt Personal, das es nicht gibt) und was er nicht liefert: Qualitätsziele muss die KI erfragen. Im Ergebnis stehen sie nur als Annahme – daraus folgt die Kernaussage der Phase: Der Code zeigt, was gebaut wurde, nicht, worauf es ankommt. Qualitätsziele sind Entscheidungen, keine Ableitungen.
+Abschluss der Phase: Wahl des Diagramm-Werkzeugs (Structurizr, Draw.io, Mermaid) und typische Fehler in KI-generierter Doku (Generik, fehlender Projektbezug, Widerspruch, Halluzination, Annahme als Fakt, Lücke).
 Rückbezug: Kapitel „Sichtenmodell und Notation“ (C4, Konsistenz zwischen Sichten, Level of Detail).
 
 ### Phase 3: Entscheiden
@@ -528,14 +532,15 @@ Rückbezug: Kapitel „Sichtenmodell und Notation“ (C4, Konsistenz zwischen Si
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
 Ziel: ADRs mit KI formulieren (Greenfield) bzw. die Gründe hinter bestehenden Entscheidungen rekonstruieren (Brownfield) und mit den Qualitätszielen verknüpfen.
+Zum Einstieg kurz die Grundlagen: Nygard und MADR als bekannte Formate, im Training das schlanke Format (siehe Kapitel „Architekturentscheidungen dokumentieren (ADR)“). Skills: `arc42-adr` (schlankes Format, pflegt arc42-Sektion 9), `arc42-section-09` aus dem Toolkit, `grill-with-docs`. Ein eigener MCP ist nicht nötig – ADRs sind Markdown im Repository; Structurizr kann sie per `!adrs` neben dem Modell anzeigen.
 Brownfield-Beispiel: vier nachträgliche ADRs zur Zoo-Verwaltung (H2 in-memory, ein Deployment mit Quinoa, keine Service-Schicht, Sheriff für Domänengrenzen). Wo das Motiv nicht im Code steht, ist der Kontext als „rekonstruiert, unbestätigt“ markiert.
-Rückbezug: Kapitel „Architekturentscheidungen dokumentieren (ADR)“ (MADR, Kreuztabelle).
+Rückbezug: Kapitel „Architekturentscheidungen dokumentieren (ADR)“ (schlankes Format, Kreuztabelle).
 
 ### Phase 4: Umsetzung
 
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
-Ziel: Dokumentation bei jeder Änderung mitziehen, statt sie nachträglich zu reparieren. Konzept Spec-driven Development: Spezifikation, Umsetzung und Dokumentation entstehen in einem Zyklus. OpenSpec dient als Werkzeug-Beispiel, keine eigene Phase (10 min): kurze Demo eines Changes aus dem Trainings-Repo von Proposal bis Archiv. Brownfield-Beispiel: Am Change `unique-animal-names` der Zoo-Verwaltung findet `arc42-change-sync` zwischen Verify und Archiv, was in der arc42-Doku fehlt (Unique-Constraint, `409 Conflict`).
+Ziel: Dokumentation bei jeder Änderung mitziehen, statt sie nachträglich zu reparieren. Konzept Spec-driven Development: Spezifikation, Umsetzung und Dokumentation entstehen in einem Zyklus. Zwei Workflows im Vergleich (15 min): **OpenSpec** (spec-driven, pro Change Proposal, Design, Specs und Tasks; kurze Demo von Proposal bis Archiv) und **grill-with-docs** (kein Spec-Framework: der Agent interviewt, Begriffe landen im Glossar, Entscheidungen als ADR). OpenSpec passt für Feature-Arbeit im Team, grill-with-docs für Klärung, Entscheidungen und Fachsprache; kombinierbar, z. B. grill-with-docs im Explore-Schritt vor einem Proposal. Brownfield-Beispiel: Am Change `unique-animal-names` der Zoo-Verwaltung findet `arc42-change-sync` zwischen Verify und Archiv, was in der arc42-Doku fehlt (Unique-Constraint, `409 Conflict`).
 Rückbezug: „Best Practices & Technischer Workflow“ (Docs-as-Code, ADR-Workflow, Review-Prozess) und „Architekturentscheidungen dokumentieren (ADR)“ – Proposal, Design und Archiv wirken wie ein ADR-Log.
 
 ### Transfer aufs eigene Projekt
