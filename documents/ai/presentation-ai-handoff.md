@@ -64,6 +64,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | Projekt A | Agentischer Workflow aus dem Projekt als Praxisbeispiel (OpenSpec → arc42-Sync bei Relevanz → QS → Commit) |
 | Projekt B | Route-Doku-Workflow als Praxisbeispiel (Guideline → Skill pro Route → Compliance-Check → Skript-Gate; Orchestrator mit Sub-Agents fürs ganze Repo) |
 | Kritisch prüfen | Keine eigene Übung mehr (2026-11-25 gestrichen). Stattdessen eine Folie „Typische Fehler in KI-Doku“ (5 min, Ende Phase 2) mit den sechs Fehlerarten und Beispielen aus dem KI-Auszug zur Pflanzenbewässerung. Lernziel 5 der Spec damit nur noch gezeigt, nicht geübt |
+| ADR-Format | **Schlankes Format** von Tag 1 durchgängig (2026-11-25): Titel/Status, Kontext, Entscheidung, Alternativen, Konsequenzen, Bezüge (Qualitätsziele, Risiken, andere ADRs). Skill `arc42-adr` umgestellt („Implications“ → „Bezüge“), Folien 31/32 und Hauptdokument nennen es; Nygard und MADR nur als Hintergrund |
 | Gemeinsames Muster | Nach den Praxisbeispielen: Mensch setzt Standard → Agent arbeitet ab → Gate entscheidet |
 | Zwei Leser | Doku für Menschen und für Agenten (`AGENTS.md`, Guidelines, Skills) – Rückbezug auf Zielgruppen von Tag 1 |
 | Diagramm-Werkzeug | Structurizr vs. Draw.io vs. Mermaid als Entscheidung, Diskussionsfrage |
@@ -116,6 +117,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 ## Offene Punkte
 
+- [ ] **Zoo-Repo, ADR-Format:** `.agents/skills/arc42-adr` im Zoo-Repo hat noch „Implications“. Neuen Skill-Stand rüberkopieren, committen und `arc42-live-start` neu setzen (siehe Nachbereitung in `demo/prompts/phase2-zoo-arc42.md`); die vier ADRs auf `arc42` optional auf „Bezüge“ umbenennen
 - [ ] **Live-Demo Phase 2:** Probelauf mit Zeitmessung (Ziel ca. 20 min). Startbefehl/Berechtigungen für Claude Code festlegen (Edits, `plantuml`, `render.sh` ohne Freigabe) und in die Notiz von Folie 20 eintragen. Prüfen, ob der Agent ohne Rückfragen durchläuft und die offenen Changes ignoriert. Tag `arc42-live-start` liegt nur lokal (Commit ist über `arc42-unique-names` schon auf origin)
 - [ ] **Projekt B:** anonymisierten Ausschnitt einer echten Route-Doku (Decision Tree oder Diagramm) für die Folie
 - [ ] **Projekt A:** konkrete Ergebnisse (Anzahl ADRs, Sektionen, Erfahrungen) und anonymisierte Ausschnitte
@@ -171,3 +173,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Restliche „Brainstorming“-Stellen aus Branch `mf/phase1-skills` übernommen (Folie 15, Notiz Folie 16, Übungsschritt 1 auf Folie 37 → grill-me); Worktree und Branch `mf/phase1-skills` entfernt |
 | 2026-11-25 | Übung Greenfield-Durchstich gestrichen: Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“ entfernt, Agenda (Folie + Notiz), „Zwei Einstiege“ und „Die Bausteine“ angepasst; Hauptdokument: Überblick, Zwei Einstiege, Ablauf, Abschnitt Übung entfernt; Ende jetzt 3:15, 37 Folien |
 | 2026-11-25 | Neue Folie 31 „ADRs: Format, Skills, Werkzeuge“ (Nygard/MADR, Skills, Structurizr `!adrs`, Links) vor „ADRs mit KI“; Phase 3 auf 15 min, Ende 3:20; jetzt 38 Folien |
+| 2026-11-25 | ADR-Format vereinheitlicht auf das schlanke Format von Tag 1: Skill `arc42-adr` (Reihenfolge wie Tag 1, „Bezüge“ statt „Implications“), `arc42-change-sync`, Folien 16, 31, 32, Hauptdokument (neuer Abschnitt „Im Training: das schlanke Format“) |

@@ -305,6 +305,10 @@ German comparison between Hamcrest and AssertJ: <https://www.sigs-datacom.de/upl
 
 ````
 
+#### Im Training: das schlanke Format
+
+Im Training wird ein schlankes Format verwendet, das zwischen Nygard und MADR liegt: Titel und Status, Kontext, Entscheidung, betrachtete Alternativen, Konsequenzen und Bezüge (Qualitätsziele, Risiken, andere ADRs). Es übernimmt den Nygard-Kern, die Alternativen aus MADR und macht die Verknüpfung zur Kreuztabelle (siehe unten) zu einem festen Abschnitt. Dasselbe Format nutzt der Skill `arc42-adr` im KI-Teil.
+
 ### Vernetzung: Einflussfaktoren, Qualität & Risiko
 
 #### Zusammenhang mit Qualitätsanforderungen und Risiken
@@ -478,7 +482,7 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 | 1:00 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
 | 1:15 | Architektur: Live-Demo (Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code), währenddessen Structurizr mit Greenfield-Beispiel Pflanzenbewässerung und arc42-Toolkit, danach Ergebnis, Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
 | 1:55 | Pause | 15 min |
-| 2:10 | Entscheiden: ADR-Grundlagen (Nygard, MADR, Skills, Structurizr `!adrs`), ADRs mit KI, Kreuztabelle | 15 min |
+| 2:10 | Entscheiden: ADR-Grundlagen (Nygard, MADR, schlankes Format, Skills, Structurizr `!adrs`), ADRs mit KI, Kreuztabelle | 15 min |
 | 2:25 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
 | 2:40 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
 | 3:05 | Puffer | 15 min |

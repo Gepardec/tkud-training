@@ -1,10 +1,10 @@
 ---
 name: arc42-adr
-description: Erstellt Architecture Decision Records (ADRs) im Nygard-Format als separate Markdown-Dateien und aktualisiert die arc42 Section 9 (Architekturentscheidungen). IMMER verwenden, wenn der User eine Architekturentscheidung dokumentieren will, ein ADR erstellen oder aktualisieren möchte, oder nach einem OpenSpec-Change architekturrelevante Entscheidungen in ADRs überführt werden sollen (siehe arc42-change-sync). Auch triggern bei: "entscheidung dokumentieren", "adr anlegen", "architekturentscheidung festhalten", "neues adr", "adr für ...". Verwende DIESEN Skill, nicht arc42-section-09, wenn es um ADRs im Nygard-Markdown-Format mit separaten Dateien geht. Verwende NICHT, wenn nur eine textuelle Beschreibung der Architektur gewünscht ist (dann arc42-section-09).
+description: Erstellt Architecture Decision Records (ADRs) im schlanken Format (Nygard plus Alternativen und Bezüge) als separate Markdown-Dateien und aktualisiert die arc42 Section 9 (Architekturentscheidungen). IMMER verwenden, wenn der User eine Architekturentscheidung dokumentieren will, ein ADR erstellen oder aktualisieren möchte, oder nach einem OpenSpec-Change architekturrelevante Entscheidungen in ADRs überführt werden sollen (siehe arc42-change-sync). Auch triggern bei: "entscheidung dokumentieren", "adr anlegen", "architekturentscheidung festhalten", "neues adr", "adr für ...". Verwende DIESEN Skill, nicht arc42-section-09, wenn es um ADRs als separate Markdown-Dateien geht. Verwende NICHT, wenn nur eine textuelle Beschreibung der Architektur gewünscht ist (dann arc42-section-09).
 ---
 # arc42-adr — ADR-Workflow
 
-Erstellt Architecture Decision Records (ADRs) im Nygard-Format und pflegt die arc42 Section 9 als Übersichtsseite.
+Erstellt Architecture Decision Records (ADRs) im schlanken Format und pflegt die arc42 Section 9 als Übersichtsseite.
 
 ## ADR-Lebenszyklus
 
@@ -28,7 +28,9 @@ docs/architecture/
     └── 09-architecture-decisions.md      # Übersichtsseite (Decision Log + Kurzbeschreibungen)
 ```
 
-## ADR-Format (Nygard + Implications)
+## ADR-Format (schlankes Format: Nygard + Alternativen + Bezüge)
+
+Das Format entspricht dem schlanken ADR aus dem Training (Tag 1): Titel und Status, Kontext, Entscheidung, betrachtete Alternativen, Konsequenzen, Bezüge. Nicht MADR – kein Front Matter, keine Abschnitte „Decision Drivers“ oder „Pros and Cons of the Options“.
 
 Jedes ADR ist eine einzelne Markdown-Datei mit folgendem Aufbau:
 
@@ -51,13 +53,6 @@ so, dass jemand ohne Vorkenntnisse den Grund für die Entscheidung versteht.
 
 Was wurde konkret beschlossen? Eine klare, prägnante Aussage.
 
-## Konsequenzen
-
-- Positiv: Vorteil 1
-- Positiv: Vorteil 2
-- Negativ: Nachteil 1 — sei ehrlich, jede Entscheidung hat Trade-offs
-- Negativ: Nachteil 2
-
 ## Alternativen
 
 | Alternative | Warum verworfen |
@@ -67,12 +62,20 @@ Was wurde konkret beschlossen? Eine klare, prägnante Aussage.
 
 Die Tabelle kann entfallen, wenn keine Alternativen ernsthaft evaluiert wurden.
 
-## Implications
+## Konsequenzen
 
+- Positiv: Vorteil 1
+- Positiv: Vorteil 2
+- Negativ: Nachteil 1 — sei ehrlich, jede Entscheidung hat Trade-offs
+- Negativ: Nachteil 2
+
+## Bezüge
+
+- Qualitätsziele (→ Section 1.2 / 10): Welche QGs werden adressiert
+- Risiken (→ Section 11): Welche Risiken mindert oder schafft die Entscheidung (inkl. Technical Debt)
+- Andere ADRs: Hängt von ADR-XXX ab, ergänzt ADR-YYY
 - Betroffene Bausteine (→ Section 5): Welche Komponenten sind betroffen
-- Qualitätsziele (→ Section 1.2): Welche QGs werden adressiert
 - Neue Constraints (→ Section 2): Falls die Entscheidung neue Randbedingungen schafft
-- Risiken (→ Section 11): Falls die Entscheidung neue Risiken oder Technical Debt einführt
 ```
 
 ## Workflow: Neues ADR aus OpenSpec-Change
@@ -126,5 +129,5 @@ Wenn der User eine einzelne Entscheidung dokumentieren will (nicht aus einem Cha
 - Dateiname: `adr-<XXX>-<kurztitel>.md` (nur Kleinbuchstaben, Bindestriche, max 50 Zeichen)
 - Sprache: Deutsch (wie die arc42-Dokumentation), Fachbegriffe und Code-Bezeichner bleiben englisch
 - Querverweise zu anderen ADRs: `[ADR-006a](adr-006a-deployment-je-domaene.md)`
-- Querverweise zu arc42-Sektionen: Nutze die Implications-Tabelle im ADR
+- Querverweise zu arc42-Sektionen: Nutze den Abschnitt „Bezüge“ im ADR
 - Ein neues ADR bekommt immer die nächste freie ID (max ID aus vorhandenen Dateien + 1)

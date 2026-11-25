@@ -173,7 +173,7 @@ Wenn der User zustimmt:
    Verwende dazu den `arc42-with-structurizr` Skill, wenn auch Diagramme
    betroffen sind.
 3. **Für neue Architekturentscheidungen**: Verwende den `arc42-adr` Skill,
-   um ADRs im Nygard-Format als separate Markdown-Dateien in `docs/architecture/adr/`
+   um ADRs im schlanken Format als separate Markdown-Dateien in `docs/architecture/adr/`
    zu erstellen und Section 9 als Übersichtsseite zu aktualisieren.
    Der `arc42-adr` Skill extrahiert Entscheidungen automatisch aus dem
    Change-Design-Dokument (`design.md`).

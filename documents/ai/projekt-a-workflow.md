@@ -52,7 +52,7 @@ Optional, nur bei architekturrelevanten Changes. Der Skill `arc42-change-sync` l
 1. **Change analysieren:** Proposal, Tasks und Specs lesen, betroffene arc42-Sektionen bestimmen, Report mit Handlungsbedarf
 2. **Aktualisieren** (nach Bestätigung):
    - einfache Änderungen direkt in der betroffenen `.adoc`-Datei
-   - neue ADRs mit `arc42-adr`: Nygard-Format, eine Markdown-Datei pro Entscheidung, Sektion 9 als Übersicht
+   - neue ADRs mit `arc42-adr`: Nygard-Format (Stand im Projekt; der Skill im Training-Repo nutzt inzwischen das schlanke Format), eine Markdown-Datei pro Entscheidung, Sektion 9 als Übersicht
    - Diagramme mit `arc42-with-structurizr`
 
 Der Skill prüft außerdem, ob `design.md` Entscheidungen enthält, für die es noch kein ADR gibt, und bietet an, sie zu erfassen.
