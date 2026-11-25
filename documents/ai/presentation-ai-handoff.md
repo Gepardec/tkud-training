@@ -179,3 +179,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Notiz Folie 21: Structurizr-Oberfläche (local, server, statischer Export) kurz erklärt und gegen unseren Export-Workflow abgegrenzt |
 | 2026-11-25 | Statement „Der Code zeigt, was gebaut wurde – nicht, worauf es ankommt. Qualitätsziele sind Entscheidungen, keine Ableitungen.“ als Folie 28 nach dem Zoo-Ergebnis (ersetzt die Pointe der gestrichenen Übung); jetzt 39 Folien |
 | 2026-11-25 | Folie 23: DSL-Auszug an `demo/structurizr/workspace.dsl` angeglichen (Bezeichner, `!identifiers hierarchical`, Containersicht), Hinweis und Link auf IntelliJ-Plugin „Structurizr DSL“ (Live-Vorschau Kontext/Container); README der Demo ergänzt |
+| 2026-11-25 | Folie 24 „Ergebnis: Kontextsicht“: mit MCP-Export des Workspaces abgeglichen (Elemente und Beziehungen identisch), Technologie-Labels „Annahme: MQTT“ an den drei Pfeilen ergänzt |

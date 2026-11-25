@@ -541,15 +541,15 @@ flowchart LR
   PU["Pumpensteuerung<br/>[Extern]"]
   N["Benachrichtigungsdienst<br/>[Extern]"]
   P -- "konfiguriert Grenzwerte,<br/>sieht Status" --> B
-  S -- "liefert Messwerte" --> B
-  B -- "sendet Bewässerungsbefehl" --> PU
-  PU -- "meldet Status zurück" --> B
+  S -- "liefert Messwerte<br/>[Annahme: MQTT]" --> B
+  B -- "sendet Bewässerungsbefehl<br/>[Annahme: MQTT]" --> PU
+  PU -- "meldet Status zurück<br/>[Annahme: MQTT]" --> B
   B -- "löst Warnung aus" --> N
   N -- "benachrichtigt" --> P
 ```
 
 <!--
-Moderation: Erzeugt über export-mermaid aus dem Workspace (Styling fürs Theme entfernt).
+Moderation: Erzeugt über export-mermaid aus dem Workspace (Styling und Beschreibungen fürs Theme entfernt, Technologien als „Annahme:“ behalten – im Greenfield ist noch nichts entschieden).
 Die Containersicht kommt aus demselben Modell.
 -->
 
