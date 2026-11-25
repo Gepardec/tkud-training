@@ -2,7 +2,7 @@
 
 > **Pflegeregel:** Dieses Dokument wird bei **jeder** Änderung an Deck, Demo oder Entscheidungen zum KI-Teil mitgezogen: Folienliste, Entscheidungen, offene Punkte und Änderungslog. Es ist der Einstieg für alle, die am KI-Teil weiterarbeiten – Mensch oder Agent.
 
-Stand: 2026-11-20 · Verantwortlich: Mattias Fankhauser · Branch: `setup/mf-ai-part`
+Stand: 2026-11-25 · Verantwortlich: Mattias Fankhauser · Branch: `setup/mf-ai-part`
 
 ## Worum es geht
 
@@ -18,7 +18,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 0:20 | Aus der Praxis | Projekt A (15), Projekt B (10), gemeinsames Muster (5) | 4–9 | 30 min |
 | 0:50 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills | 10–16 | 10 min |
 | 1:00 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
-| 1:15 | Phase 2: Architektur | arc42-Toolkit, Structurizr mit Live-Demo (20), Zoo-Demo Brownfield (10), Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–29 | 40 min |
+| 1:15 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10), Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–29 | 40 min |
 | 1:55 | Pause | | | 15 min |
 | 2:10 | Phase 3: Entscheiden | ADRs mit KI | 30–31 | 10 min |
 | 2:20 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 32–35 | 15 min |
@@ -42,11 +42,12 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | [`../../slides-ai/slides.md`](../../slides-ai/slides.md) | das Slidev-Deck |
 | [`../../slides-ai/README.md`](../../slides-ai/README.md) | Befehle (dev, build, export) und Konventionen fürs Deck |
 | [`../../demo/structurizr/workspace.dsl`](../../demo/structurizr/workspace.dsl) | Structurizr-Demo: Pflanzenbewässerung (fiktiv) |
+| [`../../demo/prompts/phase2-zoo-arc42.md`](../../demo/prompts/phase2-zoo-arc42.md) | Prompt und Vorbereitung der Live-Demo in Phase 2 (Zoo-Verwaltung vollständig dokumentieren), gleichlautend in den Notizen von Folie 20 |
 | [`../../demo/uebung-kritisch-pruefen/`](../../demo/uebung-kritisch-pruefen/arc42-auszug.md) | Quelle der Beispiele auf der Folie „Typische Fehler in KI-Doku“: KI-generierter `arc42-auszug.md` mit sechs eingebauten Fehlern, Erklärung in `LOESUNG.md` (ehemals Übung „Finde die Fehler“) |
 | Hauptdokument `../Technische Dokumentation und Kommunikation_ Reboot - Ausarbeitung.md` | Kapitel „Dokumentation mit KI“ (Langtext; Ablauf-Tabelle und Dauer aktuell, Rest noch Stand vor diesen Entscheidungen) |
 | `../../openspec/specs/training/ki-kapitel/spec.md` | Anforderungen ans KI-Kapitel |
 | `../how-tos/` | Setup Junie, arc42-Toolkit, Structurizr |
-| Zoo-Repo `~/IdeaProjects/openspec-quarkus-angular` (GitHub `Gepardec/openspec-quarkus-angular`) | Brownfield-Beispiel: Branch `arc42` (arc42-Doku + Structurizr-Workspace unter `docs/architecture/`, 4 nachträgliche ADRs, `GLOSSARY.md`, Skills unter `.agents/skills/`), Tag `arc42-demo-start` (Startpunkt Live-Demo), Branch `arc42-unique-names` (Change umgesetzt, Doku bewusst nicht nachgezogen) |
+| Zoo-Repo `~/IdeaProjects/openspec-quarkus-angular` (GitHub `Gepardec/openspec-quarkus-angular`) | Brownfield-Beispiel: Branch `arc42` (arc42-Doku + Structurizr-Workspace unter `docs/architecture/`, 4 nachträgliche ADRs, `GLOSSARY.md`, Skills unter `.agents/skills/`), Tag `arc42-live-start` (Commit `1b80931`: Skills + MCP, noch keine Doku, Startpunkt der Live-Demo in Phase 2), Tag `arc42-demo-start` (Teil-Doku, aus der früheren Demo-Variante, nicht mehr verwendet), Branch `arc42-unique-names` (Change umgesetzt, Doku bewusst nicht nachgezogen) |
 
 ## Entscheidungen
 
@@ -55,7 +56,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | Werkzeuge | Showcase und alle Übungen mit **Junie oder Claude**. IntelliJ AI Assistant ist raus. |
 | Einstieg | **TKuD-IST-/Wunschstand:** Jede:r schreibt IST- und Wunschstand auf Karten, gemeinsames Clustern direkt danach. Besprechung, Zuordnung zu Phasen/Skills und Optimierung des eigenen Wunschstands im Transfer am Ende. |
 | Anonymisierung | Praxisbeispiele auf Folien und in Unterlagen nur anonymisiert: Media Data → **Projekt A**, MM → **Projekt B**. Keine Kunden- oder Projektnamen (auch nicht ITSV/SAK) auf Folien. |
-| Structurizr | Erklärung (ein Modell, viele Sichten, MCP) plus Live-Demo am fiktiven System **Pflanzenbewässerung** aus Tag 1 (Greenfield). Dazu **Zoo-Verwaltung** aus der OpenSpec-Schulung als Brownfield-Beispiel, das sich durch Phase 2 (Sichten aus dem Code), 3 (nachträgliche ADRs) und 4 (`arc42-change-sync` an `unique-animal-names`) zieht |
+| Structurizr | Erklärung (ein Modell, viele Sichten, MCP, Homepage im Browser) mit dem fiktiven System **Pflanzenbewässerung** aus Tag 1 als vorgestelltem Greenfield-Beispiel (nicht mehr live). **Live-Demo (2026-11-25) am Anfang von Phase 2:** Ein Prompt lässt den Agenten die vollständige arc42-Doku der **Zoo-Verwaltung** aus dem Code erzeugen (Start bei Tag `arc42-live-start`, ohne Rückfragen, Lücken als „Annahme:“); während er läuft, Theorie zu Structurizr und arc42-Toolkit, danach Ergebnis. Die Zoo-Verwaltung ist das Brownfield-Beispiel, das sich durch Phase 2 (Sichten aus dem Code), 3 (nachträgliche ADRs) und 4 (`arc42-change-sync` an `unique-animal-names`) zieht |
 | Doku aktuell halten | **Zwei Workflows:** OpenSpec (spec-driven, inkl. `arc42-change-sync`) und **grill-with-docs** (Interview, Glossar und ADRs entstehen nebenbei). Phase 4 dafür ca. 15 statt 10 min. |
 | Skill-Beispiele | grilling / grill-me, grill-with-docs, domain-modeling, arc42-adr / arc42-change-sync |
 | arc42-Ablage | Ein `workspace.dsl` für alle Sichten, Sektionen als Markdown unter `docs/architecture/sections/`. `arc42-with-structurizr`, `arc42-adr` und `arc42-change-sync` sind darauf umgestellt; die Diagramm-Anweisungen der Section-Skills (`docs/diagrams/*.puml`) gelten in diesem Workflow nicht |
@@ -92,14 +93,14 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 17 | Phase 1 | section | fertig |
 | 18 | Die KI stellt die unbequemen Fragen | default | fertig |
 | 19 | Phase 2 | section | fertig |
-| 20 | arc42-Toolkit ins Repo holen | default | fertig |
+| 20 | Live-Demo: Zoo-Verwaltung dokumentieren | default (Prompt in den Notizen) | Probelauf mit Zeitmessung und Startbefehl offen |
 | 21 | Structurizr: Architektur als Code | two-cols-header | fertig |
 | 22 | Structurizr-MCP | default | fertig |
-| 23 | Demo: Pflanzenbewässerung | default (DSL) | fertig |
+| 23 | Greenfield-Beispiel: Pflanzenbewässerung | default (DSL) | fertig |
 | 24 | Ergebnis: Kontextsicht | default (Mermaid) | fertig |
-| 25 | Live-Demo: Structurizr mit dem Agenten | default | fertig |
+| 25 | arc42-Toolkit: ein Skill pro Sektion | default | fertig |
 | 26 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
-| 27 | Demo: Zoo-Verwaltung (Brownfield) | default | fertig |
+| 27 | Ergebnis: Zoo-Verwaltung (Brownfield) | default | fertig |
 | 28 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
 | 29 | Typische Fehler in KI-Doku | default (Tabelle) | fertig |
 | 30 | Phase 3 | section | fertig |
@@ -116,6 +117,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 ## Offene Punkte
 
+- [ ] **Live-Demo Phase 2:** Probelauf mit Zeitmessung (Ziel ca. 20 min). Startbefehl/Berechtigungen für Claude Code festlegen (Edits, `plantuml`, `render.sh` ohne Freigabe) und in die Notiz von Folie 20 eintragen. Prüfen, ob der Agent ohne Rückfragen durchläuft und die offenen Changes ignoriert. Tag `arc42-live-start` liegt nur lokal (Commit ist über `arc42-unique-names` schon auf origin)
 - [ ] **Projekt B:** anonymisierten Ausschnitt einer echten Route-Doku (Decision Tree oder Diagramm) für die Folie
 - [ ] **Projekt A:** konkrete Ergebnisse (Anzahl ADRs, Sektionen, Erfahrungen) und anonymisierte Ausschnitte
 - [ ] **Datum** von Tag 2 (Cover)
@@ -126,7 +128,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 - [ ] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen oben anpassen (nennt noch AI Assistant, nur OpenSpec, Klarnamen)
 - [x] **Brainstorming-Skill** (Phase 1, obra/superpowers) lag nicht im Repo: Folie 18 nutzt jetzt grill-me + arc42-section-01/-10, Brainstorming nur noch als Alternative in der Moderationsnotiz
 - [x] **Hauptdokument:** Phase 1 (Agenda, Abschnitt, Übungsschritt 1) auf grill-me + arc42-section-01/-10 umgestellt
-- [ ] **Zoo-Repo pushen:** Branches `arc42`, `arc42-unique-names` und Tag `arc42-demo-start` liegen nur lokal in `openspec-quarkus-angular`; Push nach `Gepardec/openspec-quarkus-angular` erst nach Abnahme. Vorher: Lizenz von mattpocock/skills (domain-modeling) prüfen, bevor `NOTICE` sie nennt; nur den eigenen Tag pushen (`git push origin arc42-demo-start`), nicht `--tags`. Hinweis: `.mcp.json` und `openspec/changes/unique-animal-names/` waren auf `loesung` ungetrackt und sind jetzt auf `arc42` committet
+- [ ] **Zoo-Repo pushen:** Stand 2026-11-25: `arc42-unique-names` **ist bereits auf origin** und enthält alle Commits von `arc42` und `arc42-live-start` (Skills inkl. domain-modeling sind damit schon öffentlich). Nur lokal: Branch `arc42` (Teilmenge von `arc42-unique-names`), Tags `arc42-live-start` (Live-Demo) und `arc42-demo-start` (nicht mehr verwendet). Vorher: Lizenz von mattpocock/skills (domain-modeling) prüfen, bevor `NOTICE` sie nennt; nur den benötigten Tag pushen (`git push origin arc42-live-start`), nicht `--tags`. Hinweis: `.mcp.json` und `openspec/changes/unique-animal-names/` waren auf `loesung` ungetrackt und sind jetzt auf `arc42` committet
 - [ ] **Zoo, Change `unique-animal-names`:** Task 4.1 (Browser-Check der Fehlermeldung) noch offen; Tests, `ng build` und `ng lint` grün
 - [ ] **Zoo, Archiv-Ziel:** Der Change `unique-animal-names` hat ein ADDED-Delta auf `animal-management`; Archive legt dadurch eine neue Capability neben `animal-registration`/`animal-editing` an (im Probelauf geprüft). Bewusst so lassen oder Delta vorher auf die bestehenden Capabilities umschreiben?
 - [ ] **Evals von `arc42-with-structurizr`** (`.claude/skills/arc42-with-structurizr/evals/`) beschreiben noch die alte Ablage (adoc, eine DSL pro Sicht)
@@ -162,3 +164,9 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Phase 1: Brainstorming-Skill (nicht im Repo) ersetzt durch grill-me für die Fragen und arc42-section-01/-10 für das Ergebnis; Folie „Die KI stellt die unbequemen Fragen“, Agenda und Hauptdokument (Agenda, Abschnitt Phase 1, Übungsschritt 1) angepasst |
 | 2026-11-25 | Zoo-Verwaltung als Brownfield-Beispiel: im Zoo-Repo Branch `arc42` (Skills, Workspace mit Context/Container/Component/Dynamic/Deployment, Sektionen 1/3/5/6/7/8/9/12, 4 ADRs, Glossar, Lint sauber bis auf fehlende Sektion 11), Tag `arc42-demo-start`, Branch `arc42-unique-names` (Change umgesetzt). Im Training-Repo: `arc42-with-structurizr`, `arc42-adr`, `arc42-change-sync` auf einen Workspace + Markdown umgestellt; neue Folie 27 „Demo: Zoo-Verwaltung (Brownfield)“, Verweise in Phase 3 und 4; Folien ab 27 um eins verschoben, jetzt 41 |
 | 2026-11-25 | Übung „Finde die Fehler“ gestrichen: Folien „Übung: Finde die Fehler“ und „Auflösung“ ersetzt durch eine Folie „Typische Fehler in KI-Doku“ (Fehlerarten mit Beispielen); die frei gewordenen 10 min gehen an die Zoo-Demo; jetzt 40 Folien |
+| 2026-11-25 | Phase 2 umgebaut: Live-Demo am Anfang (Folie 20, Prompt in den Notizen), die vollständige arc42-Doku der Zoo-Verwaltung aus dem Code erzeugt, Start bei neuem lokalem Tag `arc42-live-start`. Während der Agent läuft: Structurizr (mit Links, Homepage), Pflanzenbewässerung als vorgestelltes Greenfield-Beispiel, arc42-Toolkit (Infos aus dem README, GitHub-Link), Orchestrierung. Folie 27 zeigt jetzt das Ergebnis. Folie „Live-Demo: Structurizr mit dem Agenten“ (Pflanzenbewässerung) entfernt; weiter 40 Folien |
+| 2026-11-25 | Prompt der Live-Demo Phase 2 zusätzlich als `demo/prompts/phase2-zoo-arc42.md` abgelegt (mit Vorbereitung), Verweis in den Notizen von Folie 20 |
+| 2026-11-25 | Korrektur Zoo-Repo: `arc42-unique-names` ist bereits gepusht (enthält `arc42` und `arc42-live-start`), offener Punkt „Zoo-Repo pushen“ angepasst |
+| 2026-11-25 | `demo/prompts/phase2-zoo-arc42.md`: Abschnitt Nachbereitung (Demo-Stand verwerfen, Tag neu setzen bei Skill-Updates) und Hinweis zur MCP-Freigabe auf frischem Klon ergänzt |
+| 2026-11-25 | Folie 21 „Structurizr: Architektur als Code“: Link docs.structurizr.com/example ergänzt, Notizen mit Browser-Ablauf (Beispiele, Getting started, interaktives Beispiel auf c4model.com) |
+| 2026-11-25 | Restliche „Brainstorming“-Stellen aus Branch `mf/phase1-skills` übernommen (Folie 15, Notiz Folie 16, Übungsschritt 1 auf Folie 37 → grill-me); Worktree und Branch `mf/phase1-skills` entfernt |

@@ -41,7 +41,7 @@ Moderation: Ca. 4:45 h (Rahmen 4–5 h). Erst Praxis, dann Theorie – bewusst s
 0:20 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
 0:50 Einordnung (10)
 1:00 Phase 1 Vorprojekt (15)
-1:15 Phase 2 Architektur inkl. Structurizr-Demo, Zoo-Demo und typische Fehler in KI-Doku (40)
+1:15 Phase 2 Architektur: Live-Demo Zoo starten, Structurizr, arc42-Toolkit, Ergebnis Zoo, Diagramm-Werkzeug, typische Fehler (40)
 1:55 Pause (15)
 2:10 Phase 3 Entscheiden (10)
 2:20 Phase 4 Umsetzung, zwei Workflows (15)
@@ -321,7 +321,7 @@ Junie, Claude usw. Showcase und alle Übungen laufen damit.
 ::two::
 
 ### Skills
-Wiederverwendbare Anleitungen für den Agenten, z. B. Brainstorming oder arc42-Sektionen.
+Wiederverwendbare Anleitungen für den Agenten, z. B. grill-me oder arc42-Sektionen.
 
 ::three::
 
@@ -376,7 +376,7 @@ Moderation: Quellen der Skills im Trainings-Repo:
 - Alle fünf liegen in .claude/skills/ (Claude) und .junie/skills/ (Junie), jeweils ein Ordner echt, der andere Symlink. Junie liest .claude/skills/ nicht.
 - grill-me, grilling, domain-modeling, grill-with-docs: mattpocock/skills
 - arc42-adr, arc42-change-sync: eigene Skills
-- Weitere: arc42-Sektionen von https://github.com/MSiccDev/arc42-toolkit, Brainstorming von https://github.com/obra/superpowers/tree/main/skills/brainstorming
+- Weitere: arc42-Sektionen von https://github.com/MSiccDev/arc42-toolkit, u. a. arc42-section-01/-10 für Phase 1. Alternative: Brainstorming von https://github.com/obra/superpowers/tree/main/skills/brainstorming
 grill-me ist die Variante ohne Doku, grill-with-docs ruft grilling und domain-modeling zusammen auf.
 arc42-change-sync hängt zwischen openspec-verify und openspec-archive.
 -->
@@ -418,20 +418,31 @@ layout: section
 
 ---
 
-# arc42-Toolkit ins Repo holen
+# Live-Demo: Zoo-Verwaltung dokumentieren
 
-```text
-/plugin marketplace add MSiccDev/arc42-toolkit
-/plugin install arc42-toolkit@arc42-toolkit
-```
-
-- Ein Skill pro arc42-Sektion, fragt zuerst nach, statt zu erfinden
-- Dazu `arc42-lint` und `arc42-review` zum Prüfen
-- Junie: Skills unter `.junie/skills/`, im Demo-Repo schon verlinkt
+- Bestehende App aus der OpenSpec-Schulung: Angular + Quarkus, **keine Architekturdoku**
+- Ein Prompt: vollständige arc42-Doku mit C4-Sichten, abgeleitet aus dem Code
+- Der Agent arbeitet ohne Rückfragen, Lücken markiert er als **Annahme**
+- Während er läuft: die Werkzeuge, die er dabei benutzt
 
 <!--
-Moderation: Befehle für Claude Code. Für Junie siehe documents/how-tos/junie-setup.md (Spike ki-junie-spike noch offen).
-Team-Variante: Plugin per .claude/settings.json im Projekt festlegen.
+Moderation: 3 min. Demo gleich zu Beginn starten, das Ergebnis kommt nach Structurizr, arc42-Toolkit und Orchestrierung (ca. 20 min Laufzeit).
+
+Vorbereitung (vor dem Training):
+- Zoo-Repo ~/IdeaProjects/openspec-quarkus-angular: `git switch -C live-demo arc42-live-start` (Tag auf Commit 1b80931: Skills und Structurizr-MCP da, noch keine Doku; `-C` setzt den Branch nach der Probe zurück). Danach `git status` und `git clean -n docs/`: Reste aus der Probe löschen, sonst startet der Agent auf vorhandener Doku
+- `which plantuml` prüfen, Structurizr-MCP verbunden (`/mcp`)
+- Claude Code so starten, dass Edits, `plantuml` und vom Agenten angelegte Render-Skripte ohne Freigabe laufen (`render.sh` gibt es am Startpunkt noch nicht). Genaue Einstellung in der Probe festlegen und hier eintragen. TODO
+- Fallback: fertiges Ergebnis von Branch `arc42` als Worktree in einem zweiten IDE-Fenster öffnen (`git worktree add ../zoo-arc42 arc42`), im Demo-Checkout läuft ja der Agent
+- OFFEN: Probelauf mit Zeitmessung. Reichen ca. 20 min nicht, den Umfang im Prompt reduzieren (z. B. Laufzeit- und Verteilungssicht weglassen)
+
+Prompt (so eingeben, auch in demo/prompts/phase2-zoo-arc42.md):
+
+Dokumentiere die Architektur dieser Anwendung vollständig nach arc42. Nutze den Skill arc42-with-structurizr und die arc42-Section-Skills.
+- Arbeite ohne Rückfragen, ich bin die nächsten 20 Minuten nicht erreichbar. Was der Code nicht hergibt (Qualitätsziele, Stakeholder, Randbedingungen, Motive hinter Entscheidungen), schreibst du als „Annahme:“ in die Sektion und sammelst es als offene Frage in docs/architecture/README.md.
+- Quelle ist nur der Code auf diesem Stand. Offene Changes unter openspec/changes/ sind nicht umgesetzt und gehören nicht in die Doku.
+- Alle C4-Sichten (Kontext, Container, Komponenten, Laufzeit, Verteilung) in einem einzigen docs/architecture/diagrams/structurizr/workspace.dsl. Mit dem Structurizr-MCP validieren, als PlantUML exportieren, als SVG rendern und in die Sektionen einbinden.
+- Im Code erkennbare Architekturentscheidungen als ADRs mit arc42-adr, Motiv als „rekonstruiert, unbestätigt“ markieren.
+- Zum Schluss arc42-lint und arc42-review ausführen und die Befunde auflisten. Nichts mehr nachfragen.
 -->
 
 ---
@@ -458,8 +469,14 @@ layout: two-cols-header
 
 Ändert sich das Modell, ziehen **alle Sichten** mit. Keine Kopien, die auseinanderlaufen.
 
+[structurizr.com](https://structurizr.com) · [docs.structurizr.com/example](https://docs.structurizr.com/example) · [docs.structurizr.com/dsl](https://docs.structurizr.com/dsl)
+
 <!--
-Moderation: Rückbezug auf C4 von gestern. Unterschied zu Zeichenwerkzeugen: Diagramme sind Sichten auf ein Modell, nicht einzelne Bilder.
+Moderation: Im Browser zeigen (ca. 5 min), Structurizr ist von Simon Brown, dem Autor von C4:
+1. Beispiele: https://docs.structurizr.com/example – dieselben Beispieldiagramme wie auf c4model.com, je eine Seite pro Sichttyp. Link „Structurizr DSL source“ öffnet die DSL im Playground (playground.structurizr.com).
+2. Setup: https://docs.structurizr.com/getting-started – Varianten von lokal/Docker bis Export nach PlantUML/Mermaid. Wir nutzen: DSL im Repo, Export über den MCP.
+3. Interaktives Beispiel: https://c4model.com/example/ (Link „Interactive version“ auf der Beispielseite) – durch die Sichten klicken, Zoom von Kontext bis Komponente.
+Rückbezug auf C4 von gestern. Unterschied zu Zeichenwerkzeugen: Diagramme sind Sichten auf ein Modell, nicht einzelne Bilder.
 Konsistenz zwischen Sichten (Kapitel „Sichtenmodell und Notation“) ist damit eingebaut.
 -->
 
@@ -478,11 +495,12 @@ Eingebunden für Claude in `.mcp.json`, für Junie in `.junie/mcp/mcp.json`.
 <!--
 Moderation: Gehosteter Server https://mcp.structurizr.com/mcp, nichts zu installieren. Setup: documents/how-tos/structurizr-setup.md.
 Hinweis Vertraulichkeit: Der gehostete Server bekommt die DSL. Für Kundenmodelle lokal per Docker betreiben.
+Kurz ins Terminal der Live-Demo schauen: Ruft der Agent schon validate auf?
 -->
 
 ---
 
-# Demo: Pflanzenbewässerung
+# Greenfield-Beispiel: Pflanzenbewässerung
 
 ```text
 model {
@@ -504,7 +522,8 @@ views {
 Vollständig in `demo/structurizr/workspace.dsl`.
 
 <!--
-Moderation: Das fiktive System von gestern. Technologien sind im Workspace als „Annahme:“ markiert.
+Moderation: Das fiktive System von gestern, Greenfield: Das Modell entsteht aus dem Brief, nicht aus Code. Technologien sind im Workspace als „Annahme:“ markiert.
+Wird nicht live erzeugt, sondern vorgestellt. Kontrast zur laufenden Zoo-Demo: dort Brownfield aus dem Code.
 -->
 
 ---
@@ -528,22 +547,32 @@ flowchart LR
 
 <!--
 Moderation: Erzeugt über export-mermaid aus dem Workspace (Styling fürs Theme entfernt).
-Die Containersicht kommt aus demselben Modell – live zeigen.
+Die Containersicht kommt aus demselben Modell.
 -->
 
 ---
+class: gepardec-text-sm
+---
 
-# Live-Demo: Structurizr mit dem Agenten
+# arc42-Toolkit: ein Skill pro Sektion
 
-1. Prompt: „Erstelle die Kontextsicht für die Pflanzenbewässerung“
-2. Agent schreibt die DSL, ruft `validate` auf, korrigiert selbst
-3. `export-mermaid` rendert die Sicht
-4. Nachfrage: „Ergänze die Container“ – Kontextsicht bleibt konsistent
-5. Diagramm in arc42-Sektion 3 bzw. 5 einbinden
+- Open Source (MIT), werkzeugneutral: Claude Code, Copilot, Cursor, Codex und jedes Werkzeug, das Markdown-Skills liest
+- 12 Sektions-Skills plus `arc42-lint` (Querverweise) und `arc42-review` (Inhalt)
+- Fragt zuerst nach, statt zu erfinden; Tiefe wählbar: LEAN, ESSENTIAL, THOROUGH
+- Qualitätsmodell Q42 eingebaut, Diagramme in C4
+- [github.com/MSiccDev/arc42-toolkit](https://github.com/MSiccDev/arc42-toolkit)
+
+```text
+/plugin marketplace add MSiccDev/arc42-toolkit
+/plugin install arc42-toolkit@arc42-toolkit
+```
 
 <!--
-Moderation: Mit Junie oder Claude. Fallback ohne Netz: fertigen Workspace aus demo/structurizr/ zeigen und lokal per Docker rendern.
-Fehler bewusst provozieren (z. B. Tippfehler in einem Identifier), damit validate etwas findet.
+Moderation: GitHub-Seite zeigen (README, Ordner skills/). Empfehlung des Toolkits: mit Sektion 1.2 Qualitätsziele anfangen.
+Befehle für Claude Code. Für Junie siehe documents/how-tos/junie-setup.md (Spike ki-junie-spike noch offen), im Demo-Repo liegen die Skills schon unter .junie/skills/ bzw. .agents/skills/.
+Team-Variante: Plugin per .claude/settings.json im Projekt festlegen.
+Toolkit-Diagramme sind eigene PlantUML-Dateien. In unserem Workflow kommen alle C4-Sichten stattdessen aus einem Structurizr-Workspace (nächste Folie).
+Brücke zur Live-Demo: „Fragt zuerst“ haben wir dort per Prompt abgeschaltet. Was er gefragt hätte, steht gleich als Annahme im Ergebnis.
 -->
 
 ---
@@ -558,27 +587,28 @@ flowchart LR
   R -. Konsistenz .-> S
 ```
 
-Unser eigener Skill verbindet Text, Diagramm und Prüfung.
+Unser eigener Skill verbindet Text, Diagramm und Prüfung. **Genau das läuft gerade im Zoo-Repo.**
 
 <!--
 Moderation: Rückbezug Kapitel „Sichtenmodell und Notation“ – Konsistenz zwischen Sichten, Level of Detail.
+Danach zum Terminal der Live-Demo wechseln.
 -->
 
 ---
 
-# Demo: Zoo-Verwaltung (Brownfield)
+# Ergebnis: Zoo-Verwaltung (Brownfield)
 
-- Bestehende App aus der OpenSpec-Schulung: Angular + Quarkus, keine Architekturdoku
-- Live: Agent erzeugt die **Komponentensicht** der Domäne `animals` aus dem Code
-- Live: **Sektion 1** im Interview – der Code kennt keine Qualitätsziele
-- Befunde, die nur der Code liefert: Gehege ist keine Entity, keine Service-Schicht, `AGENTS.md` nennt Personal, das es nicht gibt
+- Was ist entstanden: Sektionen, ein `workspace.dsl`, gerenderte Sichten, ADRs
+- **Annahmen** und offene Fragen: das hätte das Toolkit dich gefragt
+- Befunde aus `arc42-lint` und `arc42-review`
+- Gegenprobe gegen den Code: Was hat der Agent falsch abgeleitet?
 
 <!--
-Moderation: Repo Gepardec/openspec-quarkus-angular. Start bei Tag arc42-demo-start (Kontext, Container, API-Komponenten, Verteilung, ADRs, Glossar schon da). Fertiges Ergebnis auf Branch arc42 als Fallback.
-Ablauf: Skill arc42-with-structurizr → „Erstelle die Komponentensicht für die Domäne animals“ → Agent ergänzt workspace.dsl, validiert, docs/architecture/diagrams/render.sh rendert. Danach arc42-section-01: Agent fragt nach Qualitätszielen, weil der Code sie nicht hergibt.
-Fehlableitungen des Agenten nicht still korrigieren, sondern zeigen (typisch: Gehege als eigene Entity, SPA und API als ein Container).
-Kontrast zur Pflanzenbewässerung: dort Greenfield aus dem Brief, hier Brownfield aus dem Code.
-10 min (frei geworden durch den Wegfall der Übung „Finde die Fehler“).
+Moderation: 10 min. Reihenfolge: docs/architecture/README.md (Übersicht, offene Fragen) → Sektion 3 und 5 mit SVGs → workspace.dsl (ein Modell, alle Sichten) → ADRs → Lint-/Review-Befunde.
+Fokus Annahmen: Qualitätsziele und Stakeholder stehen nicht im Code. Genau dafür gibt es Phase 1, der Agent kann sie nur raten.
+Befunde, die nur der Code liefert (aus der Doku auf Branch arc42, nicht aus einem Lauf dieses Prompts): Gehege ist keine Entity, keine Service-Schicht, AGENTS.md nennt Personal, das es nicht gibt.
+Fehlableitungen nicht still korrigieren, sondern zeigen (typisch: Gehege als eigene Entity, SPA und API als ein Container). Brücke zur Folie „Typische Fehler in KI-Doku“.
+Noch nicht fertig? Zwischenstand zeigen, Rest im Worktree von Branch arc42 (Fallback). Phase 3 und 4 arbeiten ohnehin auf den Branches arc42 und arc42-unique-names weiter.
 -->
 
 ---
@@ -759,7 +789,7 @@ class: gepardec-text-sm
 
 | # | Schritt | Dauer |
 |---|---|---|
-| 1 | Brainstorming: Top-3-Qualitätsziele, Stakeholder, Nicht-Ziele | 30 min |
+| 1 | Mit KI klären (grill-me): Top-3-Qualitätsziele, Stakeholder, Nicht-Ziele | 30 min |
 | 2 | arc42-Sektion 1 und 2 | 15 min |
 | 3 | Kontextdiagramm mit Structurizr | 20 min |
 | 4 | Ein ADR mit Bezug zu einem Qualitätsziel | 15 min |

@@ -476,7 +476,7 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 | 0:20 | Praxis-Einstieg Brownfield: Projekt A (15 min), Projekt B (10 min), gemeinsames Muster (5 min) | 30 min |
 | 0:50 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP | 10 min |
 | 1:00 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
-| 1:15 | Architektur: arc42-Toolkit, Structurizr mit Live-Demo (Greenfield: Pflanzenbewässerung, Brownfield: Zoo-Verwaltung), Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
+| 1:15 | Architektur: Live-Demo (Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code), währenddessen Structurizr mit Greenfield-Beispiel Pflanzenbewässerung und arc42-Toolkit, danach Ergebnis, Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
 | 1:55 | Pause | 15 min |
 | 2:10 | Entscheiden: ADRs mit KI, Kreuztabelle | 10 min |
 | 2:20 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
@@ -517,7 +517,7 @@ Die Ergebnisse fließen in arc42-Sektion 1, 2 und 10 und später in die Kreuztab
 > **In Ausarbeitung** → Change `ki-kapitel-phasen`
 
 Ziel: arc42-Sektionen und C4-Diagramme mit KI erstellen – im Greenfield aus den Ergebnissen des Vorprojekts, im Brownfield aus dem Code. Werkzeuge: arc42-Toolkit (Skills je Sektion), Structurizr mit MCP-Anbindung und ein Orchestrierungs-Skill, der beides verbindet.
-Zwei Beispiele: die Pflanzenbewässerung aus Tag 1 (Greenfield) und die Zoo-Verwaltung aus der OpenSpec-Schulung (Brownfield, Repository `openspec-quarkus-angular`, Branch `arc42`). Am Zoo erzeugt der Agent Kontext-, Container-, Komponenten-, Laufzeit- und Verteilungssicht aus einem einzigen Structurizr-Workspace. Dabei zeigt sich, was nur der Code liefert (ein Gehege ist keine Entity, es gibt keine Service-Schicht, `AGENTS.md` beschreibt Personal, das es nicht gibt) und was er nicht liefert: Qualitätsziele muss die KI erfragen.
+Zwei Beispiele: die Pflanzenbewässerung aus Tag 1 (Greenfield, vorgestellt) und die Zoo-Verwaltung aus der OpenSpec-Schulung (Brownfield, Repository `openspec-quarkus-angular`, Branch `arc42`). Die Zoo-Demo läuft live und gleich zu Beginn der Phase: Ein Prompt startet den Agenten, der ohne Rückfragen arbeitet und Lücken als Annahme markiert; während er läuft, werden Structurizr und das arc42-Toolkit erklärt, danach wird das Ergebnis besprochen. Am Zoo erzeugt der Agent Kontext-, Container-, Komponenten-, Laufzeit- und Verteilungssicht aus einem einzigen Structurizr-Workspace. Dabei zeigt sich, was nur der Code liefert (ein Gehege ist keine Entity, es gibt keine Service-Schicht, `AGENTS.md` beschreibt Personal, das es nicht gibt) und was er nicht liefert: Qualitätsziele muss die KI erfragen.
 Rückbezug: Kapitel „Sichtenmodell und Notation“ (C4, Konsistenz zwischen Sichten, Level of Detail).
 
 ### Phase 3: Entscheiden
