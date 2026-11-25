@@ -478,7 +478,7 @@ layout: two-cols-header
 [structurizr.com](https://structurizr.com) · [docs.structurizr.com/example](https://docs.structurizr.com/example) · [docs.structurizr.com/dsl](https://docs.structurizr.com/dsl)
 
 <!--
-Moderation: Im Browser zeigen (ca. 5 min), Structurizr ist von Simon Brown, dem Autor von C4:
+Moderation: Im Browser zeigen (ca. 4 min), Structurizr ist von Simon Brown, dem Autor von C4:
 1. Beispiele: https://docs.structurizr.com/example – dieselben Beispieldiagramme wie auf c4model.com, je eine Seite pro Sichttyp. Link „Structurizr DSL source“ öffnet die DSL im Playground (playground.structurizr.com).
 2. Setup: https://docs.structurizr.com/getting-started – Varianten von lokal/Docker bis Export nach PlantUML/Mermaid. Wir nutzen: DSL im Repo, Export über den MCP.
 3. Interaktives Beispiel: https://c4model.com/example/ (Link „Interactive version“ auf der Beispielseite) – durch die Sichten klicken, Zoom von Kontext bis Komponente.
@@ -611,6 +611,11 @@ Befehle für Claude Code. Für Junie siehe documents/how-tos/junie-setup.md (Jun
 Team-Variante: Plugin per .claude/settings.json im Projekt festlegen.
 Toolkit-Diagramme sind eigene PlantUML-Dateien. In unserem Workflow kommen alle C4-Sichten stattdessen aus einem Structurizr-Workspace (nächste Folie).
 Brücke zur Live-Demo: „Fragt zuerst“ haben wir dort per Prompt abgeschaltet. Was er gefragt hätte, steht gleich als Annahme im Ergebnis.
+
+Danach kurz in IntelliJ (max. 2 min, im Zoo-Repo, in dem der Agent läuft – nur lesen, nichts bearbeiten):
+1. `.claude/skills/arc42-section-10/SKILL.md` öffnen: `description` im Frontmatter (daran erkennt der Agent, wann er den Skill nimmt), die Fragen, die der Skill zuerst stellen will, die Vorlage. Ein Skill ist nur Markdown – und genau diese Fragen überspringt der Agent gerade.
+2. Kurz in `docs/architecture/` schauen, was schon entstanden ist („Sektion 3 ist da, Sektion 5 entsteht gerade“).
+Fallback, wenn `docs/` noch leer ist oder der Agent hängt: Worktree von Branch arc42.
 -->
 
 ---

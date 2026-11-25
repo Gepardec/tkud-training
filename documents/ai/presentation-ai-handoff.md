@@ -21,7 +21,7 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | 1:00 | 10:30 | 11:00 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills | 10–16 | 10 min |
 | 1:10 | 10:40 | 11:10 | Pause | | | 15 min |
 | 1:25 | 10:55 | 11:25 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
-| 1:40 | 11:10 | 11:40 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Sektionen und Quellen + arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10) mit Statement „Qualitätsziele sind Entscheidungen“, Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–31 | 40 min |
+| 1:40 | 11:10 | 11:40 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (8), arc42-Sektionen und Quellen + arc42-Toolkit inkl. kurzem Blick in IntelliJ auf einen Section-Skill und `docs/architecture/` (7), Orchestrierung (2); Ergebnis Zoo (10) mit Statement „Qualitätsziele sind Entscheidungen“, Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–31 | 40 min |
 | 2:20 | 11:50 | 12:20 | Pause | | | 15 min |
 | 2:35 | 12:05 | 12:35 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 32–34 | 15 min |
 | 2:50 | 12:20 | 12:50 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 35–38 | 15 min |
@@ -195,3 +195,4 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | 2026-11-25 | Einstieg auf 30 min (Rahmen 5, IST-/Wunschstand schreiben 15, gemeinsam clustern 10); alle Blöcke danach +10 min, Ende 13:15 bzw. 13:45, Gesamtdauer ca. 3:45 h; Folie 3 und Notizen, Agenda-Notiz, Hauptdokument angepasst |
 | 2026-11-25 | Agenda-Notiz: Frage an die Gruppe – Mittagspause gemeinsam oder zwei Pausen und früher Schluss |
 | 2026-11-25 | Neue Folie 25 „arc42: Woher kommt welche Sektion?“ vor dem arc42-Toolkit (Sektion → Phase → Quelle für die KI); jetzt 40 Folien |
+| 2026-11-25 | Folie 26: Notiz für kurzen IntelliJ-Abstecher (Section-Skill `arc42-section-10` öffnen, Zwischenstand in `docs/architecture/`); Phase 2 intern umverteilt: Structurizr 10 → 8 min, Sektionen + Toolkit 5 → 7 min, Gesamtzeit unverändert |

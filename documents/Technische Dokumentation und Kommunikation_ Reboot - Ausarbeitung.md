@@ -482,7 +482,7 @@ Start wahlweise 9:30 oder 10:00.
 | 1:00 | 10:30 | 11:00 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP | 10 min |
 | 1:10 | 10:40 | 11:10 | Pause | 15 min |
 | 1:25 | 10:55 | 11:25 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
-| 1:40 | 11:10 | 11:40 | Architektur: Live-Demo (Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code), währenddessen Structurizr mit Greenfield-Beispiel Pflanzenbewässerung, arc42-Sektionen und ihre Quellen, arc42-Toolkit, danach Ergebnis, Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
+| 1:40 | 11:10 | 11:40 | Architektur: Live-Demo (Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code), währenddessen Structurizr mit Greenfield-Beispiel Pflanzenbewässerung, arc42-Sektionen und ihre Quellen, arc42-Toolkit mit kurzem Blick in IntelliJ auf einen Section-Skill, danach Ergebnis, Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
 | 2:20 | 11:50 | 12:20 | Pause | 15 min |
 | 2:35 | 12:05 | 12:35 | Entscheiden: ADR-Grundlagen (Nygard, MADR, schlankes Format, Skills, Structurizr `!adrs`), ADRs mit KI, Kreuztabelle | 15 min |
 | 2:50 | 12:20 | 12:50 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
