@@ -26,7 +26,7 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | 2:35 | 12:05 | 12:35 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 32–34 | 15 min |
 | 2:50 | 12:20 | 12:50 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 35–38 | 15 min |
 | 3:05 | 12:35 | 13:05 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 39–40 | 25 min |
-| 3:30 | 13:00 | 13:30 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
+| 3:30 | 13:00 | 13:30 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo, ca. 1 min Blick in `arc42-with-structurizr`) und Fragen | | 15 min |
 | 3:45 | 13:15 | 13:45 | Ende | | | | |
 
 > **Abgestimmt (2026-11-20):** Rahmen für den KI-Teil sind 4–5 h. Greenfield-Durchstich bleibt bei 90 min, 15 min Puffer am Ende. Gegenüber dem Kapitel im Hauptdokument (3:45 h) neu: gemeinsames Muster, zwiei Leser, Diagramm-Werkzeug, Übung „Finde die Fehler“, Phase 4 mit zwei Workflows.
@@ -196,3 +196,4 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | 2026-11-25 | Agenda-Notiz: Frage an die Gruppe – Mittagspause gemeinsam oder zwei Pausen und früher Schluss |
 | 2026-11-25 | Neue Folie 25 „arc42: Woher kommt welche Sektion?“ vor dem arc42-Toolkit (Sektion → Phase → Quelle für die KI); jetzt 40 Folien |
 | 2026-11-25 | Folie 26: Notiz für kurzen IntelliJ-Abstecher (Section-Skill `arc42-section-10` öffnen, Zwischenstand in `docs/architecture/`); Phase 2 intern umverteilt: Structurizr 10 → 8 min, Sektionen + Toolkit 5 → 7 min, Gesamtzeit unverändert |
+| 2026-11-25 | Folie „Orchestrierung“: Notiz für ca. 1 min Blick in `arc42-with-structurizr/SKILL.md` (Voraussetzungen, Mapping-Tabelle, Vorrang vor Section-Skills); Zeit aus dem Puffer |

@@ -634,6 +634,11 @@ Unser eigener Skill verbindet Text, Diagramm und Prüfung. **Genau das läuft ge
 
 <!--
 Moderation: Rückbezug Kapitel „Sichtenmodell und Notation“ – Konsistenz zwischen Sichten, Level of Detail.
+Vorher ca. 1 min in IntelliJ (aus dem Puffer): `.claude/skills/arc42-with-structurizr/SKILL.md` im Zoo-Repo öffnen, nur lesen. Kontrast zu arc42-section-10: der kam vom Toolkit, dieser ist selbst geschrieben und orchestriert.
+- Abschnitt „Voraussetzungen“: prüft MCP, PlantUML und ob die Section-Skills da sind, dann ruft er Section-Skills, Structurizr, Lint und Review der Reihe nach auf
+- Tabelle „Mapping: arc42-Sektion ↔ Structurizr-View-Typ“: dieselbe Zuordnung wie auf der Folie „arc42: Woher kommt welche Sektion?“, nur als Arbeitsanweisung für den Agenten
+- „Vorrang vor den Section-Skills“: fremde Skills übersteuern, ohne sie zu ändern (Diagramme kommen aus dem Workspace statt aus eigenen .puml-Dateien)
+
 Danach zum Terminal der Live-Demo wechseln.
 -->
 
