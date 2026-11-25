@@ -41,7 +41,7 @@ Moderation: Ca. 4:45 h (Rahmen 4–5 h). Erst Praxis, dann Theorie – bewusst s
 0:20 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
 0:50 Einordnung (10)
 1:00 Phase 1 Vorprojekt (15)
-1:15 Phase 2 Architektur inkl. Structurizr-Demo und Übung „Finde die Fehler“ (40)
+1:15 Phase 2 Architektur inkl. Structurizr-Demo, Zoo-Demo und typische Fehler in KI-Doku (40)
 1:55 Pause (15)
 2:10 Phase 3 Entscheiden (10)
 2:20 Phase 4 Umsetzung, zwei Workflows (15)
@@ -220,7 +220,7 @@ class: gepardec-text-sm
 <!--
 Moderation: Brücke von der Praxis zur Theorie. Diese drei Rollen tragen durch den ganzen Block:
 Ohne Standard schreibt der Agent generisch. Ohne Gate weiß niemand, ob es stimmt. Die Entscheidungen bleiben beim Menschen.
-Später in der Übung „Finde die Fehler“ wieder aufgreifen: Prüfen geht nur gegen eine Referenz.
+Später auf der Folie „Typische Fehler in KI-Doku“ wieder aufgreifen: Prüfen geht nur gegen eine Referenz.
 -->
 
 ---
@@ -578,7 +578,7 @@ Moderation: Repo Gepardec/openspec-quarkus-angular. Start bei Tag arc42-demo-sta
 Ablauf: Skill arc42-with-structurizr → „Erstelle die Komponentensicht für die Domäne animals“ → Agent ergänzt workspace.dsl, validiert, docs/architecture/diagrams/render.sh rendert. Danach arc42-section-01: Agent fragt nach Qualitätszielen, weil der Code sie nicht hergibt.
 Fehlableitungen des Agenten nicht still korrigieren, sondern zeigen (typisch: Gehege als eigene Entity, SPA und API als ein Container).
 Kontrast zur Pflanzenbewässerung: dort Greenfield aus dem Brief, hier Brownfield aus dem Code.
-OFFEN: Zeitbedarf ca. 10 min – aus dem Puffer nehmen oder die Pflanzenbewässerungs-Demo kürzen.
+10 min (frei geworden durch den Wegfall der Übung „Finde die Fehler“).
 -->
 
 ---
@@ -604,42 +604,28 @@ Diskussionsfrage 3–5 min.
 -->
 
 ---
-
-# Übung: Finde die Fehler
-
-**10 Minuten · zu zweit · `demo/uebung-kritisch-pruefen/arc42-auszug.md`**
-
-1. **5 min ohne KI:** Auszug lesen, alles markieren, was nicht stimmt
-2. **5 min mit Junie oder Claude:** gegen `demo/structurizr/workspace.dsl` prüfen lassen
-3. Vergleichen: Was hast du gefunden, was der Agent?
-
-Achte auf: **Generik** · **Halluzination** · **Widerspruch zum Modell** · **Annahme als Fakt** · **Lücke**
-
-<!--
-Moderation: Auszug ist ein KI-generierter arc42-Auszug (Qualitätsziele, Stakeholder, Kontext) zur Pflanzenbewässerung mit sechs eingebauten Fehlern.
-Lösung: demo/uebung-kritisch-pruefen/LOESUNG.md – nicht vorher zeigen.
-Prompt für Schritt 2: „Prüfe arc42-auszug.md gegen demo/structurizr/workspace.dsl. Liste Widersprüche, erfundene Elemente und unmarkierte Annahmen.“
--->
-
----
 class: gepardec-text-sm
 ---
 
-# Auflösung
+# Typische Fehler in KI-Doku
 
-| Stelle | Fehlerart | Was falsch ist |
+Beispiele aus einem KI-Entwurf zur Pflanzenbewässerung:
+
+| Fehlerart | Beispiel | Woran erkennbar |
 |---|---|---|
-| Qualitätsziele | Generik | passen auf jedes System |
-| Stakeholder | kein Projektbezug | Allerwelts-Rollen und -Erwartungen |
-| Sensor → Pumpe | Widerspruch | umgeht den Bewässerungsdienst |
-| Wetterdienst-API | Halluzination | kommt in keiner Quelle vor |
-| MQTT, HiveMQ, Keycloak | Annahme als Fakt | im Fall bewusst offen |
-| Benachrichtigung | Lücke | im Modell, fehlt im Kontext |
+| Generik | Qualitätsziele „performant, sicher“ | passt auf jedes System |
+| Kein Projektbezug | Stakeholder „Management“ | sagt nichts über *diese* Doku |
+| Widerspruch | Sensor steuert Pumpe direkt | Modell: über Bewässerungsdienst |
+| Halluzination | Wetterdienst-API | steht in keiner Quelle |
+| Annahme als Fakt | MQTT, HiveMQ, Keycloak | im Fall bewusst offen |
+| Lücke | Benachrichtigung fehlt | steht im Modell |
 
 Prüfen geht nur **gegen eine Referenz** – deshalb braucht jeder Workflow ein Gate.
 
 <!--
-Moderation: Typisch findet der Agent Widersprüche zum Modell, Halluzination und Lücke zuverlässig, Generik nur auf ausdrückliche Nachfrage.
+Moderation: 5 min. Beispiele stammen aus einem KI-generierten arc42-Auszug (demo/uebung-kritisch-pruefen/arc42-auszug.md, Details in LOESUNG.md).
+Erfahrung: Gegen demo/structurizr/workspace.dsl findet der Agent Widerspruch, Halluzination und Lücke zuverlässig, Generik und fehlenden Projektbezug nur auf ausdrückliche Nachfrage.
+Brücke zur Zoo-Demo: Dort sind „Gehege als Entity“ oder „SPA und API als ein Container“ die typischen Fehlableitungen.
 Rückbezug auf „Das gemeinsame Muster“: Standard → Agent → Gate.
 -->
 

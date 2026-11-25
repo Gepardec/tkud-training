@@ -476,7 +476,7 @@ Hands-on findet ausschließlich in einem vorbereiteten Demo-Repository statt. Ku
 | 0:20 | Praxis-Einstieg Brownfield: Projekt A (15 min), Projekt B (10 min), gemeinsames Muster (5 min) | 30 min |
 | 0:50 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP | 10 min |
 | 1:00 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
-| 1:15 | Architektur: arc42-Toolkit, Structurizr mit Live-Demo (Greenfield: Pflanzenbewässerung, Brownfield: Zoo-Verwaltung), Diagramm-Werkzeug, Übung „Finde die Fehler“ | 40 min |
+| 1:15 | Architektur: arc42-Toolkit, Structurizr mit Live-Demo (Greenfield: Pflanzenbewässerung, Brownfield: Zoo-Verwaltung), Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
 | 1:55 | Pause | 15 min |
 | 2:10 | Entscheiden: ADRs mit KI, Kreuztabelle | 10 min |
 | 2:20 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |

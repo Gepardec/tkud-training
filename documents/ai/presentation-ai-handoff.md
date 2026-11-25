@@ -18,12 +18,12 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 0:20 | Aus der Praxis | Projekt A (15), Projekt B (10), gemeinsames Muster (5) | 4–9 | 30 min |
 | 0:50 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills | 10–16 | 10 min |
 | 1:00 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
-| 1:15 | Phase 2: Architektur | arc42-Toolkit, Structurizr mit Live-Demo (20), Zoo-Demo Brownfield (Zeit offen), Diagramm-Werkzeug (5), Übung „Finde die Fehler“ mit Auflösung (15) | 19–30 | 40 min |
+| 1:15 | Phase 2: Architektur | arc42-Toolkit, Structurizr mit Live-Demo (20), Zoo-Demo Brownfield (10), Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–29 | 40 min |
 | 1:55 | Pause | | | 15 min |
-| 2:10 | Phase 3: Entscheiden | ADRs mit KI | 31–32 | 10 min |
-| 2:20 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 33–36 | 15 min |
-| 2:35 | Übung | Greenfield-Durchstich in Teams | 37–39 | 90 min |
-| 4:05 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 40–41 | 25 min |
+| 2:10 | Phase 3: Entscheiden | ADRs mit KI | 30–31 | 10 min |
+| 2:20 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 32–35 | 15 min |
+| 2:35 | Übung | Greenfield-Durchstich in Teams | 36–38 | 90 min |
+| 4:05 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 39–40 | 25 min |
 | 4:30 | Puffer | für Demos, Fragen, Überzug der Übung | | 15 min |
 | 4:45 | Ende | | | |
 
@@ -42,7 +42,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | [`../../slides-ai/slides.md`](../../slides-ai/slides.md) | das Slidev-Deck |
 | [`../../slides-ai/README.md`](../../slides-ai/README.md) | Befehle (dev, build, export) und Konventionen fürs Deck |
 | [`../../demo/structurizr/workspace.dsl`](../../demo/structurizr/workspace.dsl) | Structurizr-Demo: Pflanzenbewässerung (fiktiv) |
-| [`../../demo/uebung-kritisch-pruefen/`](../../demo/uebung-kritisch-pruefen/arc42-auszug.md) | Übung „Finde die Fehler“: `arc42-auszug.md` für Teilnehmende, `LOESUNG.md` nur für die Moderation |
+| [`../../demo/uebung-kritisch-pruefen/`](../../demo/uebung-kritisch-pruefen/arc42-auszug.md) | Quelle der Beispiele auf der Folie „Typische Fehler in KI-Doku“: KI-generierter `arc42-auszug.md` mit sechs eingebauten Fehlern, Erklärung in `LOESUNG.md` (ehemals Übung „Finde die Fehler“) |
 | Hauptdokument `../Technische Dokumentation und Kommunikation_ Reboot - Ausarbeitung.md` | Kapitel „Dokumentation mit KI“ (Langtext; Ablauf-Tabelle und Dauer aktuell, Rest noch Stand vor diesen Entscheidungen) |
 | `../../openspec/specs/training/ki-kapitel/spec.md` | Anforderungen ans KI-Kapitel |
 | `../how-tos/` | Setup Junie, arc42-Toolkit, Structurizr |
@@ -61,7 +61,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | arc42-Ablage | Ein `workspace.dsl` für alle Sichten, Sektionen als Markdown unter `docs/architecture/sections/`. `arc42-with-structurizr`, `arc42-adr` und `arc42-change-sync` sind darauf umgestellt; die Diagramm-Anweisungen der Section-Skills (`docs/diagrams/*.puml`) gelten in diesem Workflow nicht |
 | Projekt A | Agentischer Workflow aus dem Projekt als Praxisbeispiel (OpenSpec → arc42-Sync bei Relevanz → QS → Commit) |
 | Projekt B | Route-Doku-Workflow als Praxisbeispiel (Guideline → Skill pro Route → Compliance-Check → Skript-Gate; Orchestrator mit Sub-Agents fürs ganze Repo) |
-| Kritisch prüfen | Übung „Finde die Fehler“ (10 min, Ende Phase 2): KI-generierter arc42-Auszug mit sechs eingebauten Fehlern, erst ohne, dann mit Agent prüfen. Deckt Lernziel 5 der Spec ab |
+| Kritisch prüfen | Keine eigene Übung mehr (2026-11-25 gestrichen). Stattdessen eine Folie „Typische Fehler in KI-Doku“ (5 min, Ende Phase 2) mit den sechs Fehlerarten und Beispielen aus dem KI-Auszug zur Pflanzenbewässerung. Lernziel 5 der Spec damit nur noch gezeigt, nicht geübt |
 | Gemeinsames Muster | Nach den Praxisbeispielen: Mensch setzt Standard → Agent arbeitet ab → Gate entscheidet |
 | Zwei Leser | Doku für Menschen und für Agenten (`AGENTS.md`, Guidelines, Skills) – Rückbezug auf Zielgruppen von Tag 1 |
 | Diagramm-Werkzeug | Structurizr vs. Draw.io vs. Mermaid als Entscheidung, Diskussionsfrage |
@@ -99,21 +99,20 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 24 | Ergebnis: Kontextsicht | default (Mermaid) | fertig |
 | 25 | Live-Demo: Structurizr mit dem Agenten | default | fertig |
 | 26 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
-| 27 | Demo: Zoo-Verwaltung (Brownfield) | default | fertig, Zeitbedarf offen |
+| 27 | Demo: Zoo-Verwaltung (Brownfield) | default | fertig |
 | 28 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
-| 29 | Übung: Finde die Fehler | default | fertig |
-| 30 | Auflösung | default (Tabelle) | fertig |
-| 31 | Phase 3 | section | fertig |
-| 32 | ADRs mit KI | two-cols-header | fertig |
-| 33 | Phase 4 | section | fertig |
-| 34 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
-| 35 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
-| 36 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
-| 37 | Übung | section | fertig |
-| 38 | Greenfield-Durchstich | default (Tabelle) | Domäne offen |
-| 39 | Qualitätsziele sind Entscheidungen | statement | fertig |
-| 40 | Transfer aufs eigene Projekt | default | fertig |
-| 41 | Danke! | contact | fertig |
+| 29 | Typische Fehler in KI-Doku | default (Tabelle) | fertig |
+| 30 | Phase 3 | section | fertig |
+| 31 | ADRs mit KI | two-cols-header | fertig |
+| 32 | Phase 4 | section | fertig |
+| 33 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
+| 34 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
+| 35 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
+| 36 | Übung | section | fertig |
+| 37 | Greenfield-Durchstich | default (Tabelle) | Domäne offen |
+| 38 | Qualitätsziele sind Entscheidungen | statement | fertig |
+| 39 | Transfer aufs eigene Projekt | default | fertig |
+| 40 | Danke! | contact | fertig |
 
 ## Offene Punkte
 
@@ -127,7 +126,6 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 - [ ] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen oben anpassen (nennt noch AI Assistant, nur OpenSpec, Klarnamen)
 - [x] **Brainstorming-Skill** (Phase 1, obra/superpowers) lag nicht im Repo: Folie 18 nutzt jetzt grill-me + arc42-section-01/-10, Brainstorming nur noch als Alternative in der Moderationsnotiz
 - [x] **Hauptdokument:** Phase 1 (Agenda, Abschnitt, Übungsschritt 1) auf grill-me + arc42-section-01/-10 umgestellt
-- [ ] **Zoo-Demo (Folie 27):** Zeitbedarf ca. 10 min – aus dem Puffer nehmen oder die Pflanzenbewässerungs-Demo kürzen
 - [ ] **Zoo-Repo pushen:** Branches `arc42`, `arc42-unique-names` und Tag `arc42-demo-start` liegen nur lokal in `openspec-quarkus-angular`; Push nach `Gepardec/openspec-quarkus-angular` erst nach Abnahme. Vorher: Lizenz von mattpocock/skills (domain-modeling) prüfen, bevor `NOTICE` sie nennt; nur den eigenen Tag pushen (`git push origin arc42-demo-start`), nicht `--tags`. Hinweis: `.mcp.json` und `openspec/changes/unique-animal-names/` waren auf `loesung` ungetrackt und sind jetzt auf `arc42` committet
 - [ ] **Zoo, Change `unique-animal-names`:** Task 4.1 (Browser-Check der Fehlermeldung) noch offen; Tests, `ng build` und `ng lint` grün
 - [ ] **Zoo, Archiv-Ziel:** Der Change `unique-animal-names` hat ein ADDED-Delta auf `animal-management`; Archive legt dadurch eine neue Capability neben `animal-registration`/`animal-editing` an (im Probelauf geprüft). Bewusst so lassen oder Delta vorher auf die bestehenden Capabilities umschreiben?
@@ -163,3 +161,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Folie 17 „Vertraulichkeit: Was geht wohin?“ entfernt (nicht relevant); Folien ab 18 um eins vorgerückt, jetzt 40; Agenda-Folienbereiche angepasst |
 | 2026-11-25 | Phase 1: Brainstorming-Skill (nicht im Repo) ersetzt durch grill-me für die Fragen und arc42-section-01/-10 für das Ergebnis; Folie „Die KI stellt die unbequemen Fragen“, Agenda und Hauptdokument (Agenda, Abschnitt Phase 1, Übungsschritt 1) angepasst |
 | 2026-11-25 | Zoo-Verwaltung als Brownfield-Beispiel: im Zoo-Repo Branch `arc42` (Skills, Workspace mit Context/Container/Component/Dynamic/Deployment, Sektionen 1/3/5/6/7/8/9/12, 4 ADRs, Glossar, Lint sauber bis auf fehlende Sektion 11), Tag `arc42-demo-start`, Branch `arc42-unique-names` (Change umgesetzt). Im Training-Repo: `arc42-with-structurizr`, `arc42-adr`, `arc42-change-sync` auf einen Workspace + Markdown umgestellt; neue Folie 27 „Demo: Zoo-Verwaltung (Brownfield)“, Verweise in Phase 3 und 4; Folien ab 27 um eins verschoben, jetzt 41 |
+| 2026-11-25 | Übung „Finde die Fehler“ gestrichen: Folien „Übung: Finde die Fehler“ und „Auflösung“ ersetzt durch eine Folie „Typische Fehler in KI-Doku“ (Fehlerarten mit Beispielen); die frei gewordenen 10 min gehen an die Zoo-Demo; jetzt 40 Folien |
