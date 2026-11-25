@@ -126,7 +126,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 - [x] **Demo-Repo:** URL auf GitHub – https://github.com/Gepardec/openspec-quarkus-angular, auf Folie 20 verlinkt (2026-11-25)
 - [x] ~~**Domäne** des fiktiven Kunden-Briefs für die Übung~~ → entfällt, Übung gestrichen (2026-11-25)
 - [ ] **IST-/Wunschstand:** Karten physisch an der Wand oder digital (Miro o. Ä.)?
-- [ ] **Junie-Spike** (`openspec/changes/ki-junie-spike`): laufen Skills und Structurizr-MCP in Junie? Davon hängt die Live-Demo mit Junie ab
+- [ ] **Junie-Spike** archiviert (2026-11-25, `openspec/changes/archive/2026-11-25-ki-junie-spike`, ohne Spec-Sync; die Anforderungen für `training/demo-tooling` sind nicht in die Haupt-Specs übernommen). Noch offen aus dem Spike: (7.6) frischen Klon mit `--recurse-submodules` nur nach `junie-setup.md` prüfen, idealerweise durch eine zweite Person; (7.7) genaue Junie-Version und Ergebnis des Marketplace-Versuchs in „Getestet“ nachtragen
 - [x] **Hauptdokument:** Kapitel „Dokumentation mit KI“ an die Entscheidungen angepasst (2026-11-25): Projekt A/B statt Klarnamen, Junie/Claude, zwei Workflows, schlankes ADR-Format, Statement Phase 2, Übung entfernt
 - [x] **Brainstorming-Skill** (Phase 1, obra/superpowers) lag nicht im Repo: Folie 18 nutzt jetzt grill-me + arc42-section-01/-10, Brainstorming nur noch als Alternative in der Moderationsnotiz
 - [x] **Hauptdokument:** Phase 1 (Agenda, Abschnitt, Übungsschritt 1) auf grill-me + arc42-section-01/-10 umgestellt
@@ -185,3 +185,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | OpenSpec-Change `ki-kapitel-spec-abgleich` umgesetzt und archiviert: Spec `training/ki-kapitel` ohne Übung, Ablauf mit Live-Demo je Phase, Projekt A/B anonymisiert, Junie oder Claude Code, Kundencode-Regel für Demos |
 | 2026-11-25 | Folie 20: Link zum Demo-Repo Gepardec/openspec-quarkus-angular ergänzt |
 | 2026-11-25 | Folie 22 „Structurizr-MCP“: Befehl `claude mcp add … structurizr` eingebunden (analog Plugin-Befehl auf Folie 25), Notiz zu Scope und Junie |
+| 2026-11-25 | Change `ki-junie-spike` archiviert ohne Spec-Sync (2 Mensch-Tasks offen, als offener Punkt übernommen); Verweise in `ai-part.md` und Notiz Folie 25 angepasst |

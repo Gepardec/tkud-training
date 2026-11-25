@@ -580,7 +580,7 @@ class: gepardec-text-sm
 
 <!--
 Moderation: GitHub-Seite zeigen (README, Ordner skills/). Empfehlung des Toolkits: mit Sektion 1.2 Qualitätsziele anfangen.
-Befehle für Claude Code. Für Junie siehe documents/how-tos/junie-setup.md (Spike ki-junie-spike noch offen), im Demo-Repo liegen die Skills schon unter .junie/skills/ bzw. .agents/skills/.
+Befehle für Claude Code. Für Junie siehe documents/how-tos/junie-setup.md (Junie-Spike archiviert, Frischklon-Test und Junie-Version noch offen), im Demo-Repo liegen die Skills schon unter .junie/skills/ bzw. .agents/skills/.
 Team-Variante: Plugin per .claude/settings.json im Projekt festlegen.
 Toolkit-Diagramme sind eigene PlantUML-Dateien. In unserem Workflow kommen alle C4-Sichten stattdessen aus einem Structurizr-Workspace (nächste Folie).
 Brücke zur Live-Demo: „Fragt zuerst“ haben wir dort per Prompt abgeschaltet. Was er gefragt hätte, steht gleich als Annahme im Ergebnis.

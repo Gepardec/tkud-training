@@ -54,7 +54,7 @@
 
 - Kapiteltext: [Dokumentation mit KI](<../Technische Dokumentation und Kommunikation_ Reboot - Ausarbeitung.md>) (Abschnitt „Dokumentation mit KI“)
 - Spec: [openspec/specs/training/ki-kapitel/spec.md](../../openspec/specs/training/ki-kapitel/spec.md)
-- Offener Change: [openspec/changes/ki-junie-spike](../../openspec/changes/ki-junie-spike/proposal.md)
+- Archivierter Change: [ki-junie-spike](../../openspec/changes/archive/2026-11-25-ki-junie-spike/proposal.md) (ohne Spec-Sync, 2 Mensch-Tasks offen)
 - How-tos: [Junie](../how-tos/junie-setup.md), [arc42-Toolkit](../how-tos/arc42-toolkit-setup.md), [Structurizr](../how-tos/structurizr-setup.md)
 
 ## Offene Punkte
