@@ -15,10 +15,10 @@ layout: cover
 
 Mattias Fankhauser
 
-Tag 2
+Tag 2 · 27.11.2026
 
 <!--
-Moderation: Datum ergänzen, sobald Tag 2 fixiert ist.
+Moderation: Termin 27.11.2026, Start 9:30 oder 10:00 (Zeiten siehe Agenda-Notiz).
 Rahmen: Gestern ging es darum, was gute Architekturdokumentation ausmacht. Heute legen wir eine KI-Schicht darüber.
 -->
 
@@ -35,24 +35,31 @@ layout: agenda
 - Transfer und Muster
 
 <!--
-Moderation: Ca. 3:20 h. Erst Praxis, dann Theorie – bewusst so herum.
-0:00 Einstieg, IST- und Wunschstand schreiben und gemeinsam clustern (20)
-0:20 Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster (30)
-0:50 Einordnung (10)
-1:00 Phase 1 Vorprojekt (15)
-1:15 Phase 2 Architektur: Live-Demo Zoo starten, Structurizr, arc42-Toolkit, Ergebnis Zoo, Diagramm-Werkzeug, typische Fehler (40)
-1:55 Pause (15)
-2:10 Phase 3 Entscheiden: ADR-Grundlagen, ADRs mit KI (15)
-2:25 Phase 4 Umsetzung, zwei Workflows (15)
-2:40 Transfer: Cluster besprechen, Wunschstand optimieren (25)
-3:05 Puffer (15) – Ende 3:20
+Moderation: Ca. 3:45 h inkl. zwei Pausen. Erst Praxis, dann Theorie – bewusst so herum.
+
+Gruppe am Anfang fragen: Wollen wir gemeinsam Mittagessen gehen, oder lieber zwei kurze Pausen und dafür früher nach Hause? Mit Mittagspause verschieben sich die Zeiten unten entsprechend.
+
+| 9:30 | 10:00 | Block | min |
+|---|---|---|---|
+| 9:30 | 10:00 | Einstieg: Rahmen 5, IST-/Wunschstand schreiben 15, gemeinsam clustern 10 | 30 |
+| 10:00 | 10:30 | Aus der Praxis: Projekt A, Projekt B, gemeinsames Muster | 30 |
+| 10:30 | 11:00 | Einordnung | 10 |
+| 10:40 | 11:10 | **Pause** | 15 |
+| 10:55 | 11:25 | Phase 1 Vorprojekt | 15 |
+| 11:10 | 11:40 | Phase 2 Architektur (Live-Demo Zoo) | 40 |
+| 11:50 | 12:20 | **Pause** | 15 |
+| 12:05 | 12:35 | Phase 3 Entscheiden | 15 |
+| 12:20 | 12:50 | Phase 4 Umsetzung | 15 |
+| 12:35 | 13:05 | Transfer | 25 |
+| 13:00 | 13:30 | Puffer | 15 |
+| 13:15 | 13:45 | **Ende** |  |
 -->
 
 ---
 
 # Dein IST- und Wunschstand
 
-**8 Minuten allein schreiben · dann gemeinsam clustern**
+**15 Minuten allein schreiben · dann 10 Minuten gemeinsam clustern**
 
 - **IST:** Wie dokumentierst du heute? Womit, wann, für wen?
 - **Wunsch:** Wie willst du dokumentieren?
@@ -61,9 +68,9 @@ Moderation: Ca. 3:20 h. Erst Praxis, dann Theorie – bewusst so herum.
 Eine Karte pro Frage. Danach clustern wir gemeinsam – die Cluster begleiten uns durch den Tag.
 
 <!--
-Moderation: 20 min. TKuD-Vorgabe – jede:r schreibt IST- und Wunschstand nieder, um Muster zu finden.
-Ablauf: Rahmen und Agenda (3), still auf Karten schreiben, je eine Karte IST, Wunsch, KI (8),
-gemeinsam clustern: alle schieben gleichzeitig und still Karten zusammen (5), dann Cluster benennen (4).
+Moderation: 30 min. TKuD-Vorgabe – jede:r schreibt IST- und Wunschstand nieder, um Muster zu finden.
+Ablauf: Rahmen und Agenda (5), still auf Karten schreiben, je eine Karte IST, Wunsch, KI (15),
+gemeinsam clustern: alle schieben gleichzeitig und still Karten zusammen (5), dann Cluster benennen (5).
 Keine Einzelvorstellung – bei 12 Personen zu lang.
 Cluster bleiben den Tag über sichtbar; in den Blöcken darauf verweisen („euer Cluster ‚Doku veraltet‘ – hier hilft Phase 4“).
 Besprechung und Optimierung im Transfer am Ende.

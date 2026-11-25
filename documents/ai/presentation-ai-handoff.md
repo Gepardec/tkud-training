@@ -10,27 +10,30 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 **Didaktischer Ablauf:** IST-/Wunschstand → Beispiel aus der Praxis → erst dann Theorie → Phasen (mit Live-Demos) → Transfer und Muster.
 
-## Grobe Agenda (ca. 3:20 h)
+## Grobe Agenda (ca. 3:45 h)
 
-| Start | Block | Inhalt | Folien | Dauer |
-|---|---|---|---|---|
-| 0:00 | Einstieg | Rahmen (3), IST-/Wunschstand auf Karten schreiben (8), gemeinsam clustern und benennen (9) | 1–3 | 20 min |
-| 0:20 | Aus der Praxis | Projekt A (15), Projekt B (10), gemeinsames Muster (5) | 4–9 | 30 min |
-| 0:50 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills | 10–16 | 10 min |
-| 1:00 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
-| 1:15 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10) mit Statement „Qualitätsziele sind Entscheidungen“, Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–30 | 40 min |
-| 1:55 | Pause | | | 15 min |
-| 2:10 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 31–33 | 15 min |
-| 2:25 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 34–37 | 15 min |
-| 2:40 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 38–39 | 25 min |
-| 3:05 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
-| 3:20 | Ende | | | |
+Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in drei Blöcke von rund einer Stunde.
 
-> **Abgestimmt (2026-11-20):** Rahmen für den KI-Teil sind 4–5 h. Greenfield-Durchstich bleibt bei 90 min, 15 min Puffer am Ende. Gegenüber dem Kapitel im Hauptdokument (3:45 h) neu: gemeinsames Muster, zwei Leser, Diagramm-Werkzeug, Übung „Finde die Fehler“, Phase 4 mit zwei Workflows.
+| Start | 9:30-Start | 10:00-Start | Block | Inhalt | Folien | Dauer |
+|---|---|---|---|---|---|---|
+| 0:00 | 9:30 | 10:00 | Einstieg | Rahmen (5), IST-/Wunschstand auf Karten schreiben (15), gemeinsam clustern und benennen (10) | 1–3 | 30 min |
+| 0:30 | 10:00 | 10:30 | Aus der Praxis | Projekt A (15), Projekt B (10), gemeinsames Muster (5) | 4–9 | 30 min |
+| 1:00 | 10:30 | 11:00 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills | 10–16 | 10 min |
+| 1:10 | 10:40 | 11:10 | Pause | | | 15 min |
+| 1:25 | 10:55 | 11:25 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
+| 1:40 | 11:10 | 11:40 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10) mit Statement „Qualitätsziele sind Entscheidungen“, Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–30 | 40 min |
+| 2:20 | 11:50 | 12:20 | Pause | | | 15 min |
+| 2:35 | 12:05 | 12:35 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 31–33 | 15 min |
+| 2:50 | 12:20 | 12:50 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 34–37 | 15 min |
+| 3:05 | 12:35 | 13:05 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 38–39 | 25 min |
+| 3:30 | 13:00 | 13:30 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
+| 3:45 | 13:15 | 13:45 | Ende | | | | |
+
+> **Abgestimmt (2026-11-20):** Rahmen für den KI-Teil sind 4–5 h. Greenfield-Durchstich bleibt bei 90 min, 15 min Puffer am Ende. Gegenüber dem Kapitel im Hauptdokument (3:45 h) neu: gemeinsames Muster, zwiei Leser, Diagramm-Werkzeug, Übung „Finde die Fehler“, Phase 4 mit zwei Workflows.
 
 > **Abgestimmt (2026-11-25, später):** Übung **Greenfield-Durchstich gestrichen** (90 min, Folien „Übung“, „Greenfield-Durchstich“, „Qualitätsziele sind Entscheidungen“). Der KI-Teil dauert damit ca. 3:15 h statt 4:45 h; Greenfield wird nur noch gezeigt (Phase-1-Demo, Pflanzenbewässerung). Die Spec `openspec/specs/training/ki-kapitel/spec.md` ist über den Change `ki-kapitel-spec-abgleich` angepasst (Übung entfernt, Ablauf ohne Hands-on, Projekt A/B, Junie/Claude).
 
-> **Abgestimmt (2026-11-25):** IST-/Wunschstand bei 12 Teilnehmenden: keine Einzelvorstellung. Karten schreiben und **gemeinsam clustern direkt im Einstieg** (20 min), Cluster bleiben den Tag über sichtbar. **Besprechung und Optimierung im Transfer** (25 min). Ende damit 4:45.
+> **Abgestimmt (2026-11-25):** IST-/Wunschstand bei 12 Teilnehmenden: keine Einzelvorstellung. Karten schreiben und **gemeinsam clustern direkt im Einstieg** (30 min: Rahmen 5, Schreiben 15, Clustern 10), Cluster bleiben den Tag über sichtbar. **Besprechung und Optimierung im Transfer** (25 min). Ende damit 4:45.
 
 ## Dateien
 
@@ -76,7 +79,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 
 | # | Folie | Layout | Status |
 |---|---|---|---|
-| 1 | Dokumentation mit KI | cover | Datum fehlt |
+| 1 | Dokumentation mit KI | cover | fertig (27.11.2026) |
 | 2 | Agenda | agenda | fertig |
 | 3 | Dein IST- und Wunschstand | default | fertig (physisch oder Miro offen) |
 | 4 | Aus der Praxis | section | fertig |
@@ -122,7 +125,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 - [ ] **Live-Demo Phase 2:** Probelauf mit Zeitmessung (Ziel ca. 20 min). Startbefehl/Berechtigungen für Claude Code festlegen (Edits, `plantuml`, `render.sh` ohne Freigabe) und in die Notiz von Folie 20 eintragen. Prüfen, ob der Agent ohne Rückfragen durchläuft und die offenen Changes ignoriert. Tag `arc42-live-start` liegt nur lokal (Commit ist über `arc42-unique-names` schon auf origin)
 - [ ] **Projekt B:** anonymisierten Ausschnitt einer echten Route-Doku (Decision Tree oder Diagramm) für die Folie
 - [ ] **Projekt A:** konkrete Ergebnisse (Anzahl ADRs, Sektionen, Erfahrungen) und anonymisierte Ausschnitte
-- [ ] **Datum** von Tag 2 (Cover)
+- [x] **Datum** von Tag 2: 27.11.2026, Start 9:30 oder 10:00 (Cover und Agenda)
 - [x] **Demo-Repo:** URL auf GitHub – https://github.com/Gepardec/openspec-quarkus-angular, auf Folie 20 verlinkt (2026-11-25)
 - [x] ~~**Domäne** des fiktiven Kunden-Briefs für die Übung~~ → entfällt, Übung gestrichen (2026-11-25)
 - [ ] **IST-/Wunschstand:** Karten physisch an der Wand oder digital (Miro o. Ä.)?
@@ -186,3 +189,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | Folie 20: Link zum Demo-Repo Gepardec/openspec-quarkus-angular ergänzt |
 | 2026-11-25 | Folie 22 „Structurizr-MCP“: Befehl `claude mcp add … structurizr` eingebunden (analog Plugin-Befehl auf Folie 25), Notiz zu Scope und Junie |
 | 2026-11-25 | Change `ki-junie-spike` archiviert ohne Spec-Sync (2 Mensch-Tasks offen, als offener Punkt übernommen); Verweise in `ai-part.md` und Notiz Folie 25 angepasst |
+| 2026-11-25 | Agenda: Uhrzeiten für Start 9:30 und 10:00 als eigene Spalten (Handoff, Hauptdokument, Agenda-Notiz); zweite Pause à 15 min nach der Einordnung, Pause 2 nach Phase 2; Ende nach 3:35 h (13:05 bzw. 13:35) |
+| 2026-11-25 | Cover: Datum 27.11.2026 ergänzt |
+| 2026-11-25 | Einstieg auf 30 min (Rahmen 5, IST-/Wunschstand schreiben 15, gemeinsam clustern 10); alle Blöcke danach +10 min, Ende 13:15 bzw. 13:45, Gesamtdauer ca. 3:45 h; Folie 3 und Notizen, Agenda-Notiz, Hauptdokument angepasst |
+| 2026-11-25 | Agenda-Notiz: Frage an die Gruppe – Mittagspause gemeinsam oder zwei Pausen und früher Schluss |

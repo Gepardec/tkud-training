@@ -409,7 +409,7 @@ Dokumentation, die nicht geprüft wird, verfällt.
 | Inhalt | Praxisbeispiele aus zwei Legacy-Projekten (Projekt A, Projekt B, anonymisiert) • Phasenmodell: Vorprojekt, Architektur, Entscheiden, Umsetzung • Brownfield vs. Greenfield • Skills und MCP als Bausteine (arc42-Toolkit, Structurizr) • ADRs mit KI im schlanken Format • Dokumentation aktuell halten: OpenSpec und grill-with-docs |
 | Lernziele | Die Teilnehmenden können …<br>1. für jede Projektphase erklären, wie KI bei der Dokumentation unterstützt und wo ihre Grenzen liegen;<br>2. Brownfield und Greenfield nach Quelle, Rolle der KI und Hauptrisiko unterscheiden;<br>3. mit KI-Unterstützung Qualitätsziele, Stakeholder und Nicht-Ziele erheben und messbar formulieren;<br>4. Skills und MCP-Server als Bausteine einordnen und wissen, wie sie in ein Repository kommen;<br>5. KI-generierte Dokumentation kritisch prüfen (Generik, Halluzination, fehlender Projektbezug). |
 | Übung | Keine eigene Übung. IST- und Wunschstand im Einstieg und Transfer aufs eigene Projekt; die Phasen werden mit Live-Demos gezeigt. |
-| Dauer | ca. 3:20 h |
+| Dauer | ca. 3:45 h inkl. zwei Pausen (Start 9:30 oder 10:00) |
 
 Die vorherigen Kapitel haben gezeigt, *was* gute Architekturdokumentation ausmacht: passende Sichten und Notationen (Kapitel „Sichtenmodell und Notation“) und nachvollziehbare Entscheidungen (Kapitel „Architekturentscheidungen dokumentieren (ADR)“). Dieses Kapitel führt keine neuen Dokumentationskonzepte ein. Es legt eine KI-Schicht darüber und zeigt, wie sich dieselben Artefakte – arc42-Sektionen, C4-Diagramme, ADRs – mit KI schneller erstellen und vor allem aktuell halten lassen.
 
@@ -473,19 +473,22 @@ Alle Demos laufen in vorbereiteten Demo-Repositories (Zoo-Verwaltung, Pflanzenbe
 
 ### Ablauf
 
-| Start | Block | Dauer |
-| :---- | :---- | :---- |
-| 0:00 | Einstieg: Rahmen, IST- und Wunschstand auf Karten schreiben, gemeinsam clustern | 20 min |
-| 0:20 | Praxis-Einstieg Brownfield: Projekt A (15 min), Projekt B (10 min), gemeinsames Muster (5 min) | 30 min |
-| 0:50 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP | 10 min |
-| 1:00 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
-| 1:15 | Architektur: Live-Demo (Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code), währenddessen Structurizr mit Greenfield-Beispiel Pflanzenbewässerung und arc42-Toolkit, danach Ergebnis, Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
-| 1:55 | Pause | 15 min |
-| 2:10 | Entscheiden: ADR-Grundlagen (Nygard, MADR, schlankes Format, Skills, Structurizr `!adrs`), ADRs mit KI, Kreuztabelle | 15 min |
-| 2:25 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
-| 2:40 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
-| 3:05 | Puffer | 15 min |
-| 3:20 | Ende | |
+Start wahlweise 9:30 oder 10:00.
+
+| Start | 9:30-Start | 10:00-Start | Block | Dauer |
+| :---- | :---- | :---- | :---- | :---- |
+| 0:00 | 9:30 | 10:00 | Einstieg: Rahmen (5 min), IST- und Wunschstand auf Karten schreiben (15 min), gemeinsam clustern (10 min) | 30 min |
+| 0:30 | 10:00 | 10:30 | Praxis-Einstieg Brownfield: Projekt A (15 min), Projekt B (10 min), gemeinsames Muster (5 min) | 30 min |
+| 1:00 | 10:30 | 11:00 | Einordnung: Phasenmodell, Brownfield/Greenfield, zwei Leser, Skills und MCP | 10 min |
+| 1:10 | 10:40 | 11:10 | Pause | 15 min |
+| 1:25 | 10:55 | 11:25 | Vorprojekt: Konzept und Live-Demo grill-me mit arc42-section-01/-10 | 15 min |
+| 1:40 | 11:10 | 11:40 | Architektur: Live-Demo (Agent dokumentiert die Zoo-Verwaltung vollständig aus dem Code), währenddessen Structurizr mit Greenfield-Beispiel Pflanzenbewässerung und arc42-Toolkit, danach Ergebnis, Diagramm-Werkzeug, typische Fehler in KI-Doku | 40 min |
+| 2:20 | 11:50 | 12:20 | Pause | 15 min |
+| 2:35 | 12:05 | 12:35 | Entscheiden: ADR-Grundlagen (Nygard, MADR, schlankes Format, Skills, Structurizr `!adrs`), ADRs mit KI, Kreuztabelle | 15 min |
+| 2:50 | 12:20 | 12:50 | Umsetzung: Dokumentation aktuell halten – OpenSpec und grill-with-docs im Vergleich | 15 min |
+| 3:05 | 12:35 | 13:05 | Transfer aufs eigene Projekt: Cluster besprechen, Wunschstand optimieren, Abschluss | 25 min |
+| 3:30 | 13:00 | 13:30 | Puffer | 15 min |
+| 3:45 | 13:15 | 13:45 | Ende | | |
 
 Die Live-Demos laufen an eigenen Demo-Projekten (Zoo-Verwaltung, Pflanzenbewässerung), nie an Kundencode.
 
