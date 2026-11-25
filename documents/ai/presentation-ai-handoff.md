@@ -21,11 +21,11 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | 1:00 | 10:30 | 11:00 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills | 10–16 | 10 min |
 | 1:10 | 10:40 | 11:10 | Pause | | | 15 min |
 | 1:25 | 10:55 | 11:25 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
-| 1:40 | 11:10 | 11:40 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10) mit Statement „Qualitätsziele sind Entscheidungen“, Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–30 | 40 min |
+| 1:40 | 11:10 | 11:40 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Sektionen und Quellen + arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10) mit Statement „Qualitätsziele sind Entscheidungen“, Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–31 | 40 min |
 | 2:20 | 11:50 | 12:20 | Pause | | | 15 min |
-| 2:35 | 12:05 | 12:35 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 31–33 | 15 min |
-| 2:50 | 12:20 | 12:50 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 34–37 | 15 min |
-| 3:05 | 12:35 | 13:05 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 38–39 | 25 min |
+| 2:35 | 12:05 | 12:35 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 32–34 | 15 min |
+| 2:50 | 12:20 | 12:50 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 35–38 | 15 min |
+| 3:05 | 12:35 | 13:05 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 39–40 | 25 min |
 | 3:30 | 13:00 | 13:30 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
 | 3:45 | 13:15 | 13:45 | Ende | | | | |
 
@@ -75,7 +75,7 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | Workflow-Folien | Einheitliche Farblogik: gelb = Vorgabe bzw. OpenSpec, weiß umrandet = Agent/Skill, gestrichelt = automatisch ohne KI, graue Raute = Entscheidung Mensch; jeweils mit Legende |
 | Deck | Eigenes Slidev-Deck in `slides-ai/`, Gepardec-Theme, erste Folie `cover`, letzte `contact` |
 
-## Folienliste (39)
+## Folienliste (40)
 
 | # | Folie | Layout | Status |
 |---|---|---|---|
@@ -103,21 +103,22 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | 22 | Structurizr-MCP | default | fertig |
 | 23 | Greenfield: Pflanzenbewässerung | default (DSL) | fertig |
 | 24 | Ergebnis: Kontextsicht | default (Mermaid) | fertig |
-| 25 | arc42-Toolkit: ein Skill pro Sektion | default | fertig |
-| 26 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
-| 27 | Ergebnis: Zoo-Verwaltung (Brownfield) | default | fertig |
-| 28 | Qualitätsziele sind Entscheidungen (Code) | statement | fertig |
-| 29 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
-| 30 | Typische Fehler in KI-Doku | default (Tabelle) | fertig |
-| 31 | Phase 3 | section | fertig |
-| 32 | ADRs: Format, Skills, Werkzeuge | default | fertig |
-| 33 | ADRs mit KI | two-cols-header | fertig |
-| 34 | Phase 4 | section | fertig |
-| 35 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
-| 36 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
-| 37 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
-| 38 | Transfer aufs eigene Projekt | default | fertig |
-| 39 | Danke! | contact | fertig |
+| 25 | arc42: Woher kommt welche Sektion? | default (Tabelle) | fertig |
+| 26 | arc42-Toolkit: ein Skill pro Sektion | default | fertig |
+| 27 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
+| 28 | Ergebnis: Zoo-Verwaltung (Brownfield) | default | fertig |
+| 29 | Qualitätsziele sind Entscheidungen (Code) | statement | fertig |
+| 30 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
+| 31 | Typische Fehler in KI-Doku | default (Tabelle) | fertig |
+| 32 | Phase 3 | section | fertig |
+| 33 | ADRs: Format, Skills, Werkzeuge | default | fertig |
+| 34 | ADRs mit KI | two-cols-header | fertig |
+| 35 | Phase 4 | section | fertig |
+| 36 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
+| 37 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
+| 38 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
+| 39 | Transfer aufs eigene Projekt | default | fertig |
+| 40 | Danke! | contact | fertig |
 
 ## Offene Punkte
 
@@ -193,3 +194,4 @@ Start wahlweise 9:30 oder 10:00. Zwei Pausen à 15 min teilen den Vormittag in d
 | 2026-11-25 | Cover: Datum 27.11.2026 ergänzt |
 | 2026-11-25 | Einstieg auf 30 min (Rahmen 5, IST-/Wunschstand schreiben 15, gemeinsam clustern 10); alle Blöcke danach +10 min, Ende 13:15 bzw. 13:45, Gesamtdauer ca. 3:45 h; Folie 3 und Notizen, Agenda-Notiz, Hauptdokument angepasst |
 | 2026-11-25 | Agenda-Notiz: Frage an die Gruppe – Mittagspause gemeinsam oder zwei Pausen und früher Schluss |
+| 2026-11-25 | Neue Folie 25 „arc42: Woher kommt welche Sektion?“ vor dem arc42-Toolkit (Sektion → Phase → Quelle für die KI); jetzt 40 Folien |

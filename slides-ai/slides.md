@@ -46,7 +46,7 @@ Gruppe am Anfang fragen: Wollen wir gemeinsam Mittagessen gehen, oder lieber zwe
 | 10:30 | 11:00 | Einordnung | 10 |
 | 10:40 | 11:10 | **Pause** | 15 |
 | 10:55 | 11:25 | Phase 1 Vorprojekt | 15 |
-| 11:10 | 11:40 | Phase 2 Architektur (Live-Demo Zoo) | 40 |
+| 11:10 | 11:40 | Phase 2 Architektur (Live-Demo Zoo, Structurizr, arc42-Sektionen, Toolkit) | 40 |
 | 11:50 | 12:20 | **Pause** | 15 |
 | 12:05 | 12:35 | Phase 3 Entscheiden | 15 |
 | 12:20 | 12:50 | Phase 4 Umsetzung | 15 |
@@ -566,6 +566,26 @@ flowchart LR
 <!--
 Moderation: Erzeugt über export-mermaid aus dem Workspace (Styling und Beschreibungen fürs Theme entfernt, Technologien als „Annahme:“ behalten – im Greenfield ist noch nichts entschieden).
 Die Containersicht kommt aus demselben Modell.
+-->
+
+---
+class: gepardec-text-sm
+---
+
+# arc42: Woher kommt welche Sektion?
+
+| Sektion | Phase | Quelle für die KI |
+|---|---|---|
+| 1 Ziele · 2 Randbedingungen · 10 Qualität | Vorprojekt | Interview (grill-me), **nicht aus dem Code** |
+| 3 Kontext · 5 Bausteine · 6 Laufzeit · 7 Verteilung | Architektur | Structurizr-Workspace, im Brownfield aus dem Code |
+| 4 Lösungsstrategie · 8 Konzepte | Architektur | Code und Gespräch |
+| 9 Entscheidungen · 11 Risiken | Entscheiden | ADRs (`arc42-adr`) |
+| 12 Glossar | Umsetzung | grill-with-docs, domain-modeling |
+
+<!--
+Moderation: 1–2 min (zählt zum Toolkit-Block), Auffrischung von Tag 1 – Sektionsnamen auf der Folie gekürzt während die Zoo-Demo läuft. Nächste Folie: zu jeder Sektion gibt es einen Skill im Toolkit.
+Pointe vorbereiten: 1, 2 und 10 kann der Agent im Zoo nur als „Annahme:“ füllen – beim Ergebnis darauf zurückkommen („Qualitätsziele sind Entscheidungen“).
+Glossar entsteht eigentlich laufend; grill-with-docs (Phase 4) pflegt es nebenbei.
 -->
 
 ---
