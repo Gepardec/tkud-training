@@ -18,11 +18,11 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 0:20 | Aus der Praxis | Projekt A (15), Projekt B (10), gemeinsames Muster (5) | 4–9 | 30 min |
 | 0:50 | Einordnung | Phasen, Einstiege, zwei Leser, Bausteine, Skills | 10–16 | 10 min |
 | 1:00 | Phase 1: Vorprojekt | Unbequeme Fragen, Live-Demo grill-me + arc42-section-01/-10 | 17–18 | 15 min |
-| 1:15 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10), Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–29 | 40 min |
+| 1:15 | Phase 2: Architektur | Live-Demo Zoo starten (3), während der Agent läuft: Structurizr mit Greenfield-Beispiel (10), arc42-Toolkit (5), Orchestrierung (2); Ergebnis Zoo (10) mit Statement „Qualitätsziele sind Entscheidungen“, Diagramm-Werkzeug (5), typische Fehler in KI-Doku (5) | 19–30 | 40 min |
 | 1:55 | Pause | | | 15 min |
-| 2:10 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 30–32 | 15 min |
-| 2:25 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 33–36 | 15 min |
-| 2:40 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 37–38 | 25 min |
+| 2:10 | Phase 3: Entscheiden | ADR-Grundlagen: Formate, Skills, Werkzeuge (5), ADRs mit KI (10) | 31–33 | 15 min |
+| 2:25 | Phase 4: Umsetzung | Workflow OpenSpec, Workflow grill-with-docs, Vergleich | 34–37 | 15 min |
+| 2:40 | Transfer | Cluster besprechen (10), Wunschstand optimieren + erster Schritt (10), Abschluss (5) | 38–39 | 25 min |
 | 3:05 | Puffer | für Demos (v. a. Laufzeit der Zoo-Demo) und Fragen | | 15 min |
 | 3:20 | Ende | | | |
 
@@ -72,7 +72,7 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | Workflow-Folien | Einheitliche Farblogik: gelb = Vorgabe bzw. OpenSpec, weiß umrandet = Agent/Skill, gestrichelt = automatisch ohne KI, graue Raute = Entscheidung Mensch; jeweils mit Legende |
 | Deck | Eigenes Slidev-Deck in `slides-ai/`, Gepardec-Theme, erste Folie `cover`, letzte `contact` |
 
-## Folienliste (38)
+## Folienliste (39)
 
 | # | Folie | Layout | Status |
 |---|---|---|---|
@@ -103,17 +103,18 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 25 | arc42-Toolkit: ein Skill pro Sektion | default | fertig |
 | 26 | Orchestrierung: arc42-with-structurizr | default (Mermaid) | fertig |
 | 27 | Ergebnis: Zoo-Verwaltung (Brownfield) | default | fertig |
-| 28 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
-| 29 | Typische Fehler in KI-Doku | default (Tabelle) | fertig |
-| 30 | Phase 3 | section | fertig |
-| 31 | ADRs: Format, Skills, Werkzeuge | default | fertig |
-| 32 | ADRs mit KI | two-cols-header | fertig |
-| 33 | Phase 4 | section | fertig |
-| 34 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
-| 35 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
-| 36 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
-| 37 | Transfer aufs eigene Projekt | default | fertig |
-| 38 | Danke! | contact | fertig |
+| 28 | Qualitätsziele sind Entscheidungen (Code) | statement | fertig |
+| 29 | Welches Diagramm-Werkzeug? | default (Tabelle) | fertig |
+| 30 | Typische Fehler in KI-Doku | default (Tabelle) | fertig |
+| 31 | Phase 3 | section | fertig |
+| 32 | ADRs: Format, Skills, Werkzeuge | default | fertig |
+| 33 | ADRs mit KI | two-cols-header | fertig |
+| 34 | Phase 4 | section | fertig |
+| 35 | Workflow 1: OpenSpec | default (Mermaid) | fertig |
+| 36 | Workflow 2: grill-with-docs | default (Mermaid) | fertig |
+| 37 | Zwei Workflows im Vergleich | default (Tabelle) | fertig |
+| 38 | Transfer aufs eigene Projekt | default | fertig |
+| 39 | Danke! | contact | fertig |
 
 ## Offene Punkte
 
@@ -176,3 +177,4 @@ Ca. 4–5 h am zweiten Trainingstag „Technische Kommunikation und Dokumentatio
 | 2026-11-25 | ADR-Format vereinheitlicht auf das schlanke Format von Tag 1: Skill `arc42-adr` (Reihenfolge wie Tag 1, „Bezüge“ statt „Implications“), `arc42-change-sync`, Folien 16, 31, 32, Hauptdokument (neuer Abschnitt „Im Training: das schlanke Format“) |
 | 2026-11-25 | Zoo-Repo: ADR-Skill im schlanken Format übernommen, Tag `arc42-live-start` auf `6898c74`, Branches `arc42` und `arc42-unique-names` je ein Commit dazu; Verweise in Folie 20 und Prompt-Datei angepasst |
 | 2026-11-25 | Notiz Folie 21: Structurizr-Oberfläche (local, server, statischer Export) kurz erklärt und gegen unseren Export-Workflow abgegrenzt |
+| 2026-11-25 | Statement „Der Code zeigt, was gebaut wurde – nicht, worauf es ankommt. Qualitätsziele sind Entscheidungen, keine Ableitungen.“ als Folie 28 nach dem Zoo-Ergebnis (ersetzt die Pointe der gestrichenen Übung); jetzt 39 Folien |

@@ -611,6 +611,16 @@ Noch nicht fertig? Zwischenstand zeigen, Rest im Worktree von Branch arc42 (Fall
 -->
 
 ---
+layout: statement
+---
+
+# Der Code zeigt, was gebaut wurde – nicht, worauf es ankommt. **Qualitätsziele sind Entscheidungen, keine Ableitungen.**
+
+<!--
+Moderation: Direkt nach dem Zoo-Ergebnis, 1 min. Im Ergebnis stehen Qualitätsziele und Stakeholder nur als „Annahme:“ – der Agent kann sie aus dem Code nicht ableiten, nur raten. Rückbezug auf Phase 1: Dort entscheidet der Mensch, die KI stellt nur die Fragen.
+-->
+
+---
 class: gepardec-text-sm
 ---
 
