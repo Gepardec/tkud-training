@@ -422,6 +422,7 @@ layout: section
 - Ein Prompt: vollständige arc42-Doku mit C4-Sichten, abgeleitet aus dem Code
 - Der Agent arbeitet ohne Rückfragen, Lücken markiert er als **Annahme**
 - Während er läuft: die Werkzeuge, die er dabei benutzt
+- Demo-Repo: [github.com/Gepardec/openspec-quarkus-angular](https://github.com/Gepardec/openspec-quarkus-angular)
 
 <!--
 Moderation: 3 min. Demo gleich zu Beginn starten, das Ergebnis kommt nach Structurizr, arc42-Toolkit und Orchestrierung (ca. 20 min Laufzeit).
